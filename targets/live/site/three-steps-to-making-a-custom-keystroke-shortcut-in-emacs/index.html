@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>Three Steps to Making a Custom Keystroke Shortcut in Emacs</title>
         <link href="/css/styles.css" rel="stylesheet">
         <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
     </head>
     <body>
         <div class="container">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <a class="brand" href="/">Netlumination</a>
-                </div>
-            </div>
-            <section id="page">
-                <div class="page-header">
-                    Three Steps to Making a Custom Keystroke Shortcut in Emacs
-                </div>
-                <div class="row">
-                    <div class="span12">
-                        This one's short (ish?) and sweet. It describes how to make your own global key bindings for functions of your choice in Emacs.
+            <header class="page-header">
+                <h1><a href="/">Netlumination</a></h1>
+            </header>
+            <section>
+                <h2>Three Steps to Making a Custom Keystroke Shortcut in Emacs</h2>
+                This one's short (ish?) and sweet. It describes how to make your own global key bindings for functions of your choice in Emacs.
 <ol>
 	<li>Type "C-h b" in Emacs. This will bring up a list of all the current keybindings.</li>
 	<li>Type "C-s [KEYBINDING YOU WANT WRITTEN OUT]" to double check that the shortcut isn't taken using search. For example to check that "C-c t" isn't taken type "C-s C-c t".</li>
@@ -80,9 +78,10 @@ For example, if we type C-q C-c we get ^C, and C-q g gives simply g, so the exam
 </ol>
 I have to say, that there are some keystrokes whose codes I have trouble getting emacs to understand this way, but using "C-c h" and kbd will usually do the trick. There's certain keys you won't be able to use. For example if you're on a Windows system and you hit the Windows key while using Emacs in a terminal, you'll get the Start menu on Windows instead of  a keystroke sent to Emacs.
 
-                    </div>
-                </div>
             </section>
+            <footer class="pull-right">
+                <h4>12 Apr 2010</h4>
+            </footer>
         </div>
     </body>
 </html>

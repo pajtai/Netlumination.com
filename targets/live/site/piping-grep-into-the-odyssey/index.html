@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>Piping grep into the Odyssey</title>
         <link href="/css/styles.css" rel="stylesheet">
         <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
     </head>
     <body>
         <div class="container">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <a class="brand" href="/">Netlumination</a>
-                </div>
-            </div>
-            <section id="page">
-                <div class="page-header">
-                    Piping grep into the Odyssey
-                </div>
-                <div class="row">
-                    <div class="span12">
-                        <a href="http://www.gnu.org/software/grep/manual/grep.html">Grep</a> and piping ( | ) are two powerful tools in Linux. Grep allows you to search lines of text for certain patterns using regular expressions. Piping allows you to take the output of one command and make it the input of another.
+            <header class="page-header">
+                <h1><a href="/">Netlumination</a></h1>
+            </header>
+            <section>
+                <h2>Piping grep into the Odyssey</h2>
+                <a href="http://www.gnu.org/software/grep/manual/grep.html">Grep</a> and piping ( | ) are two powerful tools in Linux. Grep allows you to search lines of text for certain patterns using regular expressions. Piping allows you to take the output of one command and make it the input of another.
 
 So, lets say you want to look through the Odyssey and find all mentions of Sirens. That would be:
 
@@ -76,9 +74,10 @@ And of course, this is just the tip of the iceberg, or should I say, just the be
 
 To learn more about grep type, "man grep" in Linux or, "M-x woman ENTER grep" in Emacs.
 
-                    </div>
-                </div>
             </section>
+            <footer class="pull-right">
+                <h4>09 May 2010</h4>
+            </footer>
         </div>
     </body>
 </html>

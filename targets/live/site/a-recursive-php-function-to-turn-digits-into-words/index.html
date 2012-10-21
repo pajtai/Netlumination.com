@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>A recursive PHP function to turn digits into words</title>
         <link href="/css/styles.css" rel="stylesheet">
         <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
     </head>
     <body>
         <div class="container">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <a class="brand" href="/">Netlumination</a>
-                </div>
-            </div>
-            <section id="page">
-                <div class="page-header">
-                    A recursive PHP function to turn digits into words
-                </div>
-                <div class="row">
-                    <div class="span12">
-                        Warning: This is a big spoiler for Project Euler Problem 17, so if you're still working on it, don't keep reading!
+            <header class="page-header">
+                <h1><a href="/">Netlumination</a></h1>
+            </header>
+            <section>
+                <h2>A recursive PHP function to turn digits into words</h2>
+                Warning: This is a big spoiler for Project Euler Problem 17, so if you're still working on it, don't keep reading!
 
 I quickly mentioned recursion in <a href="http://netlumination.com/blog/quick-note-on-recursion">my previous post</a>. Turning digits into letters is clearly another example for which recursion is useful. Think about a number like 524. If you know that 4 = "four", 5 = "five",  and that 20 = "twenty" then all you have to do, to turn 524 into words,  is run your script on 5, add "hundred," run your script on 20, and run your script on 4, and if you write your script well, then you can do this using recursion.
 
@@ -25,9 +23,10 @@ Take a look at a working example of <a href="http://peter-ajtai.com/examples/nu
 
 Take a look at <a href="http://peter-ajtai.com/euler/problems/Problem-017.php">my solution to Project Euler Problem 17</a> [SPOILER ALERT]
 
-                    </div>
-                </div>
             </section>
+            <footer class="pull-right">
+                <h4>31 Mar 2010</h4>
+            </footer>
         </div>
     </body>
 </html>
