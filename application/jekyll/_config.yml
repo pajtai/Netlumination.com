@@ -1,3 +1,4 @@
 safe: false
 pygments: true
-permalink: /blog/:title/
+permalink: /:title/
+destination: ../../targets/live/site/
