@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Quick Note on Recursion</title>
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="page-header">
+                <h1><a href="/">Netlumination</a></h1>
+            </header>
+            <section>
+                <h2>Quick Note on Recursion</h2>
+                <a href="http://en.wikipedia.org/wiki/Recursion_(computer_science)">Recursion</a>
+
+Example in PHP using the factorial:
+<ol>
+	<li>
+<pre>// $n must be a positive integer or 0 - function returns 1 for 0 and all errors</pre>
+</li>
+	<li>
+<pre>function factorial($n)</pre>
+</li>
+	<li>
+<pre>{</pre>
+</li>
+	<li>
+<pre>  if ($n &gt; 0 &amp;&amp; is_int($n))</pre>
+</li>
+	<li>
+<pre>  {</pre>
+</li>
+	<li>
+<pre>    // factorial of positive integer</pre>
+</li>
+	<li>
+<pre>    return $n * factorial($n - 1);</pre>
+</li>
+	<li>
+<pre>  } else</pre>
+</li>
+	<li>
+<pre>  {</pre>
+</li>
+	<li>
+<pre>    // factorial of 0</pre>
+</li>
+	<li>
+<pre>    return 1;</pre>
+</li>
+	<li>
+<pre>  }</pre>
+</li>
+	<li>
+<pre>}</pre>
+</li>
+</ol>
+There are many other blog posts that cover this topic well. Some include:
+
+<a href="http://devzone.zend.com/article/1235">Recursion in PHP (and iteration)</a>
+
+<a href="http://php.net/manual/en/regexp.reference.recursive.php">Recursive patterns in Regex from the PHP manual</a>
+
+Here is a little snippet of a C++ function that will ask for user input and make sure it is a float. If it's not a float, the functions recurses (is that a word?)... calls itself. The end effect is that the user is asked to enter a float until they do. You must include both iostream and limits.
+<ol>
+<li><pre>float collectFloat()</pre></li>
+<li><pre>{</pre></li>
+<li><pre>  float user_input(0.0);</pre></li>
+<li><pre>  try</pre></li>
+<li><pre>  {</pre></li>
+<li><pre>    // Could also use cin.fail() to check for success</pre></li>
+<li><pre>    if (cin &gt;&gt; user_input) cinIgnoreRest();</pre></li>
+<li><pre>    else</pre></li>
+<li><pre>      throw (string(“\nNot a float entered.\n Please enter a number.\n”));</pre></li>
+<li><pre>  }</pre></li>
+<li><pre>  catch (string error)</pre></li>
+<li><pre>  {</pre></li>
+<li><pre>    cout &lt;&lt; error &lt;&lt; “==&gt; “;</pre></li>
+<li><pre>    cin.clear();</pre></li>
+<li><pre>    cinIgnoreRest();</pre></li>
+<li><pre>    // This will keep repeating until user enters a float</pre></li>
+<li><pre>    user_input = collectFloat();</pre></li>
+<li><pre>  }</pre></li>
+<li><pre>    return user_input;</pre></li>
+<li><pre>}</pre></li>
+</ol>
+
+            </section>
+            <footer class="pull-right">
+                <h4>29 Mar 2010</h4>
+            </footer>
+        </div>
+    </body>
+</html>
