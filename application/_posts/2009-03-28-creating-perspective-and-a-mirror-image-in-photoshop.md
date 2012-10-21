@@ -27,13 +27,13 @@ four times wider and four times taller than the image you will be working with. 
 canvas bigger by clicking on "Image &gt; Canvas Size," and make your canvas bigger. Start off by making two layers. One
 layer is for your image and one layer will be for the guidelines to help create the illusion of perspective.
 
-![Layers](http://netlumination.com/wp-content/uploads/2009/04/layers.jpg)
+![Layers](http://img.netlumination.com/layers.jpg)
 
 To create the guidelines to help with perspective, click on the Guides layer, so that it you will be drawing on it. Now
 draw a vertical line on the left side of the canvas. The line tool is found if you click on the rectangle tool. Make
 sure that you have "Fill Pixels" selected for the drawing mode. You can pick a weight that you feel is appropriate.
 
-![Line tool](http://netlumination.com/wp-content/uploads/2009/04/line-tool.jpg)
+![Line tool](http://img.netlumination.com/line-tool.jpg)
 
 Now draw a second line from the bottom of your vertical one out to the right. This second line will go from the bottom
 left corner of your image to the horizon. The angle at which you draw it will determine whether it will appear that you
@@ -41,7 +41,7 @@ are looking up, down, or directly at your image. For this example you can basica
 learn how to calculate where to put the vanishing point, horizon, etc. more precisely, take a look at
 [Kevin Hulsey's drawing perspective tutorials](http://www.khulsey.com/student.html). Here's how I drew mine:
 
-![Guide lines](http://netlumination.com/wp-content/uploads/2009/04/gude-lines.jpg)
+![Guide lines](http://img.netlumination.com/gude-lines.jpg)
 
 We'll add in the image now. If you copy and paste your image into your photoshop document a new layer will be created
 for your image, which is exactly what we want. Now we have to move the image so that it's bottom left corner is where
@@ -53,7 +53,7 @@ Once you have your image positioned, click on the Guides layer and draw a line f
 the right hand vanishing point. The guidelines extending from the bottom and top left of your image should intersect.
 Like this:
 
-![Vanishing point](http://netlumination.com/wp-content/uploads/2009/04/vanishing-point.jpg)
+![Vanishing point](http://img.netlumination.com/vanishing-point.jpg)
 
 If the vanishing point is above the top of the image, it'll look like you are viewing things from above. If it's below,
 it'll look like you are viewing from below. If it's directly to the right of the image, it'll look like you are at the
@@ -65,19 +65,19 @@ precisely where to put this line, but for a simple situation like this, it's eas
 taking your image and swiveling it in to perspective and draw the second vertical line where the right hand side of the
 image would end up:
 
-![Final guide line](http://netlumination.com/wp-content/uploads/2009/04/final-guide-line.jpg)
+![Final guide line](http://img.netlumination.com/final-guide-line.jpg)
 
 It's important that we create the mirror image now, since we want to distort the main and mirror image simultaneously,
 so that the reflection matches the perspective of the main image. To create the reflection, first duplicate the main
 image. Do this by clicking on the layer with the image and dragging it over the "Create a New Layer" icon, that is at
 the bottom right of the layers panel.
 
-![Duplicate image](http://netlumination.com/wp-content/uploads/2009/04/duplicate-image.jpg)
+![Duplicate image](http://img.netlumination.com/duplicate-image.jpg)
 
 Name this layer as the mirror image. I usually drag this layer below the main image, since it helps me keep track of
 things better.
 
-![Rename reflection](http://netlumination.com/wp-content/uploads/2009/04/rename-reflection.jpg)
+![Rename reflection](http://img.netlumination.com/rename-reflection.jpg)
 
 Click on the reflection layer in the layers panel and use the free transform tool to position it directly below the main
 image. Holding down the shift key while moving the image will constrain it to move in only several directions, so you
@@ -89,11 +89,11 @@ floating slightly.
 Before you finalize the free transform, right click directly on the reflection and pick "Flip Vertical" from the fly out
 menu that appears. Now we have a true reflection.
 
-![Vertical flip](http://netlumination.com/wp-content/uploads/2009/04/vertical-flip.jpg)
+![Vertical flip](http://img.netlumination.com/vertical-flip.jpg)
 
 and voila:
 
-![True reflection](http://netlumination.com/wp-content/uploads/2009/04/true-reflection.jpg)
+![True reflection](http://img.netlumination.com/true-reflection.jpg)
 
 This is the point at which you may notice that you are running out of space. Increase the size of your canvas to add
 more space at the bottom if necessary.
@@ -102,24 +102,24 @@ To create the effect of perspective, we have to work with the main image and ref
 click in the layers panel on the layer of the main image. Now shift + click on the layer of the reflection. Both layers
 should be highlighted:
 
-![Select both layers](http://netlumination.com/wp-content/uploads/2009/04/select-both-layers.jpg)
+![Select both layers](http://img.netlumination.com/select-both-layers.jpg)
 
 If you now use the free transform tool (Ctr+T), both images should be selected. Look at how the bounding boxes goes
 around both images:
 
-![Bounding box](http://netlumination.com/wp-content/uploads/2009/04/bounding-box.jpg)
+![Bounding box](http://img.netlumination.com/bounding-box.jpg)
 
 Ctr + Click on the top right corner and drag it the top right corner of your perspective guidelines. You want to distort
 the image and not just resize them; that's why you have to Ctr + Click for this operation and not just click.
 
-![Top right corner](http://netlumination.com/wp-content/uploads/2009/04/top-right-corner.jpg)
+![Top right corner](http://img.netlumination.com/top-right-corner.jpg)
 
 This next step is probably the trickiest one of this tutorial. You have to control click on the bottom right corner of
 the bounding box... that's is the bottom right corner of the reflection. By dragging this corner you have to get the
 bottom right corner of the main image to lie over the bottom right corner of the guiding lines. So you're ctr + dragging
 the bottom right of the bounding box but looking at the center right of it.
 
-![Perspective](http://netlumination.com/wp-content/uploads/2009/04/perspective.jpg)
+![Perspective](http://img.netlumination.com/perspective.jpg)
 
 We'll begin to add finishing touches. First let's change the background to pure black, or any color of your choosing.
 To do this click on the guides layer and then on the "Create a New Layer" icon at the bottom right of the layers panel.
@@ -127,7 +127,7 @@ This will create a new panel directly below the image and reflection layers. To 
 `Alt + Backspace` to fill it with the foreground color or Ctr + Backspace to fill it with the back ground color. You can
 also go to Edit &gt; Fill.
 
-![Black background](http://netlumination.com/wp-content/uploads/2009/04/black-background.jpg)
+![Black background](http://img.netlumination.com/black-background.jpg)
 
 To make the reflection fade out from top to bottom we'll use a layer mask. A layer mask interacts with a layer to show
 only certain parts of that layer. Think of it as a black piece of paper that you can cut to any shape you want and lay
@@ -139,18 +139,18 @@ To add our layer mask, first click on the layer with the reflection to select it
 "Create Layer Mask" icon. This is toward the bottom left of the layers panel. It looks like a square with a circle
 inside
 
-![New layer mask icon](http://netlumination.com/wp-content/uploads/2009/04/new-layer-mask-icon.jpg)"
+![New layer mask icon](http://img.netlumination.com/new-layer-mask-icon.jpg)"
 
 This will give you a layer mask associated with the reflection.
 
-![Layer mask](http://netlumination.com/wp-content/uploads/2009/04/layer-mask.jpg)
+![Layer mask](http://img.netlumination.com/layer-mask.jpg)
 
 Click on the white square that is the layer mask, so that you can edit it directly. We will add a gradient to it. Make
 sure your foreground color is white and your background color is black. If they are not, just click on the small black
 and white boxes up and to the left of the foreground and background colors. To select the gradient tool hit Ctr+G or
 select it from the tool menu on the left. Things should look like this:
 
-![Gradient tool](http://netlumination.com/wp-content/uploads/2009/04/gradient-tool.jpg)
+![Gradient tool](http://img.netlumination.com/gradient-tool.jpg)
 
 The look we want to achieve is for the reflection to fade away from top to bottom. Remember that the areas where the
 layer mask is black will make the reflection disappear, so we want to click on the image and draw the gradient line from
@@ -158,7 +158,7 @@ the bottom right to the top left. This will make the layer mask blacker toward t
 top left. Try making your gradient. If you are not satisfied with the results hit Ctr+Z to undo it and try it again. The
 results should look something like this:
 
-![Fade out of reflection](http://netlumination.com/wp-content/uploads/2009/04/fade-out-of-reflection.jpg)
+![Fade out of reflection](http://img.netlumination.com/fade-out-of-reflection.jpg)
 
 Even if the background of your image is another color, you will use a black to white gradient for your layer mask. This
 is because a layer mask makes the layer it is associated with visible with white and invisible with black. So even if
@@ -167,7 +167,7 @@ and invisible if your layer mask is black.
 
 After adding the gradient, your layer mask will look something like this:
 
-![Gradient layer maske](http://netlumination.com/wp-content/uploads/2009/04/gradient-layer-mask.jpg)
+![Gradient layer maske](http://img.netlumination.com/gradient-layer-mask.jpg)
 
 To make the reflection a little more convincing, decrease the Opacity of the reflection layer. Make sure that the
 reflection layer is selected in they Layers panel. Now use the slider bar at the top right of the panel to change the
@@ -178,9 +178,9 @@ Transparent Pixels and Top, Right, Left, and Bottom. This will trim away all the
 border use "Image &gt; Canvas Size..." and select Relative. With Relative selected you only have to type in the twice
 the thickness of the border you want width and height wise.
 
-![Adding the border back](http://netlumination.com/wp-content/uploads/2009/04/adding-border-back.jpg)
+![Adding the border back](http://img.netlumination.com/adding-border-back.jpg)
 
 Once done with resizing turn the background color layer back on by clicking on the eyeball icon to the left of it, and
 you're done!
 
-![Finished image](http://netlumination.com/wp-content/uploads/2009/04/finished-image.jpg)
+![Finished image](http://img.netlumination.com/finished-image.jpg)

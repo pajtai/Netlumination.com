@@ -1,5 +1,5 @@
 safe: false
 pygments: true
 permalink: /:title/
-destination: ../../targets/live/site/
+destination: ../targets/stage/site/
 auto: true
