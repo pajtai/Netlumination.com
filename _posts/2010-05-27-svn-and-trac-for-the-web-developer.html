@@ -1,0 +1,63 @@
+---
+layout: post
+title: SVN and Trac for the web developer
+tags:
+- backup
+- project management
+- subversion
+- svn
+- version control
+status: draft
+type: post
+published: false
+meta:
+  _edit_last: '1'
+---
+As a web developer, version control can be useful, but generally is not necessary. However, one of the great things about version control in general and SVN in particular, is that they allow you to easily maintain a development site and a live site.
+
+Basically, SVN holds your files and folders, and all previous versions of your files and folders in its repository. You can check out your files and folders from this repository. So what you do for an individual website, is that you checkout the previous "pretty" version of the entire site to your live domain. You can continue working on the most recent version of your site on you development domain. So using SVN, you don't have to make unpredictable changes to your live site. You can experiment to your heart's content on the development site. Additionally, you can go back to older versions of your site. You can even have domains that contain historic versions of your site.
+
+First you have to link your SVN and Trac.
+
+<a href="http://www.abbeyworkshop.com/howto/misc/svn01/">http://www.abbeyworkshop.com/howto/misc/svn01/</a>
+
+Ok. First I'll go over how to get your website into SVN, how to handle it in SVN to create a dev site and live site, and finally how to track bugs, issues, and upgrades in an orderly fashion.
+
+I'm going to assume that you're using a Linux or Unix shell. If you're using Windows, you can easily do a lot of this stuff through <a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a>.
+
+First let's say you've got your site in the /mylivesite directory. Let's get it checked in to SVN. Checking in things to Subversion means that the SVN repository will keep track of what happens to these files from now on. It's essentially an unlimited undo. You can also branch projects. Let's say you are trying to solve a problem and there are two possible solutions, but you don't know which one will end up working. You can have one person implement one solution on one branch, and another person the other solution on another branch. You may never end up using branching, but you probably will use tagging. Tagging is simply creating an easily accessible version of your files. In terms of web development, this is usually a nicely functioning version of the site that you simply copy into your site's directory. Like this you can keep working on the site in your dev directory without fear of breaking the site. If, as you work on your dev site, you do somehow completely bungle things and the site becomes horse manure, you can simply start working on it again from one of the tagged versions. Many people can work on one SVN repository, but you have to be carefully that only one person at a time has a file checked out. If Prepared Pauline checks out File Important on Monday and starts to make fantastic changes to it (this is going to be a long sentence), while Frantic Frank checks out File Important on Wednesday, ruins it even more than usual and commits it back to SVN on Thursday, then when Prepared Pauline tries to commit Important File on Friday, she won't be able to, since here initial copy is different from SVN's current copy. If this happens then you have to reconcile the differences between the files before you move on.
+
+Anyway, before we tag, branch, and fertilize we have to put something into our SVN repository. There are two ways to add files to SVN:
+<ol>
+	<li>svn import - this is for adding files for the very first time</li>
+	<li>svn commit - this is for adding files that you have checked out from SVN</li>
+</ol>
+Since we haven't added anything yet, we'll use import:
+<ol>
+	<li>
+<pre>svn import peter-ajtai.com/  http://svn.keikiwai.org/dev/peter/trunk -m "new import"</pre>
+</li>
+</ol>
+Tagging a good functioning copy:
+<ol>
+	<li>
+<pre>svn copy http://svn.keikiwai.org/dev/eis/trunk/ http://svn.keikiwai.org/dev/eis/tags/0.5 -m "Tagging a test release"</pre>
+</li>
+</ol>
+A list of releases:
+<ol>
+	<li>
+<pre> svn list http://svn.keikiwai.org/dev/eis/tags/</pre>
+</li>
+</ol>
+Checkout a relase. Possibly to update the live site. Go to the directory the site is in and:
+<ol>
+	<li>
+<pre> svn checkout http://svn.keikiwai.org/dev/eis/tags/0.5 .</pre>
+</li>
+</ol>
+The complete reference - http://svnbook.red-bean.com/en/1.5/svn.ref.html
+
+Use delete to remove files from your copy, but keep them on the repository. You can also use delete to remove files from the repository if you use delete [path name].
+
+To find out what version or tag you're working with just type "svn info"

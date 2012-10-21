@@ -1,0 +1,17 @@
+---
+layout: post
+title: Adding macros and custom functions to Emacs using eLisp
+tags: []
+status: draft
+type: post
+published: false
+meta:
+  _edit_last: '1'
+---
+In my previous post, I described <a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">the three steps to making a custom keystroke shortcut</a>. That covered running existing functions with your choice of keystrokes.
+
+What if you want your own functions? What if you are passive aggressive and want to use C-F to type out, "My boss has pointy hair. Please _ me." and have the cursor come back to the blank after all the letters are displayed?
+
+There are two ways to do this. If you don't have a thick beard, glasses, and a hideously stained coffee mug you can use a macro to create the necessary function for you. If you are holding a pale yellow / brown coffee mug that was once white, and you have a beard and glasses, you are probably not reading this, instead you are writing the function directly into you .emacs.d/init.el file. I'll go over both methods.
+
+First, here's how you make a macro and store it for later use, in Emacs.
