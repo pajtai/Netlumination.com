@@ -53,19 +53,21 @@
 </code></pre>
 </div>
 <p>This is one of the things that is so nice about PHP. You can insert it directly into XHTML wherever you want. The only problem is that we may have a page or post that we haven&#8217;t gotten around to adding custom keyword and description meta tags to. The about code will not create an error in this case. It will just print empty quotation marks. This is because the PHP variable $seodescription will be zero if get_post_meta finds nothing. We can make use of this with an if statement. In php an if statement will execute if the condition is not zero, and the if statement will not execute if the condition is zero. In other words</p>
-<div class='highlight'><pre><code class='php'><span class='x'>if ( $mynumber = 0 ) {</span>
-<span class='x'>    echo &quot;hi!&quot;;</span>
-<span class='x'>} else {</span>
-<span class='x'>    echo &quot;bye...&quot;;</span>
-<span class='x'>}</span>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='k'>if</span> <span class='p'>(</span> <span class='nv'>$mynumber</span> <span class='o'>=</span> <span class='mi'>0</span> <span class='p'>)</span> <span class='p'>{</span>
+    <span class='k'>echo</span> <span class='s2'>&quot;hi!&quot;</span><span class='p'>;</span>
+<span class='p'>}</span> <span class='k'>else</span> <span class='p'>{</span>
+    <span class='k'>echo</span> <span class='s2'>&quot;bye...&quot;</span><span class='p'>;</span>
+<span class='p'>}</span>
 </code></pre>
 </div>
 <p>Will print &#8220;bye&#8230;&#8221; because the if statement is 0. 0 means false to PHP. So, of course</p>
-<div class='highlight'><pre><code class='php'><span class='x'>if ( $mynumber = 8.5 ) {</span>
-<span class='x'>    echo &quot;hi!&quot;;</span>
-<span class='x'>} else {</span>
-<span class='x'>    echo &quot;bye...&quot;;</span>
-<span class='x'>}</span>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='k'>if</span> <span class='p'>(</span> <span class='nv'>$mynumber</span> <span class='o'>=</span> <span class='mf'>8.5</span> <span class='p'>)</span> <span class='p'>{</span>
+    <span class='k'>echo</span> <span class='s2'>&quot;hi!&quot;</span><span class='p'>;</span>
+<span class='p'>}</span> <span class='k'>else</span> <span class='p'>{</span>
+    <span class='k'>echo</span> <span class='s2'>&quot;bye...&quot;</span><span class='p'>;</span>
+<span class='p'>}</span>
 </code></pre>
 </div>
 <p>Will print &#8220;hi!&#8221; since the if statement is not 0. Let&#8217;s apply this to meta tags. If there is custome meta description, we will display it, and if there is none, we will nothing. It&#8217;s not a good idea to put a default description or keywords on pages, since this will make multiple pages have the same description and keywords. This is confusing for search engines, since how can two pages have the same descriptin but different content? We will check if there is a custom description with an if statement. The only tricky part here is that PHP actually goes ahead and assigns a value to the variable inside the if statement. This is because we used &#8221;=&#8221; which means set equal to. So, here goes:</p>

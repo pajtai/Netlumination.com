@@ -89,6 +89,7 @@ statement. In php an if statement will execute if the condition is not zero, and
 the condition is zero.  In other words
 
 {% highlight php %}
+<?php
 if ( $mynumber = 0 ) {
     echo "hi!";
 } else {
@@ -99,6 +100,7 @@ if ( $mynumber = 0 ) {
 Will print "bye..." because the if statement is 0. 0 means false to PHP. So, of course
 
 {% highlight php %}
+<?php
 if ( $mynumber = 8.5 ) {
     echo "hi!";
 } else {
