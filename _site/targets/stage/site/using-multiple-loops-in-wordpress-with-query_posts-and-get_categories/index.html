@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Multiple Loops in Wordpress with query_posts() and get_categories()</title>
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="page-header">
+                <h1><a href="/">Netlumination</a></h1>
+            </header>
+            <section>
+                <h2>Using Multiple Loops in Wordpress with query_posts() and get_categories()</h2>
+                <p>This is a tutorial to demonstrate how to show entire posts from multiple categories in Wordpress. This would be especially useful for blogs that contain very short posts like a photo with a short description. This is a very simple problem and solution, but I didn&#8217;t find many posts describing how to do it, so I thought it may help a few people out.</p>
+
+<p>In some blogs, it can be useful to show entire posts from multiple categories on one page. For instance for a recipe blog you may want to list the name of each of your recipe categories and the recipes in each of those categories. This would look something like:</p>
+
+<pre><code>Breakfast Recipes
+    [Eggs Benedicts Recipe Post]
+    [Pancakes Recipe Post]
+Lunch Recipes
+    [Grilled Cheese Sandwish Recipe Post]
+Dinner Recipes
+    [Fettucini Alfredo Recipe Post]
+    [Lasagna Recipe Post]</code></pre>
+
+<p>Wordpress uses <a href='http://codex.wordpress.org/The_Loop'>The Loop</a> to display posts. In this case we want to first retrieve all the categories from the database, then we want to cycle through each category and use The Loop to display all the posts in that category.</p>
+
+<p>For most pages on your Wordpress site, the url of the page will contain a query string which will dictate which posts are shown with The Loop. We can overide any existing query string using the <a href='http://codex.wordpress.org/Template_Tags/query_posts'>query_posts()</a> function to display the specific posts we want. The nice thing is that we can use the <a href='http://codex.wordpress.org/Template_Tags/query_posts'>query_posts()</a> function multiple times in order to run The Loop multiple times on the same page.</p>
+
+<p>There are several ways of using <a href='http://codex.wordpress.org/The_Loop#Multiple_Loops'>multiple Loops</a> in Wordpress. With using multiple query_posts, the only trick is that you should save and reset the original query for the page. This is so that later down the page (like in the Sidebar) you can use all the functions that apply to the page you&#8217;re on and not on the last query_post you performed. The query is stored in <code>$wp_query</code>, so we can use </p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='nv'>$temp_query</span> <span class='o'>=</span> <span class='nv'>$wp_query</span><span class='p'>;</span>
+</code></pre>
+</div>
+<p>before the Loops to save the query, and we can use </p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='nv'>$wp_query</span> <span class='o'>=</span> <span class='nv'>$temp_query</span><span class='p'>;</span>
+</code></pre>
+</div>
+<p>at the end of the Loops to retrieve it. This is like in Multiple Loops Example 2 from <a href='http://codex.wordpress.org/The_Loop#Multiple_Loops'>The Loops Wordpress page</a>.</p>
+
+<p>There are basically two important parts of this loop. First we must create an array that lists all the categories. Then we cycle through that array and retrieve all the posts from each category, one category at a time. To create an array of all the categories we&#8217;ll use <a href='http://codex.wordpress.org/Function_Reference/get_categories'>get_categories()</a>. This simply returns an array with all the categories. Now, this array has a lot of information associated with it. To get an idea of what it looks like you can always print the array out in readable form with</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='nb'>print_r</span><span class='p'>(</span> <span class='nx'>get_categories</span><span class='p'>()</span> <span class='p'>);</span>
+</code></pre>
+</div>
+<p>There&#8217;s information like the name and category ID for each category. We&#8217;ll make use of those.</p>
+
+<p>To show the posts in a category we have to use query_posts and an identifying characteristic of the category we want. The name of the category isn&#8217;t always the best solution. For example if you have a category called, &#8220;Breakfast &#38; Juices,&#8221; the ampersand will trip the PHP up, so we&#8217;ll just use the ID number of the category. If we make our category array like this: </p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span>
+<span class='nv'>$categories</span><span class='o'>=</span><span class='nx'>get_categories</span><span class='p'>();</span>
+</code></pre>
+</div>
+<p>Then we can retrieve the category ID from the created array with <code>$category-&gt;cat_ID</code>, and We can retrieve the name of the category with <code>$category-&gt;name</code>.</p>
+
+<p>Finally, putting everything together we get:</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span> <span class='nv'>$temp_query</span> <span class='o'>=</span> <span class='nv'>$wp_query</span><span class='p'>;</span> <span class='cp'>?&gt;</span><span class='x' />
+<span class='x'>  </span><span class='cp'>&lt;?php</span> <span class='nv'>$categories</span><span class='o'>=</span><span class='nx'>get_categories</span><span class='p'>();</span>
+  <span class='k'>foreach</span><span class='p'>(</span><span class='nv'>$categories</span> <span class='k'>as</span> <span class='nv'>$category</span><span class='p'>)</span>
+  <span class='p'>{</span> <span class='cp'>?&gt;</span><span class='x' />
+
+<span class='x'>    &lt;h2&gt;</span><span class='cp'>&lt;?php</span> <span class='k'>echo</span><span class='p'>(</span><span class='nv'>$category</span><span class='o'>-&gt;</span><span class='na'>name</span><span class='p'>);</span> <span class='cp'>?&gt;</span><span class='x'>&lt;/h2&gt;</span>
+<span class='x'>    </span><span class='cp'>&lt;?php</span> <span class='nx'>query_posts</span><span class='p'>(</span><span class='s2'>&quot;cat=</span><span class='si'>$category-&gt;cat_ID</span><span class='s2'>&quot;</span><span class='p'>);</span> <span class='cp'>?&gt;</span><span class='x' />
+<span class='x'>    </span><span class='cp'>&lt;?php</span> <span class='k'>if</span> <span class='p'>(</span><span class='nx'>have_posts</span><span class='p'>())</span> <span class='o'>:</span> <span class='k'>while</span> <span class='p'>(</span><span class='nx'>have_posts</span><span class='p'>())</span> <span class='o'>:</span> <span class='nx'>the_post</span><span class='p'>();</span> <span class='cp'>?&gt;</span><span class='x' />
+
+<span class='x'>      [ YOUR POST DISPLAYING CODE GOES HERE ]</span>
+
+<span class='x'>    </span><span class='cp'>&lt;?php</span> <span class='k'>endwhile</span><span class='p'>;</span> <span class='k'>endif</span><span class='p'>;</span> <span class='cp'>?&gt;</span><span class='x' />
+<span class='x'>  } ?&gt;</span>
+
+<span class='cp'>&lt;?php</span> <span class='nv'>$wp_query</span> <span class='o'>=</span> <span class='nv'>$temp_query</span><span class='p'>;</span> <span class='cp'>?&gt;</span><span class='x' />
+</code></pre>
+</div>
+<p>If you want to see what happens if you don&#8217;t reassign the original query just remove the last line. It will probably make your sidebar say something odd&#8230; though the particulars will depend on the theme you&#8217;re using.</p>
+
+<p>This solution will work if you do not have child categories. If you do have child categories (an example would be Ice Cream category in the Deserts parent category), then you will get repetition of posts, since this will display all the posts from all parent categories then the posts for child categories. There are several ways to resolve this. The simplest way is to only display parent categories and not child categories. To do this we must check if a category is a child before we display it&#8217;s posts. To do this we&#8217;ll use <code>$category-&gt;parent</code>. This returns the parent of the category. If it returns nothing, or false, we know that the category is not a child but a parent. We&#8217;ll put an if statement that only proceeds if there is no parent of the category inside the foreach loop. Here we go:</p>
+<div class='highlight'><pre><code class='php'><span class='cp'>&lt;?php</span> <span class='nv'>$temp_query</span> <span class='o'>=</span> <span class='nv'>$wp_query</span><span class='p'>;</span> <span class='cp'>?&gt;</span><span class='x' />
+
+<span class='cp'>&lt;?php</span> <span class='nv'>$categories</span><span class='o'>=</span><span class='nx'>get_categories</span><span class='p'>();</span>
+
+<span class='k'>foreach</span><span class='p'>(</span><span class='nv'>$categories</span> <span class='k'>as</span> <span class='nv'>$category</span><span class='p'>)</span>
+<span class='p'>{</span>
+
+    <span class='k'>if</span><span class='p'>(</span><span class='o'>!</span><span class='nv'>$category</span><span class='o'>-&gt;</span><span class='na'>parent</span><span class='p'>)</span>
+    <span class='p'>{</span>
+
+        <span class='cp'>?&gt;</span><span class='x' />
+<span class='x'>        &lt;h2&gt;</span><span class='cp'>&lt;?php</span> <span class='k'>echo</span><span class='p'>(</span><span class='nv'>$category</span><span class='o'>-&gt;</span><span class='na'>name</span><span class='p'>);</span> <span class='cp'>?&gt;</span><span class='x'>&lt;/h2&gt;</span>
+
+<span class='x'>        </span><span class='cp'>&lt;?php</span> <span class='nx'>query_posts</span><span class='p'>(</span><span class='s2'>&quot;cat=</span><span class='si'>$category-&gt;cat_ID</span><span class='s2'>&quot;</span><span class='p'>);</span> <span class='cp'>?&gt;</span><span class='x' />
+
+<span class='x'>        </span><span class='cp'>&lt;?php</span> <span class='k'>if</span> <span class='p'>(</span><span class='nx'>have_posts</span><span class='p'>())</span> <span class='o'>:</span> <span class='k'>while</span> <span class='p'>(</span><span class='nx'>have_posts</span><span class='p'>())</span> <span class='o'>:</span> <span class='nx'>the_post</span><span class='p'>();</span> <span class='cp'>?&gt;</span><span class='x' />
+<span class='x'>            [ YOUR POST DISPLAYING CODE GOES HERE ]</span>
+<span class='x'>        </span><span class='cp'>&lt;?php</span> <span class='k'>endwhile</span><span class='p'>;</span> <span class='k'>endif</span><span class='p'>;</span> <span class='cp'>?&gt;</span><span class='x' />
+<span class='x'>    }</span>
+<span class='x'>}</span>
+
+<span class='x'>$wp_query = $temp_query; ?&gt;</span>
+</code></pre>
+</div>
+            </section>
+            <footer class="pull-right">
+                <h4>05 May 2009</h4>
+            </footer>
+        </div>
+    </body>
+</html>
