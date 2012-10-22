@@ -23,12 +23,12 @@ So, 5.4% recovery.
 In other words, increasing the chances of recovery of your laptop by 80% from 3% means you'll get your laptop back 5.4%
 of the time.... superb....
 
-    FBI statistics state that once your laptop is gone, there is a 3% chance of recovery. Increase those odds by installing
-    Front Door Software today; a system designed to help you recover your laptop as soon as someone turns it on. After
-    installing FrontDoorSoftware on your laptop by visiting  [A URL], you can sign in and control your program. Here you can
-    customize your security options which include sending a message to your monitor and creating a lockdown code to protect
-    your information. This program turns your monitor into an ownership tag and statistics show simply displaying who owns
-    the laptop increases chances of recovery by 80%.
+    FBI statistics state that once your laptop is gone, there is a 3% chance of recovery. Increase those odds by
+    installing Front Door Software today; a system designed to help you recover your laptop as soon as someone turns it
+    on. After installing FrontDoorSoftware on your laptop by visiting  [A URL], you can sign in and control your
+    program. Here you can customize your security options which include sending a message to your monitor and creating a
+    lockdown code to protect your information. This program turns your monitor into an ownership tag and statistics show
+    simply displaying who owns the laptop increases chances of recovery by 80%.
 
 _Note: Looking at their homepage, there are some seemingly conflicting numbers, but this may reflect unclear references
 to  recovery numbers for lost laptops versus stolen laptops._
