@@ -38,7 +38,7 @@ Yes, [Emacs can do anything](http://xkcd.com/378/).
 of man pages. The type of man pages that are manual pages for linux or unix commands.
 
     C-z
-    
+
 This will suspend your session and kick you to the shell. This is great if you know how to restart your existing emacs
 sessions. Well, that's accomplished not with the command "emacs," but with the command:
 
