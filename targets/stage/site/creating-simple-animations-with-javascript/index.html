@@ -56,7 +56,7 @@
 <li><a href='#Conclusion'>Conclusion</a></li>
 </ol>
 
-<h2 id='id116'><a id='Introduction'>Introduction</a></h2>
+<h2 id='id676'><a id='Introduction'>Introduction</a></h2>
 
 <p>Here is the code that makes the ball move. For the rest of this post, I&#8217;ll go over the basic ideas required to put the code together and how the specific code works:</p>
 <div class='highlight'><pre><code class='javascript'><span class='o'>&lt;</span><span class='nx'>script</span> <span class='nx'>type</span><span class='o'>=</span><span class='s2'>&quot;text/javascript&quot;</span><span class='o'>&gt;</span>
@@ -99,7 +99,7 @@
 
 <p>There are two functions in this script, <code>animateBall()</code> and <code>checkButton()</code>. <code>animateBall()</code> is what makes the basketball image move. <code>checkButton()</code> starts and stops the ball. Let&#8217;s start by going over <code>checkButton()</code>, since that is the function that is called if the viewer presses the &#8220;Animate Basketball&#8221; button.</p>
 
-<h2 id='id117'><a id='Starting'>Starting and stopping the animation using `checkButton()`</a></h2>
+<h2 id='id677'><a id='Starting'>Starting and stopping the animation using `checkButton()`</a></h2>
 
 <p>Whenever you create an animation, or any sort of constantly running JavaScript, it&#8217;s considerate to allow the viewer to stop the script somehow. This is done using the checkButton function. The checkButton function also starts the script running, so it serves a dual purpose.</p>
 <div class='highlight'><pre><code class='javascript'><span class='kd'>function</span> <span class='nx'>checkButton</span><span class='p'>()</span> <span class='p'>{</span>
@@ -123,7 +123,7 @@
 
 <p>Let&#8217;s look at how the basketball image is moved when checkButton() calls the animateBall function.</p>
 
-<h2 id='id118'><a is='Moving'>Moving the ball image using animateBall()</a></h2>
+<h2 id='id678'><a is='Moving'>Moving the ball image using animateBall()</a></h2>
 
 <p>This is the heart of the animation, and what&#8217;s startling is how few lines it takes to animate something with JavaScript.</p>
 
@@ -188,7 +188,7 @@
 
 <p><code>clearTimeout()</code> is not in the <code>animateBall</code> function, it is in the <code>checkButton</code> function. This is because <code>clearTimeout</code> is called if the viewer presses the button while the ball is moving.</p>
 
-<h2 id='id119'><a id='Conclusion'>Conclusion</a></h2>
+<h2 id='id679'><a id='Conclusion'>Conclusion</a></h2>
 
 <p>Ok, so that&#8217;s it. You can animate a DIV on your page using one simple function, and you can stop and start the animation using a second function.</p>
 
@@ -202,7 +202,7 @@
 
 <p>Exactly how to do that might be the subject for a later post.</p>
 
-<h2 id='id120'><a id='References'>References</a></h2>
+<h2 id='id680'><a id='References'>References</a></h2>
 
 <ul>
 <li><a href='http://www.chipchapin.com/WebTools/JavaScript/exampleA01.html'>Tutorial on JavaScript animation</a></li>

@@ -15,150 +15,143 @@
             </header>
             <section>
                 <h2>Bite Sized Emacs</h2>
-                Emacs is a big complicated beast. You can spend lots of time  looking through the documentation, but sometimes it's nice to enjoy a quick bite of Emacs goodness.
+                <p>Emacs is a big complicated beast. You can spend lots of time looking through the documentation, but sometimes it&#8217;s nice to enjoy a quick bite of Emacs goodness.</p>
 
-<strong>Table of Contents:</strong>
-<strong><a href="#keystrokes">1: Custom Keystrokes</a></strong>
-<strong><a href="#indentation1">2: Indenting only as far as you feel comfortable</a></strong>
-<strong><a href="#indentation2">3: Indentation on steroids</a></strong>
-<strong><a href="#color">4: Colorful shells</a></strong>
-<strong><a href="#woman">5: Colorful men</a></strong>
-<strong><a href="#beep">6: No more beeping, only flashing</a></strong>
-<strong><a href="#menu">7: Turn off annoying menu bar</a></strong>
-<strong><a href="#font">8: Customizing font appearance</a></strong>
-<strong><a href="#wraps1">9: Line wrapping on horizontally split windows</a></strong>
-<strong><a href="#wraps2">10: Normal looking line wraps</a></strong>
-<strong><a href="#backup">11: Auto backup a little smarter</a></strong>
-<strong><a href="#complete">12:  Autocomplete</a></strong>
-<strong><a href="#jump">13: Jumping the line</a></strong>
-<strong><a href="#move">14:  Moving from one window to the other easilly</a></strong>
-<strong><a href="#delete">15: Delete the entire word</a></strong>
-<strong><a href="#num">16: Enabling the Num Pad</a></strong>
-<strong><a href="#macros">17: Making and storing macros</a></strong>
-<strong><a href="#count">18: Word Count</a></strong>
+<h3 id='table_of_contents'>Table of Contents</h3>
 
-<strong><a name="keystrokes"></a>Morsel 1 - Custom keystrokes</strong>
-
-<a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">Make your own custom keystrokes.</a>
-
-<strong><a name="indentation1"></a>Morsel 2 - Indenting only as far as you feel comfortable</strong>
-
-Change the indentation rules in cc-mode to as many spaces as you want (I use 4, which looks like normal tabs on other editors, some people use 8, or 2, or whatever).
-Edit your .emacs.d/init.el (<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html">depending it could be ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el</a>) like this (substitute the number you want where I write 4):
 <ol>
-	<li>
-<pre>;; define indents as 4 spaces in cc-mode</pre>
-</li>
-	<li>
-<pre>(setq c-basic-offset 4</pre>
-</li>
-	<li>
-<pre>      tab-width 4</pre>
-</li>
-	<li>
-<pre>      indent-tabs-mode t)</pre>
-</li>
+<li><a href='#keystrokes'>Custom Keystrokes</a></li>
+
+<li><a href='#indentation1'>Indenting only as far as you feel comfortable</a></li>
+
+<li><a href='#indentation2'>Indentation on steroids</a></li>
+
+<li><a href='#color'>Colorful shells</a></li>
+
+<li><a href='#woman'>Colorful men</a></li>
+
+<li><a href='#beep'>No more beeping, only flashing</a></li>
+
+<li><a href='#menu'>Turn off annoying menu bar</a></li>
+
+<li><a href='#font'>Customizing font appearance</a></li>
+
+<li><a href='#wraps1'>Line wrapping on horizontally split windows</a></li>
+
+<li><a href='#wraps2'>Normal looking line wraps</a></li>
+
+<li><a href='#backup'>Auto backup a little smarter</a></li>
+
+<li><a href='#complete'>Autocomplete</a></li>
+
+<li><a href='#jump'>Jumping the line</a></li>
+
+<li><a href='#move'>Moving from one window to the other easilly</a></li>
+
+<li><a href='#delete'>Delete the entire word</a></li>
+
+<li><a href='#num'>Enabling the Num Pad</a></li>
+
+<li><a href='#macros'>Making and storing macros</a></li>
+
+<li><a href='#count'>Word Count</a></li>
 </ol>
-<!--more-->
 
-The first line (setting c-basic-offset) does most of the work usually. The other two lines deal with how big tabs show.
+<h3 id='id681'><a name='keystrokes'>Morsel 1 - Custom keystrokes</a></h3>
+<a href='http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs'>Make your own custom
+keystrokes.</a>
+<h3 id='id682'><a name='indentation1'>Morsel 2 - Indenting only as far as you feel comfortable</a></h3>
 
-You can change the c indentation style using <span style="font-family: Consolas, Monaco, 'Courier New', Courier, monospace; line-height: 18px; font-size: 12px; white-space: pre;">(setq c-default-style "[style name here]")</span>. These styles include bsd,stroustrup, etc. Look at the <a href="http://www.emacswiki.org/emacs/IndentingC">Emacs wiki about indentation in C style</a>.
+<p>Change the indentation rules in cc-mode to as many spaces as you want (I use 4, which looks like normal tabs on other editors, some people use 8, or 2, or whatever).</p>
 
-<strong><a name="indentation2"></a>Morsel 3 - Indentation on steroids</strong>
+<p>Edit your .emacs.d/init.el (<a href='http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html'>depending
+it could be ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el</a>) like this (substitute the number you want where I write 4):</p>
+<div class='highlight'><pre><code class='cl'><span class='c1'>;; define indents as 4 spaces in cc-mode</span>
+<span class='p'>(</span><span class='k'>setq</span> <span class='nv'>c-basic-offset</span> <span class='mi'>4</span>
+      <span class='nv'>tab-width</span> <span class='mi'>4</span>
+      <span class='nv'>indent-tabs-mode</span> <span class='no'>t</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>The first line (setting c-basic-offset) does most of the work usually. The other two lines deal with how big tabs show.</p>
 
-Indent an entire block of code according to applicable rules by selecting the code and then typing "C-M-\".
-For example, let's say you just changed c-basic-offset to 4 from 8. Or you changed the c-default-style. If you now start typing a new program, then the new rules will be in effect. But, when you open a program you've been working on, the parts already written will look unchanged. Here's the step by step as to what you type (remember C = Control key and M = Meta key... usually the Alt key):
+<p>You can change the c indentation style using <span style='font-family: Consolas, Monaco, &apos;Courier New&apos;, Courier,
+monospace; line-height: 18px; font-size: 12px; white-space: pre;'>(setq c-default-style "[style name here]")</span>. These styles include bsd,stroustrup, etc. Look at the <a href='http://www.emacswiki.org/emacs/IndentingC'>Emacs wiki
+about indentation in C style</a>.</p>
+
+<h3 id='id683'><a name='indentation2'>Morsel 3 - Indentation on steroids</a></h3>
+
+<p>Indent an entire block of code according to applicable rules by selecting the code and then typing &#8220;C-M-&#34;. For example, let&#8217;s say you just changed c-basic-offset to 4 from 8. Or you changed the c-default-style. If you now start typing a new program, then the new rules will be in effect. But, when you open a program you&#8217;ve been working on, the parts already written will look unchanged. Here&#8217;s the step by step as to what you type (remember C = Control key and M = Meta key&#8230; usually the Alt key):</p>
+
+<pre><code>C-x [
+C-SPACE
+C-x ]
+M-w
+C-M-\</code></pre>
+
+<p>And now your entire code is indented according to the new rules! Translation of steps</p>
+
 <ol>
-	<li>
-<pre>C-x [</pre>
-</li>
-	<li>
-<pre>C-SPACE</pre>
-</li>
-	<li>
-<pre>C-x ]</pre>
-</li>
-	<li>
-<pre>M-w</pre>
-</li>
-	<li>
-<pre>C-M-\</pre>
-</li>
+<li><code>C-x [</code> is beginning of file.</li>
+
+<li><code>C-SPACE</code> is set mark for region.</li>
+
+<li><code>C-x ]</code> is end of file.</li>
+
+<li><code>M-w</code> is copy or mark regin.</li>
+
+<li><code>C-M-\</code> is indent entire marked region according to applicable rules.</li>
 </ol>
-And now your entire code is indented according to the new rules! Translation of steps 1: C-x [ is beginning of file. 2: C-SPACE is set mark for region. 3: C-x ] is end of file. 4: M-w is copy or mark regin. 5: C-M-\ is indent entire marked region according to applicable rules.
 
-<strong><a name="color"></a>Morsel 4 - Colorful shells</strong>
+<h3 id='id684'><a name='color'>Morsel 4 - Colorful shells</a></h3>
 
-Show the colors properly in shell mode.
-<ol>
-	<li>
-<pre>;; Deal with colors in shell mode correctly</pre>
-</li>
-	<li>
-<pre>(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)</pre>
-</li>
-</ol>
-You know you need this if you got to shell mode in Emacs (M-x shell) and you see something like "^[[1;37m091".
+<p>Show the colors properly in shell mode.</p>
+<div class='highlight'><pre><code class='cl'><span class='c1'>;; Deal with colors in shell mode correctly</span>
+<span class='p'>(</span><span class='nv'>add-hook</span> <span class='ss'>&#39;shell-mode-hook</span> <span class='ss'>&#39;ansi-color-for-comint-mode-on</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>You know you need this if you got to shell mode in Emacs (M-x shell) and you see something like <code>^[[1;37m091</code>.</p>
 
-<strong><a name="woman"></a>Morsel 5 - Colorful men</strong>
+<h3 id='id685'><a name='woman'>Morsel 5 - Colorful men</a></h3>
 
-To read the Unix / Linux man pages in Emacs just type:
-<ol>
-	<li>
-<pre>M-x man</pre>
-</li>
-</ol>
-Then the name of the command of interest. If you want to look at the manual pages in color, type (I mentioned this in my <a href="http://netlumination.com/blog/a-completely-random-guide-to-emacs">Completely Random Guide to Emacs</a>)
-<ol>
-	<li>
-<pre>M-x woman</pre>
-</li>
-</ol>
-If you want the F1 key to bring up the woman pages, that is, manual pages in color, then add this to your .emacs.d/init.el
-<ol>
-	<li>
-<pre>(global-set-key [f1] ‘woman)</pre>
-</li>
-</ol>
-<strong><a name="beep"></a>Morsel 6 - No more beeping, only flashing</strong>
+<p>To read the Unix / Linux man pages in Emacs just type:</p>
 
-Turn off the audible Emacs warning, but have your screen flash when it would have sounded:
-<ol>
-	<li>
-<pre>;; Turn off bell, but make it visible</pre>
-</li>
-	<li>
-<pre>(setq visible-bell t)</pre>
-</li>
-</ol>
-<strong><a name="menu"></a>Morsel 7 - Turn off annoying menu bar</strong>
+<pre><code>M-x man</code></pre>
 
-Turn off the menu bar at the top of the screen:
-<pre>;; Turn off menu bar at top of screen
-(menu-bar-mode -1)</pre>
-You can also do the same thing with the tool bar if you have that:
-<pre>(tool-bar-mode -1)</pre>
-You can toggle these back on or off by typing
-<pre>M-x menu-bar-mode or M-x tool-bar-mode</pre>
-<strong><a name="font"></a>Morsel 8 - Customizing font appearance</strong>
+<p>Then the name of the command of interest. If you want to look at the manual pages in color, type (I mentioned this in my <a href='http://netlumination.com/blog/a-completely-random-guide-to-emacs'>Completely Random Guide to Emacs</a>)</p>
 
-Change font appearance (this will often be useful using a major mode for a programming language or text type):
-<pre>M-x customize-face</pre>
-If you hit enter and enter again to pick the default, you'll be able to change the default appearance of the face that is used to show the word type you we're on (comment, string, keyword, etc.). Your changes will automatically be saved to .emacs.d/init.el, so you'll be able to see how the changes were done.
+<pre><code>M-x woman</code></pre>
 
-<strong><a name="wraps1"></a>Morsel 9 - Line wrapping on horizontally split windows</strong>
+<p>If you want the F1 key to bring up the woman pages, that is, manual pages in color, then add this to your <code>.emacs.d/init.el</code></p>
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>global-set-key</span> <span class='nv'>[f1]</span> <span class='err'>‘</span><span class='nv'>woman</span><span class='p'>)</span><span class='nv'>&lt;/pre&gt;</span>
+</code></pre>
+</div>
+<h3 id='id686'><a name='beep'>Morsel 6 - No more beeping, only flashing</a></h3>
 
-Usually line wrapping is on by default. You can see it is when a line comes to the edge of the screen, the '\' is shown and the line continues one below. If the line is truncated on the other hand, you won't be able to see the rest of the line, you'll only be able to see a '$'. You can use <a href="http://www.emacswiki.org/emacs/TruncateLines">truncate lines</a> to toggle back and forth between the wrap and truncate states by typing (this will be local to that buffer):
-<pre>M-x toggle-truncate-lines</pre>
-The tricky thing is that horizontally split windows (windows split by a vertical line) will still truncate. One line in your .emacs.d/init.el will let you wrap lines for horizontally split windows:
-<pre>(setq truncate-partial-width-windows nil)</pre>
-<strong><a name="wraps2"></a>Morsel 10 - Normal looking line wraps</strong>
-<pre>M-x longlines-mode</pre>
-or if you have it (Emacs 23+)
-<pre>M-x global-visual-line-mode</pre>
-Will toggle normal looking line wraps on and off.  If you want to get fancy, you can set up some default in your .emacs.d/init.el
-<ol>
+<p>Turn off the audible Emacs warning, but have your screen flash when it would have sounded:</p>
+<div class='highlight'><pre><code class='cl'><span class='c1'>;; Turn off bell, but make it visible</span>
+<span class='p'>(</span><span class='k'>setq</span> <span class='nv'>visible-bell</span> <span class='no'>t</span><span class='p'>)</span>
+</code></pre>
+</div>
+<h3 id='id687'><a name='menu'>Morsel 7 - Turn off annoying menu bar</a></h3>
+
+<p>Turn off the menu bar at the top of the screen:</p>
+<div class='highlight'><pre><code class='cl'><span class='c1'>;; Turn off menu bar at top of screen</span>
+<span class='p'>(</span><span class='nv'>menu-bar-mode</span> <span class='mi'>-1</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>You can also do the same thing with the tool bar if you have that:</p>
+<div class='highlight'><pre><code class='cl'><span class='p'>(</span><span class='nv'>tool-bar-mode</span> <span class='mi'>-1</span><span class='p'>)</span>
+</code></pre>
+</div>
+<p>You can toggle these back on or off by typing</p>
+<div class='highlight'><pre><code class='cl'><span class='nv'>M-x</span> <span class='nv'>menu-bar-mode</span> <span class='nb'>or</span> <span class='nv'>M-x</span> <span class='nv'>tool-bar-mode</span>
+</code></pre>
+</div>
+<h3 id='id688'><a name='font'>Morsel 8 - Customizing font appearance</a></h3>
+
+<p>Change font appearance (this will often be useful using a major mode for a programming language or text type): <pre>M-x customize-face</pre> If you hit enter and enter again to pick the default, you&#8217;ll be able to change the default appearance of the face that is used to show the word type you we&#8217;re on (comment, string, keyword, etc.). Your changes will automatically be saved to .emacs.d/init.el, so you&#8217;ll be able to see how the changes were done.</p>
+<strong><a name='wraps1' />Morsel 9 - Line wrapping on horizontally split windows</strong>
+<p>Usually line wrapping is on by default. You can see it is when a line comes to the edge of the screen, the &#8217;&#39; is shown and the line continues one below. If the line is truncated on the other hand, you won&#8217;t be able to see the rest of the line, you&#8217;ll only be able to see a &#8217;$&#8217;. You can use <a href='http://www.emacswiki.org/emacs/TruncateLines'>truncate lines</a> to toggle back and forth between the wrap and truncate states by typing (this will be local to that buffer): <pre>M-x toggle-truncate-lines</pre> The tricky thing is that horizontally split windows (windows split by a vertical line) will still truncate. One line in your .emacs.d/init.el will let you wrap lines for horizontally split windows: <pre>(setq truncate-partial-width-windows nil)</pre> <strong><a name='wraps2' />Morsel 10 - Normal looking line wraps</strong> <pre>M-x longlines-mode</pre> or if you have it (Emacs 23+) <pre>M-x global-visual-line-mode</pre> Will toggle normal looking line wraps on and off. If you want to get fancy, you can set up some default in your .emacs.d/init.el <ol>
 	<li>
 <pre>;; Wrap lines visually</pre>
 </li>
@@ -168,11 +161,9 @@ Will toggle normal looking line wraps on and off.  If you want to get fancy, you
 	<li>
 <pre>(setq longlines-wrap-follows-window-size 1)</pre>
 </li>
-</ol>
-<strong><a name="backup"></a>Morsel 11 - Auto backup a little smarter</strong>
+</ol> <strong><a name='backup' />Morsel 11 - Auto backup a little smarter</strong></p>
 
-You'll soon notice Emacs scattering funny looking ~FILE and #FILE# backups across your directories. I like throwing all the auto backups into one directory and putting some sort of version number on them. This code is straight from the <a href="http://www.emacswiki.org/emacs/BackupDirectory">Emacs wiki</a>, it goes into you .emacs.d/init.el:
-<ol>
+<p>You&#8217;ll soon notice Emacs scattering funny looking ~FILE and #FILE# backups across your directories. I like throwing all the auto backups into one directory and putting some sort of version number on them. This code is straight from the <a href='http://www.emacswiki.org/emacs/BackupDirectory'>Emacs wiki</a>, it goes into you .emacs.d/init.el: <ol>
 	<li>
 <pre>(setq</pre>
 </li>
@@ -197,15 +188,11 @@ You'll soon notice Emacs scattering funny looking ~FILE and #FILE# backups acros
 	<li>
 <pre>     version-control t)       ; use versioned backups</pre>
 </li>
-</ol>
-<strong><a name="complete"></a>Morsel 12 - Autocomplete</strong>
+</ol> <strong><a name='complete' />Morsel 12 - Autocomplete</strong></p>
 
-This is quite useful, but you do have to install it. The installation instructions in the manual are clear. Take a look at <a href="http://www.emacswiki.org/emacs/AutoComplete">autocompletion for Emacs</a>.
-
-<strong><a name="jump"></a>Morsel 13 - Jumping the line</strong>
-
-C-n and C-p move your pointer up and down one line, but I can do this with my up and down arrow keys, so a redefined C-n and C-p to move up and down 5 lines at a time:
-<ol>
+<p>This is quite useful, but you do have to install it. The installation instructions in the manual are clear. Take a look at <a href='http://www.emacswiki.org/emacs/AutoComplete'>autocompletion for Emacs</a>.</p>
+<strong><a name='jump' />Morsel 13 - Jumping the line</strong>
+<p>C-n and C-p move your pointer up and down one line, but I can do this with my up and down arrow keys, so a redefined C-n and C-p to move up and down 5 lines at a time: <ol>
 	<li>
 <pre>;; Move up and down five lines at a time</pre>
 </li>
@@ -221,13 +208,11 @@ C-n and C-p move your pointer up and down one line, but I can do this with my up
 	<li>
 <pre>    (lambda () (interactive) (next-line -5)))</pre>
 </li>
-</ol>
-<strong><a name="move"></a>Morsel 14 - Moving from one window to the other easilly</strong>
+</ol> <strong><a name='move' />Morsel 14 - Moving from one window to the other easilly</strong></p>
 
-You split your window using C-x 2 and C-x 3 into as many pieces as you want. The default for moving to the next window is C-x O, but if you have 10 windows, this might take a while.
+<p>You split your window using C-x 2 and C-x 3 into as many pieces as you want. The default for moving to the next window is C-x O, but if you have 10 windows, this might take a while.</p>
 
-Here's how to use the arrow keys on your Num Pad to simply move up, down, left, or  right (up up down down left right...... nevermind) among your windows:
-<ol>
+<p>Here&#8217;s how to use the arrow keys on your Num Pad to simply move up, down, left, or right (up up down down left right&#8230;&#8230; nevermind) among your windows: <ol>
 	<li>
 <pre>;; move to window to the left</pre>
 </li>
@@ -252,10 +237,7 @@ Here's how to use the arrow keys on your Num Pad to simply move up, down, left, 
 	<li>
 <pre>(global-set-key (kbd "&lt;kp-2&gt;") 'windmove-down)</pre>
 </li>
-</ol>
-<strong><a name="delete"></a>Morsel 15 - Delete the entire word</strong>
-This one's from a StackOverflow post that I cannot find right now. The kill-word function will delete a word from where your cursor is forward. What if you want to delete the entire word, including the part before your pointer?
-<ol>
+</ol> <strong><a name='delete' />Morsel 15 - Delete the entire word</strong> This one&#8217;s from a StackOverflow post that I cannot find right now. The kill-word function will delete a word from where your cursor is forward. What if you want to delete the entire word, including the part before your pointer? <ol>
 	<li>
 <pre>;; kill entire word</pre>
 </li>
@@ -274,11 +256,9 @@ This one's from a StackOverflow post that I cannot find right now. The kill-word
 	<li>
 <pre>(global-set-key (kbd "M-d") 'my-kill-word)</pre>
 </li>
-</ol>
-<strong><a name="num"></a>Morsel 16 - Enabling the Num Pad</strong>
+</ol> <strong><a name='num' />Morsel 16 - Enabling the Num Pad</strong></p>
 
-Depending how you're using Emacs. The keys for the num pad may not work the way you want. You can enable them to work like this:
-<ol>
+<p>Depending how you&#8217;re using Emacs. The keys for the num pad may not work the way you want. You can enable them to work like this: <ol>
 	<li>
 <pre>;; Num pad enable</pre>
 </li>
@@ -345,48 +325,31 @@ Depending how you're using Emacs. The keys for the num pad may not work the way 
 	<li>
 <pre>(global-set-key (kbd "&lt;kp-separator&gt;") "+")</pre>
 </li>
-</ol>
-Of course, you have to make some choices sometimes. If you have the num pad enabled to show numbers and symbols, then you can't use it to move from one buffer to another. This is when a defining your own minor mode might come in handy.
-
-<strong><a name="macros"></a>Morsel 17 - Making and storing macros</strong>
-
-Define the macro. To start recording the macro:
-<ol>
+</ol> Of course, you have to make some choices sometimes. If you have the num pad enabled to show numbers and symbols, then you can&#8217;t use it to move from one buffer to another. This is when a defining your own minor mode might come in handy.</p>
+<strong><a name='macros' />Morsel 17 - Making and storing macros</strong>
+<p>Define the macro. To start recording the macro: <ol>
 	<li>
 <pre>C-x (</pre>
 </li>
-</ol>
-Now type the keys, commands, etc you want done. This is just like in Excel.
-Stop the macro recording with:
-<ol>
+</ol> Now type the keys, commands, etc you want done. This is just like in Excel. Stop the macro recording with: <ol>
 	<li>
 <pre>C-x )</pre>
 </li>
-</ol>
-Now to save this macro we have to save it and insert it into our .emacs or init.el file.
-Name the macro:
-<ol>
+</ol> Now to save this macro we have to save it and insert it into our .emacs or init.el file. Name the macro: <ol>
 	<li>
 <pre>M-x name-last-kbd-macro</pre>
 </li>
-</ol>
-Ok, now open up your .emacs or init.el file, and move your pointer (cursor) to where you want the code for your macro definition to go and type:
-<ol>
+</ol> Ok, now open up your .emacs or init.el file, and move your pointer (cursor) to where you want the code for your macro definition to go and type: <ol>
 	<li>
 <pre>M-x insert-kbd-macro</pre>
 </li>
-</ol>
-Now type in your <a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">custom keybinding</a>, something like:
-<ol>
+</ol> Now type in your <a href='http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs'>custom keybinding</a>, something like: <ol>
 	<li>
 <pre>(global-set-key (kbd "C-c n") 'my-macro)</pre>
 </li>
-</ol>
-Of course, the keybinding (C-c n) and name (my-macro) will be your own.
-
-<strong><a name="count"></a>Morsel 18 - Word Count</strong>
-Emacs doesn't have a built in word count function. You can Lisp through a function, or you can avoid reinventing the wheel by calling the Unix word count function, "wc". Just remember that the "-w" option shows the actual word count. These lines of code in your .emacs or init.el file will define the function, "word-count" to count the words in the current file. I also set "C-c c" as the shortcut for this function:
-<ol>
+</ol> Of course, the keybinding (C-c n) and name (my-macro) will be your own.</p>
+<strong><a name='count' />Morsel 18 - Word Count</strong>
+<p>Emacs doesn&#8217;t have a built in word count function. You can Lisp through a function, or you can avoid reinventing the wheel by calling the Unix word count function, &#8220;wc&#8221;. Just remember that the &#8220;-w&#8221; option shows the actual word count. These lines of code in your .emacs or init.el file will define the function, &#8220;word-count&#8221; to count the words in the current file. I also set &#8220;C-c c&#8221; as the shortcut for this function: <ol>
 	<li>
 <pre>;; Word count</pre>
 </li>
@@ -402,10 +365,7 @@ Emacs doesn't have a built in word count function. You can Lisp through a functi
 	<li>
 <pre>(global-set-key (kbd "C-c c") 'word-count)</pre>
 </li>
-</ol>
-Thanks to <a href="http://iquaid.org/2008/02/08/counting-words-in-emacs/">Karsten Wade and the discussion on this page</a>. There are many <a href="http://www.emacswiki.org/emacs/WordCount">word count alternatives in the Emacs Wiki</a>, and there's also a word-count-mode that you can download. I just like the code above for its simplicity if you're on a Unix like system anyway.
-Have fun chewing on these eMACS!
-
+</ol> Thanks to <a href='http://iquaid.org/2008/02/08/counting-words-in-emacs/'>Karsten Wade and the discussion on this page</a>. There are many <a href='http://www.emacswiki.org/emacs/WordCount'>word count alternatives in the Emacs Wiki</a>, and there&#8217;s also a word-count-mode that you can download. I just like the code above for its simplicity if you&#8217;re on a Unix like system anyway. Have fun chewing on these eMACS!</p>
             </section>
             <footer class="pull-right">
                 <h4>14 Apr 2010</h4>

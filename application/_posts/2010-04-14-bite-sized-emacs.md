@@ -5,139 +5,139 @@ tags:
 - Emacs
 - reference
 - tips
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
 ---
-Emacs is a big complicated beast. You can spend lots of time  looking through the documentation, but sometimes it's nice to enjoy a quick bite of Emacs goodness.
 
-<strong>Table of Contents:</strong>
-<strong><a href="#keystrokes">1: Custom Keystrokes</a></strong>
-<strong><a href="#indentation1">2: Indenting only as far as you feel comfortable</a></strong>
-<strong><a href="#indentation2">3: Indentation on steroids</a></strong>
-<strong><a href="#color">4: Colorful shells</a></strong>
-<strong><a href="#woman">5: Colorful men</a></strong>
-<strong><a href="#beep">6: No more beeping, only flashing</a></strong>
-<strong><a href="#menu">7: Turn off annoying menu bar</a></strong>
-<strong><a href="#font">8: Customizing font appearance</a></strong>
-<strong><a href="#wraps1">9: Line wrapping on horizontally split windows</a></strong>
-<strong><a href="#wraps2">10: Normal looking line wraps</a></strong>
-<strong><a href="#backup">11: Auto backup a little smarter</a></strong>
-<strong><a href="#complete">12:  Autocomplete</a></strong>
-<strong><a href="#jump">13: Jumping the line</a></strong>
-<strong><a href="#move">14:  Moving from one window to the other easilly</a></strong>
-<strong><a href="#delete">15: Delete the entire word</a></strong>
-<strong><a href="#num">16: Enabling the Num Pad</a></strong>
-<strong><a href="#macros">17: Making and storing macros</a></strong>
-<strong><a href="#count">18: Word Count</a></strong>
+Emacs is a big complicated beast. You can spend lots of time  looking through the documentation, but sometimes it's nice
+to enjoy a quick bite of Emacs goodness.
 
-<strong><a name="keystrokes"></a>Morsel 1 - Custom keystrokes</strong>
+### Table of Contents
 
-<a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">Make your own custom keystrokes.</a>
+1. [Custom Keystrokes](#keystrokes)
+1. [Indenting only as far as you feel comfortable](#indentation1)
+1. [Indentation on steroids](#indentation2)
+1. [Colorful shells](#color)
+1. [Colorful men](#woman)
+1. [No more beeping, only flashing](#beep)
+1. [Turn off annoying menu bar](#menu)
+1. [Customizing font appearance](#font)
+1. [Line wrapping on horizontally split windows](#wraps1)
+1. [Normal looking line wraps](#wraps2)
+1. [Auto backup a little smarter](#backup)
+1. [Autocomplete](#complete)
+1. [Jumping the line](#jump)
+1. [Moving from one window to the other easilly](#move)
+1. [Delete the entire word](#delete)
+1. [Enabling the Num Pad](#num)
+1. [Making and storing macros](#macros)
+1. [Word Count](#count)
 
-<strong><a name="indentation1"></a>Morsel 2 - Indenting only as far as you feel comfortable</strong>
+### <a name="keystrokes">Morsel 1 - Custom keystrokes</a>
 
-Change the indentation rules in cc-mode to as many spaces as you want (I use 4, which looks like normal tabs on other editors, some people use 8, or 2, or whatever).
-Edit your .emacs.d/init.el (<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html">depending it could be ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el</a>) like this (substitute the number you want where I write 4):
-<ol>
-	<li>
-<pre>;; define indents as 4 spaces in cc-mode</pre>
-</li>
-	<li>
-<pre>(setq c-basic-offset 4</pre>
-</li>
-	<li>
-<pre>      tab-width 4</pre>
-</li>
-	<li>
-<pre>      indent-tabs-mode t)</pre>
-</li>
-</ol>
-<!--more-->
+<a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">Make your own custom
+keystrokes.</a>
+
+### <a name="indentation1">Morsel 2 - Indenting only as far as you feel comfortable</a>
+
+Change the indentation rules in cc-mode to as many spaces as you want (I use 4, which looks like normal tabs on other
+editors, some people use 8, or 2, or whatever).
+
+Edit your .emacs.d/init.el (<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html">depending
+it could be ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el</a>) like this (substitute the number you want where I write
+4):
+
+{% highlight cl %}
+;; define indents as 4 spaces in cc-mode
+(setq c-basic-offset 4
+      tab-width 4
+      indent-tabs-mode t)
+{% endhighlight %}
 
 The first line (setting c-basic-offset) does most of the work usually. The other two lines deal with how big tabs show.
 
-You can change the c indentation style using <span style="font-family: Consolas, Monaco, 'Courier New', Courier, monospace; line-height: 18px; font-size: 12px; white-space: pre;">(setq c-default-style "[style name here]")</span>. These styles include bsd,stroustrup, etc. Look at the <a href="http://www.emacswiki.org/emacs/IndentingC">Emacs wiki about indentation in C style</a>.
+You can change the c indentation style using <span style="font-family: Consolas, Monaco, 'Courier New', Courier,
+monospace; line-height: 18px; font-size: 12px; white-space: pre;">(setq c-default-style "[style name here]")</span>.
+These styles include bsd,stroustrup, etc. Look at the <a href="http://www.emacswiki.org/emacs/IndentingC">Emacs wiki
+about indentation in C style</a>.
 
-<strong><a name="indentation2"></a>Morsel 3 - Indentation on steroids</strong>
+### <a name="indentation2">Morsel 3 - Indentation on steroids</a>
 
 Indent an entire block of code according to applicable rules by selecting the code and then typing "C-M-\".
 For example, let's say you just changed c-basic-offset to 4 from 8. Or you changed the c-default-style. If you now start typing a new program, then the new rules will be in effect. But, when you open a program you've been working on, the parts already written will look unchanged. Here's the step by step as to what you type (remember C = Control key and M = Meta key... usually the Alt key):
-<ol>
-	<li>
-<pre>C-x [</pre>
-</li>
-	<li>
-<pre>C-SPACE</pre>
-</li>
-	<li>
-<pre>C-x ]</pre>
-</li>
-	<li>
-<pre>M-w</pre>
-</li>
-	<li>
-<pre>C-M-\</pre>
-</li>
-</ol>
-And now your entire code is indented according to the new rules! Translation of steps 1: C-x [ is beginning of file. 2: C-SPACE is set mark for region. 3: C-x ] is end of file. 4: M-w is copy or mark regin. 5: C-M-\ is indent entire marked region according to applicable rules.
 
-<strong><a name="color"></a>Morsel 4 - Colorful shells</strong>
+    C-x [
+    C-SPACE
+    C-x ]
+    M-w
+    C-M-\
+
+And now your entire code is indented according to the new rules! Translation of steps
+
+1. `C-x [` is beginning of file.
+2. `C-SPACE` is set mark for region.
+3. `C-x ]` is end of file.
+4. `M-w` is copy or mark regin.
+5. `C-M-\` is indent entire marked region according to applicable rules.
+
+### <a name="color">Morsel 4 - Colorful shells</a>
 
 Show the colors properly in shell mode.
-<ol>
-	<li>
-<pre>;; Deal with colors in shell mode correctly</pre>
-</li>
-	<li>
-<pre>(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)</pre>
-</li>
-</ol>
-You know you need this if you got to shell mode in Emacs (M-x shell) and you see something like "^[[1;37m091".
 
-<strong><a name="woman"></a>Morsel 5 - Colorful men</strong>
+{% highlight cl %}
+;; Deal with colors in shell mode correctly
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+{% endhighlight %}
+
+You know you need this if you got to shell mode in Emacs (M-x shell) and you see something like `^[[1;37m091`.
+
+### <a name="woman">Morsel 5 - Colorful men</a>
 
 To read the Unix / Linux man pages in Emacs just type:
-<ol>
-	<li>
-<pre>M-x man</pre>
-</li>
-</ol>
-Then the name of the command of interest. If you want to look at the manual pages in color, type (I mentioned this in my <a href="http://netlumination.com/blog/a-completely-random-guide-to-emacs">Completely Random Guide to Emacs</a>)
-<ol>
-	<li>
-<pre>M-x woman</pre>
-</li>
-</ol>
-If you want the F1 key to bring up the woman pages, that is, manual pages in color, then add this to your .emacs.d/init.el
-<ol>
-	<li>
-<pre>(global-set-key [f1] ‘woman)</pre>
-</li>
-</ol>
-<strong><a name="beep"></a>Morsel 6 - No more beeping, only flashing</strong>
+
+    M-x man
+
+Then the name of the command of interest. If you want to look at the manual pages in color, type (I mentioned this in
+my <a href="http://netlumination.com/blog/a-completely-random-guide-to-emacs">Completely Random Guide to Emacs</a>)
+
+    M-x woman
+
+If you want the F1 key to bring up the woman pages, that is, manual pages in color, then add this to your
+`.emacs.d/init.el`
+
+{% highlight cl %}
+(global-set-key [f1] ‘woman)</pre>
+{% endhighlight %}
+
+### <a name="beep">Morsel 6 - No more beeping, only flashing</a>
 
 Turn off the audible Emacs warning, but have your screen flash when it would have sounded:
-<ol>
-	<li>
-<pre>;; Turn off bell, but make it visible</pre>
-</li>
-	<li>
-<pre>(setq visible-bell t)</pre>
-</li>
-</ol>
-<strong><a name="menu"></a>Morsel 7 - Turn off annoying menu bar</strong>
+
+{% highlight cl %}
+;; Turn off bell, but make it visible
+(setq visible-bell t)
+{% endhighlight %}
+
+### <a name="menu">Morsel 7 - Turn off annoying menu bar</a>
 
 Turn off the menu bar at the top of the screen:
-<pre>;; Turn off menu bar at top of screen
-(menu-bar-mode -1)</pre>
+
+{% highlight cl %}
+;; Turn off menu bar at top of screen
+(menu-bar-mode -1)
+{% endhighlight %}
+
 You can also do the same thing with the tool bar if you have that:
-<pre>(tool-bar-mode -1)</pre>
+
+{% highlight cl %}
+(tool-bar-mode -1)
+{% endhighlight %}
+
 You can toggle these back on or off by typing
-<pre>M-x menu-bar-mode or M-x tool-bar-mode</pre>
-<strong><a name="font"></a>Morsel 8 - Customizing font appearance</strong>
+
+{% highlight cl %}
+M-x menu-bar-mode or M-x tool-bar-mode
+{% endhighlight %}
+
+### <a name="font">Morsel 8 - Customizing font appearance</a>
 
 Change font appearance (this will often be useful using a major mode for a programming language or text type):
 <pre>M-x customize-face</pre>
