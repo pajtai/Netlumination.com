@@ -131,273 +131,205 @@ You can also do the same thing with the tool bar if you have that:
 (tool-bar-mode -1)
 {% endhighlight %}
 
-You can toggle these back on or off by typing
+You can toggle these back on or off by typing `M-x menu-bar-mode` or `M-x tool-bar-mode`
 
-{% highlight cl %}
-M-x menu-bar-mode or M-x tool-bar-mode
-{% endhighlight %}
 
 ### <a name="font">Morsel 8 - Customizing font appearance</a>
 
 Change font appearance (this will often be useful using a major mode for a programming language or text type):
-<pre>M-x customize-face</pre>
-If you hit enter and enter again to pick the default, you'll be able to change the default appearance of the face that is used to show the word type you we're on (comment, string, keyword, etc.). Your changes will automatically be saved to .emacs.d/init.el, so you'll be able to see how the changes were done.
 
-<strong><a name="wraps1"></a>Morsel 9 - Line wrapping on horizontally split windows</strong>
+    M-x customize-face
 
-Usually line wrapping is on by default. You can see it is when a line comes to the edge of the screen, the '\' is shown and the line continues one below. If the line is truncated on the other hand, you won't be able to see the rest of the line, you'll only be able to see a '$'. You can use <a href="http://www.emacswiki.org/emacs/TruncateLines">truncate lines</a> to toggle back and forth between the wrap and truncate states by typing (this will be local to that buffer):
-<pre>M-x toggle-truncate-lines</pre>
-The tricky thing is that horizontally split windows (windows split by a vertical line) will still truncate. One line in your .emacs.d/init.el will let you wrap lines for horizontally split windows:
-<pre>(setq truncate-partial-width-windows nil)</pre>
-<strong><a name="wraps2"></a>Morsel 10 - Normal looking line wraps</strong>
-<pre>M-x longlines-mode</pre>
+If you hit enter and enter again to pick the default, you'll be able to change the default appearance of the face that
+is used to show the word type you we're on (comment, string, keyword, etc.). Your changes will automatically be saved to
+`.emacs.d/init.el`, so you'll be able to see how the changes were done.
+
+### <a name="wraps1">Morsel 9 - Line wrapping on horizontally split windows</a>
+
+Usually line wrapping is on by default. You can see it is when a line comes to the edge of the screen, the '\' is shown
+and the line continues one below. If the line is truncated on the other hand, you won't be able to see the rest of the
+line, you'll only be able to see a '$'. You can use
+<a href="http://www.emacswiki.org/emacs/TruncateLines">truncate lines</a> to toggle back and forth between the wrap and
+truncate states by typing (this will be local to that buffer):
+
+    M-x toggle-truncate-lines
+
+The tricky thing is that horizontally split windows (windows split by a vertical line) will still truncate. One line in
+your .emacs.d/init.el will let you wrap lines for horizontally split windows:
+
+{% highlight cl %}
+(setq truncate-partial-width-windows nil)
+{% endhighlight %}
+
+### <a name="wraps2">Morsel 10 - Normal looking line wraps</a>
+
+    M-x longlines-mode
+
 or if you have it (Emacs 23+)
-<pre>M-x global-visual-line-mode</pre>
-Will toggle normal looking line wraps on and off.  If you want to get fancy, you can set up some default in your .emacs.d/init.el
-<ol>
-	<li>
-<pre>;; Wrap lines visually</pre>
-</li>
-	<li>
-<pre>(add-hook 'text-mode-hook 'longlines-mode)</pre>
-</li>
-	<li>
-<pre>(setq longlines-wrap-follows-window-size 1)</pre>
-</li>
-</ol>
-<strong><a name="backup"></a>Morsel 11 - Auto backup a little smarter</strong>
 
-You'll soon notice Emacs scattering funny looking ~FILE and #FILE# backups across your directories. I like throwing all the auto backups into one directory and putting some sort of version number on them. This code is straight from the <a href="http://www.emacswiki.org/emacs/BackupDirectory">Emacs wiki</a>, it goes into you .emacs.d/init.el:
-<ol>
-	<li>
-<pre>(setq</pre>
-</li>
-	<li>
-<pre>     backup-by-copying t      ; don't clobber symlinks</pre>
-</li>
-	<li>
-<pre>     backup-directory-alist</pre>
-</li>
-	<li>
-<pre>     '(("." . "~/.saves"))    ; don't litter my fs tree</pre>
-</li>
-	<li>
-<pre>     delete-old-versions t</pre>
-</li>
-	<li>
-<pre>     kept-new-versions 6</pre>
-</li>
-	<li>
-<pre>     kept-old-versions 2</pre>
-</li>
-	<li>
-<pre>     version-control t)       ; use versioned backups</pre>
-</li>
-</ol>
-<strong><a name="complete"></a>Morsel 12 - Autocomplete</strong>
+    M-x global-visual-line-mode
 
-This is quite useful, but you do have to install it. The installation instructions in the manual are clear. Take a look at <a href="http://www.emacswiki.org/emacs/AutoComplete">autocompletion for Emacs</a>.
+Will toggle normal looking line wraps on and off.  If you want to get fancy, you can set up some default in your
+.emacs.d/init.el
 
-<strong><a name="jump"></a>Morsel 13 - Jumping the line</strong>
+{% highlight cl %}
+;; Wrap lines visually
+(add-hook 'text-mode-hook 'longlines-mode)
+(setq longlines-wrap-follows-window-size 1)
+{% endhighlight %}
 
-C-n and C-p move your pointer up and down one line, but I can do this with my up and down arrow keys, so a redefined C-n and C-p to move up and down 5 lines at a time:
-<ol>
-	<li>
-<pre>;; Move up and down five lines at a time</pre>
-</li>
-	<li>
-<pre>(global-set-key "\C-n"</pre>
-</li>
-	<li>
-<pre>    (lambda () (interactive) (next-line 5)))</pre>
-</li>
-	<li>
-<pre>(global-set-key "\C-p"</pre>
-</li>
-	<li>
-<pre>    (lambda () (interactive) (next-line -5)))</pre>
-</li>
-</ol>
-<strong><a name="move"></a>Morsel 14 - Moving from one window to the other easilly</strong>
+### <a name="backup">Morsel 11 - Auto backup a little smarter</a>
 
-You split your window using C-x 2 and C-x 3 into as many pieces as you want. The default for moving to the next window is C-x O, but if you have 10 windows, this might take a while.
+You'll soon notice Emacs scattering funny looking ~FILE and #FILE# backups across your directories. I like throwing all
+the auto backups into one directory and putting some sort of version number on them. This code is straight from the
+<a href="http://www.emacswiki.org/emacs/BackupDirectory">Emacs wiki</a>, it goes into you .emacs.d/init.el:
+
+{% highlight cl %}
+(setq
+     backup-by-copying t      ; don't clobber symlinks
+     backup-directory-alist
+     '(("." . "~/.saves"))    ; don't litter my fs tree
+     delete-old-versions t
+     kept-new-versions 6
+     kept-old-versions 2
+     version-control t)       ; use versioned backups
+{% endhighlight %}
+
+### <a name="complete">Morsel 12 - Autocomplete</a>
+
+This is quite useful, but you do have to install it. The installation instructions in the manual are clear. Take a look
+at <a href="http://www.emacswiki.org/emacs/AutoComplete">autocompletion for Emacs</a>.
+
+### <a name="jump">Morsel 13 - Jumping the line</a>
+
+`C-n` and `C-p` move your pointer up and down one line, but I can do this with my up and down arrow keys, so a redefined
+`C-n` and `C-p` to move up and down 5 lines at a time:
+
+{% highlight cl %}
+;; Move up and down five lines at a time
+(global-set-key "\C-n"
+    (lambda () (interactive) (next-line 5)))
+(global-set-key "\C-p"
+    (lambda () (interactive) (next-line -5)))
+{% endhighlight %}
+
+### <a name="move">Morsel 14 - Moving from one window to the other easilly</a>
+
+You split your window using `C-x 2` and `C-x 3` into as many pieces as you want. The default for moving to the next window
+is `C-x O`, but if you have 10 windows, this might take a while.
 
 Here's how to use the arrow keys on your Num Pad to simply move up, down, left, or  right (up up down down left right...... nevermind) among your windows:
-<ol>
-	<li>
-<pre>;; move to window to the left</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-4&gt;") 'windmove-left)</pre>
-</li>
-	<li>
-<pre>;; move to window to the right</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-6&gt;") 'windmove-right)</pre>
-</li>
-	<li>
-<pre>;; move to window below</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-8&gt;") 'windmove-up)</pre>
-</li>
-	<li>
-<pre>;; move to window above</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-2&gt;") 'windmove-down)</pre>
-</li>
-</ol>
-<strong><a name="delete"></a>Morsel 15 - Delete the entire word</strong>
-This one's from a StackOverflow post that I cannot find right now. The kill-word function will delete a word from where your cursor is forward. What if you want to delete the entire word, including the part before your pointer?
-<ol>
-	<li>
-<pre>;; kill entire word</pre>
-</li>
-	<li>
-<pre>(defun my-kill-word ()</pre>
-</li>
-	<li>
-<pre>  (interactive)</pre>
-</li>
-	<li>
-<pre>  (backward-word)</pre>
-</li>
-	<li>
-<pre>  (kill-word 1))</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "M-d") 'my-kill-word)</pre>
-</li>
-</ol>
-<strong><a name="num"></a>Morsel 16 - Enabling the Num Pad</strong>
 
-Depending how you're using Emacs. The keys for the num pad may not work the way you want. You can enable them to work like this:
-<ol>
-	<li>
-<pre>;; Num pad enable</pre>
-</li>
-	<li>
-<pre>;; The arithmetic operators already have keybindings,</pre>
-</li>
-	<li>
-<pre>;; so you may not want to use those</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-1&gt;") "1")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-2&gt;") "2")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-3&gt;") "3")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-4&gt;") "4")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-5&gt;") "5")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-6&gt;") "6")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-7&gt;") "7")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-8&gt;") "8")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-9&gt;") "9")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-0&gt;") "0")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "M-O n") ".")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-enter&gt;") 'newline)</pre>
-</li>
-	<li>
-<pre>;; Optional arithmetic operators</pre>
-</li>
-	<li>
-<pre>;; These will change the regular F key defs too</pre>
-</li>
-	<li>
-<pre>;; and you'll overide some macro and other settings</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;f2&gt;") "/")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;f3&gt;") "*")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;f4&gt;") "-")</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "&lt;kp-separator&gt;") "+")</pre>
-</li>
-</ol>
-Of course, you have to make some choices sometimes. If you have the num pad enabled to show numbers and symbols, then you can't use it to move from one buffer to another. This is when a defining your own minor mode might come in handy.
+{% highlight cl %}
+;; move to window to the left
+(global-set-key (kbd "<kp-4>") 'windmove-left)
+;; move to window to the right
+(global-set-key (kbd "<kp-6>") 'windmove-right)
+;; move to window below
+(global-set-key (kbd "<kp-8>") 'windmove-up)
+;; move to window above
+(global-set-key (kbd "<kp-2>") 'windmove-down)
+{% endhighlight %}
+
+### <a name="delete">Morsel 15 - Delete the entire word</a>
+
+This one's from a StackOverflow post that I cannot find right now. The kill-word function will delete a word from where
+your cursor is forward. What if you want to delete the entire word, including the part before your pointer?
+
+{% highlight cl %}
+;; kill entire word
+(defun my-kill-word ()
+  (interactive)
+  (backward-word)
+  (kill-word 1))
+(global-set-key (kbd "M-d") 'my-kill-word)
+{% endhighlight %}
+
+### <a name="num">Morsel 16 - Enabling the Num Pad</a>
+
+Depending how you're using Emacs. The keys for the num pad may not work the way you want. You can enable them to work
+like this:
+
+{% highlight cl %}
+;; Num pad enable
+;; The arithmetic operators already have keybindings,
+;; so you may not want to use those
+(global-set-key (kbd "<kp-1>") "1")
+(global-set-key (kbd "<kp-2>") "2")
+(global-set-key (kbd "<kp-3>") "3")
+(global-set-key (kbd "<kp-4>") "4")
+(global-set-key (kbd "<kp-5>") "5")
+(global-set-key (kbd "<kp-6>") "6")
+(global-set-key (kbd "<kp-7>") "7")
+(global-set-key (kbd "<kp-8>") "8")
+(global-set-key (kbd "<kp-9>") "9")
+(global-set-key (kbd "<kp-0>") "0")
+(global-set-key (kbd "M-O n") ".")
+(global-set-key (kbd "<kp-enter>") 'newline)
+
+;; Optional arithmetic operators
+;; These will change the regular F key defs too
+;; and you'll overide some macro and other settings
+(global-set-key (kbd "<f2>") "/")
+(global-set-key (kbd "<f3>") "*")
+(global-set-key (kbd "<f4>") "-")
+(global-set-key (kbd "<kp-separator>") "+")
+{% endhighlight %}
+
+Of course, you have to make some choices sometimes. If you have the num pad enabled to show numbers and symbols, then
+you can't use it to move from one buffer to another. This is when a defining your own minor mode might come in handy.
 
 <strong><a name="macros"></a>Morsel 17 - Making and storing macros</strong>
 
 Define the macro. To start recording the macro:
-<ol>
-	<li>
-<pre>C-x (</pre>
-</li>
-</ol>
+
+    C-x (
+
 Now type the keys, commands, etc you want done. This is just like in Excel.
 Stop the macro recording with:
-<ol>
-	<li>
-<pre>C-x )</pre>
-</li>
-</ol>
+
+    C-x )
+
 Now to save this macro we have to save it and insert it into our .emacs or init.el file.
 Name the macro:
-<ol>
-	<li>
-<pre>M-x name-last-kbd-macro</pre>
-</li>
-</ol>
-Ok, now open up your .emacs or init.el file, and move your pointer (cursor) to where you want the code for your macro definition to go and type:
-<ol>
-	<li>
-<pre>M-x insert-kbd-macro</pre>
-</li>
-</ol>
-Now type in your <a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">custom keybinding</a>, something like:
-<ol>
-	<li>
-<pre>(global-set-key (kbd "C-c n") 'my-macro)</pre>
-</li>
-</ol>
-Of course, the keybinding (C-c n) and name (my-macro) will be your own.
 
-<strong><a name="count"></a>Morsel 18 - Word Count</strong>
-Emacs doesn't have a built in word count function. You can Lisp through a function, or you can avoid reinventing the wheel by calling the Unix word count function, "wc". Just remember that the "-w" option shows the actual word count. These lines of code in your .emacs or init.el file will define the function, "word-count" to count the words in the current file. I also set "C-c c" as the shortcut for this function:
-<ol>
-	<li>
-<pre>;; Word count</pre>
-</li>
-	<li>
-<pre>(defun word-count nil "Count words in buffer" (interactive)</pre>
-</li>
-	<li>
-<pre>(shell-command-on-region (point-min) (point-max) "wc -w"))</pre>
-</li>
-	<li>
-<pre>;; Shortcut for Word count</pre>
-</li>
-	<li>
-<pre>(global-set-key (kbd "C-c c") 'word-count)</pre>
-</li>
-</ol>
-Thanks to <a href="http://iquaid.org/2008/02/08/counting-words-in-emacs/">Karsten Wade and the discussion on this page</a>. There are many <a href="http://www.emacswiki.org/emacs/WordCount">word count alternatives in the Emacs Wiki</a>, and there's also a word-count-mode that you can download. I just like the code above for its simplicity if you're on a Unix like system anyway.
+    M-x name-last-kbd-macro
+
+Ok, now open up your .emacs or init.el file, and move your pointer (cursor) to where you want the code for your macro
+definition to go and type:
+
+    M-x insert-kbd-macro
+
+Now type in your
+<a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">custom keybinding</a>,
+something like:
+
+{% highlight cl %}
+(global-set-key (kbd "C-c n") 'my-macro)</pre>
+{% endhighlight %}
+
+Of course, the keybinding (`C-c n`) and name (`my-macro`) will be your own.
+
+### <a name="count">Morsel 18 - Word Count</a>
+
+Emacs doesn't have a built in word count function. You can Lisp through a function, or you can avoid reinventing the
+wheel by calling the Unix word count function, "wc". Just remember that the "-w" option shows the actual word count.
+These lines of code in your .emacs or init.el file will define the function, "word-count" to count the words in the
+current file. I also set `C-c c` as the shortcut for this function:
+
+
+{% highlight cl %}
+;; Word count
+(defun word-count nil "Count words in buffer" (interactive)
+(shell-command-on-region (point-min) (point-max) "wc -w"))
+
+;; Shortcut for Word count
+(global-set-key (kbd "C-c c") 'word-count)
+{% endhighlight %}
+
+Thanks to <a href="http://iquaid.org/2008/02/08/counting-words-in-emacs/">Karsten Wade and the discussion on this page</a>.
+There are many <a href="http://www.emacswiki.org/emacs/WordCount">word count alternatives in the Emacs Wiki</a>, and
+there's also a word-count-mode that you can download. I just like the code above for its simplicity if you're on a Unix
+like system anyway.
+
 Have fun chewing on these eMACS!
