@@ -10,7 +10,6 @@ tags:
 Example in PHP using the factorial:
 
 {% highlight php %}
-```php
 <?php
 // $n must be a positive integer or 0 - function returns 1 for 0 and all errors
 function factorial($n)
@@ -33,7 +32,6 @@ function factorial($n)
   }
 
 }
-```
 {% endhighlight %}
 
 There are many other blog posts that cover this topic well. Some include:
