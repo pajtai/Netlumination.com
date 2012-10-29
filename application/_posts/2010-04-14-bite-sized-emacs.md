@@ -41,8 +41,7 @@ keystrokes.</a>
 Change the indentation rules in cc-mode to as many spaces as you want (I use 4, which looks like normal tabs on other
 editors, some people use 8, or 2, or whatever).
 
-Edit your .emacs.d/init.el (<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html">depending
-it could be ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el</a>) like this (substitute the number you want where I write
+Edit your .emacs.d/init.el ([depending it could be ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el](http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html)) like this (substitute the number you want where I write
 4):
 
 {% highlight cl %}
@@ -96,7 +95,7 @@ To read the Unix / Linux man pages in Emacs just type:
     M-x man
 
 Then the name of the command of interest. If you want to look at the manual pages in color, type (I mentioned this in
-my <a href="http://netlumination.com/blog/a-completely-random-guide-to-emacs">Completely Random Guide to Emacs</a>)
+my [Completely Random Guide to Emacs](http://netlumination.com/blog/a-completely-random-guide-to-emacs))
 
     M-x woman
 
@@ -149,7 +148,7 @@ is used to show the word type you we're on (comment, string, keyword, etc.). You
 Usually line wrapping is on by default. You can see it is when a line comes to the edge of the screen, the '\' is shown
 and the line continues one below. If the line is truncated on the other hand, you won't be able to see the rest of the
 line, you'll only be able to see a '$'. You can use
-<a href="http://www.emacswiki.org/emacs/TruncateLines">truncate lines</a> to toggle back and forth between the wrap and
+[truncate lines](http://www.emacswiki.org/emacs/TruncateLines) to toggle back and forth between the wrap and
 truncate states by typing (this will be local to that buffer):
 
     M-x toggle-truncate-lines
@@ -182,7 +181,7 @@ Will toggle normal looking line wraps on and off.  If you want to get fancy, you
 
 You'll soon notice Emacs scattering funny looking ~FILE and #FILE# backups across your directories. I like throwing all
 the auto backups into one directory and putting some sort of version number on them. This code is straight from the
-<a href="http://www.emacswiki.org/emacs/BackupDirectory">Emacs wiki</a>, it goes into you .emacs.d/init.el:
+[Emacs wiki](http://www.emacswiki.org/emacs/BackupDirectory), it goes into you .emacs.d/init.el:
 
 {% highlight cl %}
 (setq
@@ -198,7 +197,7 @@ the auto backups into one directory and putting some sort of version number on t
 ### <a name="complete">Morsel 12 - Autocomplete</a>
 
 This is quite useful, but you do have to install it. The installation instructions in the manual are clear. Take a look
-at <a href="http://www.emacswiki.org/emacs/AutoComplete">autocompletion for Emacs</a>.
+at [autocompletion for Emacs](http://www.emacswiki.org/emacs/AutoComplete).
 
 ### <a name="jump">Morsel 13 - Jumping the line</a>
 
@@ -279,7 +278,7 @@ like this:
 Of course, you have to make some choices sometimes. If you have the num pad enabled to show numbers and symbols, then
 you can't use it to move from one buffer to another. This is when a defining your own minor mode might come in handy.
 
-<strong><a name="macros"></a>Morsel 17 - Making and storing macros</strong>
+### <a name="macros">Morsel 17 - Making and storing macros</a>
 
 Define the macro. To start recording the macro:
 
@@ -301,7 +300,7 @@ definition to go and type:
     M-x insert-kbd-macro
 
 Now type in your
-<a href="http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs">custom keybinding</a>,
+[custom keybinding](http://netlumination.com/blog/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs),
 something like:
 
 {% highlight cl %}
@@ -327,8 +326,8 @@ current file. I also set `C-c c` as the shortcut for this function:
 (global-set-key (kbd "C-c c") 'word-count)
 {% endhighlight %}
 
-Thanks to <a href="http://iquaid.org/2008/02/08/counting-words-in-emacs/">Karsten Wade and the discussion on this page</a>.
-There are many <a href="http://www.emacswiki.org/emacs/WordCount">word count alternatives in the Emacs Wiki</a>, and
+Thanks to [Karsten Wade and the discussion on this page](http://iquaid.org/2008/02/08/counting-words-in-emacs/).
+There are many [word count alternatives in the Emacs Wiki](http://www.emacswiki.org/emacs/WordCount), and
 there's also a word-count-mode that you can download. I just like the code above for its simplicity if you're on a Unix
 like system anyway.
 

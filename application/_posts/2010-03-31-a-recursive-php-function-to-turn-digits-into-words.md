@@ -17,4 +17,4 @@ Take a look at a working example of [the function I wrote](http://peter-ajtai.c
 with PHP.
 
 Take a look at [my solution to Project Euler Problem 17](http://peter-ajtai.com/euler/problems/Problem-017.php)
- [SPOILER ALERT]
+ **SPOILER ALERT**

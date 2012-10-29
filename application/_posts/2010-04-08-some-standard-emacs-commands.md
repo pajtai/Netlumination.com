@@ -8,9 +8,10 @@ tags:
 - keystrokes
 - reference
 ---
+
 `C-` is your CTRL key. `M-` is your Meta key, usually `ALT` or `ESC`.
 
-* <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Buffers.html">Buffers</a> (they're like Tabs)
+* [Buffers](http://www.gnu.org/software/emacs/manual/html_node/emacs/Buffers.html) (they're like Tabs)
     * Close (kill) buffer ==&gt; `C-x k`
 	* List buffers ==&gt; `C-x C-b`
 	* Switch to next buffer ==&gt; `C-x RIGHT`
@@ -45,7 +46,7 @@ tags:
 	* Set mark and highlight marked area ==&gt; `C-SPACE C-SPACE`
 	* Spell check entire file (buffer) ==&gt; `M-x spell-buffer`
 	* Spell check word ==&gt; `M-$`
-* <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Files.html">Files</a>
+* [Files](http://www.gnu.org/software/emacs/manual/html_node/emacs/Files.html)
 	* Compare differences between two files ==&gt; `M-x ediff`
 	* Insert file into buffer ==&gt; `C-x i`
 	* Open a file ==&gt; `C-x C-f`
@@ -58,14 +59,14 @@ tags:
 	* Show number of lines in file ==&gt; `C-x l` (letter "el")
 	* Suspend and exit to shell (type `%emacs` in shell to resume) ==&gt; `C-z`
 * Fonts
-    * <a href="http://www.delorie.com/gnu/docs/emacs/emacs_482.html">Interactively change fonts</a> ==&gt; `M-x customize-face`
+    * [Interactively change fonts](http://www.delorie.com/gnu/docs/emacs/emacs_482.html) ==&gt; `M-x customize-face`
 * Formatting
 	* Indent line appropriately (according to mode) ==&gt; `TAB`
 	* Indent marked (see Editing) region ==&gt; `C- M- \`
 	* Tabbing (to next Tab stop) ==&gt; `M-i`
-* <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Help.html">Help</a>
+* [Help](http://www.gnu.org/software/emacs/manual/html_node/emacs/Help.html)
 	* Describe function run by keystrokes in a window (more info) ==&gt; `C-h k [COMMAND]`
-	* <strong>RUN TUTORIAL</strong> ==&gt; `C-h t`
+	* **RUN TUTORIAL** ==&gt; `C-h t`
 	* Show all keyboard shortcuts  (key bindings) in effect ==&gt; `C-h b`
 	* Show commands containing a word you type (apropos) ==&gt; `C-h a`
 	* Show function run by keystrokes in echo area (quick info) ==&gt; `C-h c [COMMAND]`
@@ -93,14 +94,14 @@ tags:
 	* Next highlighted item ==&gt; `C-s`
 	* Previous highlighted item ==&gt; `C-r`
 	* Search and replace (from cursor to end of file). Type `?` for help in replacing. ==&gt; `M-%`
-	* <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Regexp-Search.html">Search using a regular expression</a> ==&gt; `M-C-s`
+	* [Search using a regular expression](http://www.gnu.org/software/emacs/manual/html_node/emacs/Regexp-Search.html) ==&gt; `M-C-s`
 	* Select next search string (while in incremental search mode) ==&gt; `M-n`
 	* Select previous search string (while in incremental search mode) ==&gt; `M-p`
 * Undo
-	* <strong>Undo is very good in Emacs, you should<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Undo.html"> look into it in detail</a></strong></li>
+	* **Undo is very good in Emacs, you should [look into it in detail](http://www.gnu.org/software/emacs/manual/html_node/emacs/Undo.html)**
 	* Abort command ==&gt; `C-g`
 	* Undo a change ==&gt; `C-x u or C-_`
-* <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Windows.html">Windows</a>
+* [Windows](http://www.gnu.org/software/emacs/manual/html_node/emacs/Windows.html)
 	* Close all other windows ==&gt; `C-x 1`
 	* Close this window ("zero") ==&gt; `C-x 0`
 	* Make window narrower ==&gt; `C-x {`
@@ -142,12 +143,14 @@ to see possible ways to complete your command (hints). For example `M-x gomoku` 
 ###Documentation
 
 You should know that Emacs has a ton of self description and a ton of online reference. In fact 
-<a href="http://www.gnu.org/software/emacs/manual/emacs.html">this is the Emacs manual</a>. I find the
-<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html">HTML one page per node version</a> the
+[this is the Emacs manual](http://www.gnu.org/software/emacs/manual/emacs.html). I find the
+[HTML one page per node version](http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html) the
 most useful online and the PDF version the best for leisurely fireside thumbing.
 
 Oh, and you can go look at
-<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Index.html#Key-Index">the key index in the Emacs manual</a>. Additionally the interweb pipes are filled with Emacs Cheat Sheets and Reference Cards. This is a <a href="http://inst.eecs.berkeley.edu/~cs3/sp07/emacsreference.pdf">PDF Reference Sheet by CAL CS</a> that's pretty good.
+[the key index in the Emacs manual](http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Index.html#Key-Index).
+Additionally the interweb pipes are filled with Emacs Cheat Sheets and Reference Cards. This is a
+[PDF Reference Sheet by CAL CS](http://inst.eecs.berkeley.edu/~cs3/sp07/emacsreference.pdf) that's pretty good.
 
 ###What does this keystroke do?
 Ok, this is in the keystroke / commands list, but it's important enough to repeat: To find out what a keystroke
@@ -169,8 +172,8 @@ usually in your .emacs.d directory:
 
 These days (since Emacs 22) these sort of customizations (the Lisp commands that are automatically executed when Emacs
 is started) are placed in the ".emacs.d" directory within the init.el file. They used to be put simply in a ".emacs"
-file. <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html">In fact when Emacs starts it
-tries three locations:  ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el.</a>. Here "~" is your home directory.
+file. [In fact when Emacs starts it
+tries three locations:  ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el.](http://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html). Here "~" is your home directory.
 
 ### Modes
 
