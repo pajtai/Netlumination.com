@@ -11,7 +11,7 @@ tags:
 - search
 ---
 
-<a href="http://www.gnu.org/software/grep/manual/grep.html">Grep</a> and piping ( | ) are two powerful tools in Linux.
+[Grep](http://www.gnu.org/software/grep/manual/grep.html) and piping ( `|` ) are two powerful tools in Linux.
 Grep allows you to search lines of text for certain patterns using regular expressions. Piping allows you to take the
 output of one command and make it the input of another.
 
@@ -19,13 +19,13 @@ So, lets say you want to look through the Odyssey and find all mentions of Siren
 
 {% highlight bash %}
 grep -in siren odyssey.txt
-{% endhiglight %}
+{% endhighlight %}
 
 But let's say you don't have the Odyssey on your hard drive, you could just get it from MIT and pipe it over to grep
 
 {% highlight bash %}
 curl http://classics.mit.edu/Homer/odyssey.mb.txt | grep -in siren
-{% endhiglight %}
+{% endhighlight %}
 
 In both cases, I used case insensitive search, `grep -i`, and I list what line number the instances are found on with
 `-n`.
@@ -35,12 +35,12 @@ which books contain the lines about sirens. This is where piping becomes very ha
 
 {% highlight bash %}
 curl http://classics.mit.edu/Homer/odyssey.mb.txt | grep -in "siren\|^book" | grep -iB1 "siren"
-{% endhiglight %}
+{% endhighlight %}
 
 Let's look at this line from left to right in order to understand it. "curl ..." simply goes and gets whatever
-characters are at the referenced url. We pipe these lines of text into: grep -in "siren\|^book".  This is another case
+characters are at the referenced url. We pipe these lines of text into: `grep -in "siren\|^book"`.  This is another case
 insensitive search, but it is looking for each line that matches any one of two possible patterns. In regular
-expressions the pipe, |, means OR. When using Linux, you have to escape the pipe, and write \| to mean OR in a regular
+expressions the pipe, `|`, means OR. When using Linux, you have to escape the pipe, and write \| to mean OR in a regular
 expression. So we are looking for  an appearance of the word siren OR a line that begins with the word "book." (^ is the
 beginning of a line). It is important that we only use -n in the first instance of grep, since this first instance will
 return the line number in the original text file. If you use -n in the second grep, you won't get the line numbers of
@@ -72,4 +72,4 @@ are repeated, and that the blocks of text are separated by 2 dashes... grep at w
 
 And of course, this is just the tip of the iceberg, or should I say, just the beginning of the Siren's song?
 
-To learn more about grep type, "man grep" in Linux or, "M-x woman ENTER grep" in Emacs.
+To learn more about grep type, `man grep` in Linux or, `M-x woman ENTER grep` in Emacs.
