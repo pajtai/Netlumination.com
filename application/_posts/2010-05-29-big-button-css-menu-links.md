@@ -7,10 +7,6 @@ tags:
 - hover
 - menu
 status: publish
-type: post
-published: true
-meta:
-  _edit_last: '2'
 ---
 This post will show you how to make this:
 <div id="da-body4">
