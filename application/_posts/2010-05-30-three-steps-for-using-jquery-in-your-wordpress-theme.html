@@ -13,23 +13,23 @@ published: true
 meta:
   _edit_last: '2'
 ---
-This is a quick post on using Javascript and the JQuery framework in particular within your Wordpress theme. It's quick and pretty painless. This is just for regular themes, not admin themes, plugins, or posts.
+This is a quick post on using Javascript and the JQuery framework in particular within your Wordpress theme. It's quick
+and pretty painless. This is just for regular themes, not admin themes, plugins, or posts.
 
 <strong>Step 1:</strong>
 
-<strong><!--more--></strong>
-
-Load JQuery and your custom JS onto your page with wp_enqueue_script(). It's better to use wp_enqueue_script than hard coding it into your page. This is because Wordpress comes with JQuery, so you won't have to worry about updating JQuery as new versions come out. Wordpress will do the work for you.  Make sure wp_enqueue script is before wp_head(), or it won't work.
+Load JQuery and your custom JS onto your page with wp_enqueue_script(). It's better to use wp_enqueue_script than hard
+coding it into your page. This is because Wordpress comes with JQuery, so you won't have to worry about updating JQuery
+as new versions come out. Wordpress will do the work for you.  Make sure wp_enqueue script is before wp_head(), or it
+won't work.
 
 Here's a snippet from my template file (let's say index.php). I've created my custom JQuery functions in my themes "scripts" directory with the file name "custom-js.js". You also have to make up a handle or name for your collection of custom JQuery functions. I called mine custom:
 
-[geshi lang="php"]
-<pre>&lt;?php
+{% highlight php %}
     wp_enqueue_script('jquery');
     wp_enqueue_script('custom', get_bloginfo('stylesheet_directory') . '/scripts/custom-js.js');
     wp_head(); // WP API Hook
-?&gt;</pre>
-[/geshi]
+{% endhighlight %}
 
 get_bloginfo is your friend. If you hard code your themes directory into your code anywhere, you won't be able to share it with others, and you'll break everything if you ever move hosts or just directories.
 
