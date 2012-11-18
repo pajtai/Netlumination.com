@@ -88,7 +88,7 @@ This shows you that I was telling the truth about WP looking in the wp-content/t
 
 Let's add a stylesheet over at wp-content/themes/mytheme/style.css. This style sheet will contain all the necessary information to create a Wordpress theme. Here are all of the contents:
 
-{% highlight php %}
+``` php
 <?php
 /*
 Theme Name:     My Theme
@@ -99,7 +99,7 @@ Author URI:     http: //peter-ajtai.com/
 Template:       classic
 Version:        1.0
 */
-{% endhighlight %}
+```
 
 Yup, that's all it takes, and yeah replace my info with your info, but make sure that line 7 stays untouched. The file contains only CSS comments. Wordpress, reads these comments, and when it sees line 7, that says "Template: default", it understands that mytheme is a child theme of the theme that is in the directory called, "classic". Let's reload the Themes admin panel and activate this new theme.
 
@@ -114,13 +114,13 @@ Our page looks like it has no styles! I guess I lied. MyTheme inherits everythin
 inheritance in things like children and object oriented programming, but no matter, it's easier to fix than your....
 well, than, many things. So, let's grab the style sheet from the classic theme using the line:
 
-{% highlight css %}
+``` css
 @import url("../classic/style.css");
-{% endhighlight %}
+```
 
 So now our entire `wp-content/themes/mytheme/style.css` file looks like:
 
-{% highlight css %}
+``` css
 <?php
 /*
 Theme Name:     My Theme
@@ -132,11 +132,11 @@ Template:       classic
 Version:        1.0
 */
 @import url("../classic/style.css");
-{% endhighlight %}
+```
 
 Ok, now go and check on how your home page looks.... Just like classic, huh? Well, that's not very interesting, let's make things a very tiny bit more interesting by adding one more line to prove that we have a theme that uses default but has some of it's own rules:
 
-{% highlight css %}
+``` css
 /*
 Theme Name:     My Theme
 Theme URI:      http: //netlumination.com/
@@ -150,7 +150,7 @@ Version:        1.0
 body {
     background-color:blue;
 }
-{% endhighlight %}
+```
 
 Ok, that was 3 lines, but I could have made it one line. Does it work? Yup. Does it work with all themes...... uh, no.
 For example, if you try the same thing with the Default theme, you'll notice that some of the background images that are

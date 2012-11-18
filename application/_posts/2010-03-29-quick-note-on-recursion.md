@@ -9,7 +9,7 @@ tags:
 
 Example in PHP using the factorial:
 
-{% highlight php %}
+``` php
 <?php
 // $n must be a positive integer or 0 - function returns 1 for 0 and all errors
 function factorial($n)
@@ -32,7 +32,7 @@ function factorial($n)
   }
 
 }
-{% endhighlight %}
+```
 
 There are many other blog posts that cover this topic well. Some include:
 
@@ -44,7 +44,7 @@ Here is a little snippet of a C++ function that will ask for user input and make
 float, the functions recurses (is that a word?)... calls itself. The end effect is that the user is asked to enter a
 float until they do. You must include both iostream and limits.
 
-{% highlight c++ %}
+``` c++
 float collectFloat()
 {
 
@@ -78,4 +78,4 @@ float collectFloat()
     return user_input;
 
 }
-{% endhighlight %}
+```

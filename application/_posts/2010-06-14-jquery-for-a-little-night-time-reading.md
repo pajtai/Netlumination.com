@@ -17,9 +17,9 @@ do is download the new version of JQuery, and your old commands will learn new t
 Ah, speaking of downloading JQuery, you just might want to understand how JQuery works if you use it. The first time I
 tried to do this, I simply clicked on my JQuery src file link:
 
-{% highlight html %}
+``` html
 <script type="text/javascript" src="http://peter-ajtai.com/jquery/jquery-1.4.2.min.js"></script>
-{% endhighlight %}
+```
 
 ... and this is what I saw:
 

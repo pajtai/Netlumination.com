@@ -24,19 +24,19 @@ This page has samples of PluGeSHin in action.
 
     [geshi]CODE[/geshi]
 
-{% highlight javascript %}
+``` javascript
 var toggle = function(theId) {
     var ellie = document.getElementById(theId);
     (ellie.style.display   !== 'none' ?
          ellie.style.display = 'none' :
          ellie.style.display = 'block'  );
-{% endhighlight %}
+```
 
 <strong>Highlighting PHP without line numbers:</strong>
 
     [geshi lang="php" nums="0"]CODE[/geshi]
 
-{% highlight php %}
+``` php
 <?php
 class SumOfPower {
     function __construct () {
@@ -53,13 +53,13 @@ class SumOfPower {
     }
 }
 ?>
-{% endhighlight %}
+```
 
 <strong>Highlighting C++ with line numbers, starting at line 37 and drawing attention to the fourth and 13th lines:</strong>
 
     [geshi lang="cpp" start="37" nums="1" highlight="4,13"]CODE[/geshi]
 
-{% highlight cpp %}
+``` c++
     #include <iostream>
     #include <string>
     #include <sstream>
@@ -74,16 +74,16 @@ class SumOfPower {
     istream_iterator<string>(),
     ostream_iterator<string>(cout, "\n"));
     }
-{% endhighlight %}
+```
 
 Opening documentation links in a new tab:
 
     [geshi lang="php" target="_blank"]CODE[/geshi]
 
-{% highlight php %}
+``` php
 <?php
     $string = 
         "July 1, 2000 is on a " . 
         date("l", mktime(0, 0, 0, 7, 1, 2000));
 ?>
-{% endhighlight %}
+```

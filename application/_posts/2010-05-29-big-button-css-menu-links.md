@@ -60,7 +60,7 @@ could be read easily in one go, but unless you like to individually and tediousl
 
 <a href="http://peter-ajtai.com/examples/html/menu-bad.html">Bad Hover Menu</a>
 
-{% highlight html %}
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -94,7 +94,7 @@ could be read easily in one go, but unless you like to individually and tediousl
     </div>
     </body>
 </html>
-{% endhighlight %}
+```
 
 If you hover over a link, the background changes in color. Yeah, but it's not very elegant, since the area that's
 highlighted has a different shape for each link. Additionally, you have to be pretty precise with you mouse. The list
@@ -104,11 +104,11 @@ the first problem first.
 It turns out that :hover is a valid pseudo class for a list item not just a. So if we change the a:hover code to
 `li:hover` like this:
 
-{% highlight css %}
+``` css
 <pre>div#da-body2 ul#da-menu2 li:hover {
     background-color:#BFB6AF;
 }</pre>
-{% endhighlight %}
+```
 
 We'll see this:
 
@@ -123,7 +123,7 @@ We'll see this:
 Now we're getting close. The problem is that you cannot click the entire highlighted area to follow the link. This is
 because we're highlighting the li element and not the a element. Ok, well how about:
 
-{% highlight css %}
+``` css
 /* THIS WILL NOT WORK!!! */
 div#da-body2 ul#da-menu2 a {
     width:100%
@@ -132,7 +132,7 @@ div#da-body2 ul#da-menu2 a:hover {
     background-color:#BFB6AF;
 }
 /* ^^ INCORRECT */</pre>
-{% endhighlight %}
+```
 
 Nope, that'll basically just look like the first example. The problem is that the "a" element cannot have a width
 attribute. It's not a block level element. You can't set it's width normally.
@@ -143,7 +143,7 @@ or anchor tag to act different than usual using, "display:inherit;". This means 
 display mode its parent element has. In this case it will will inherit the "block" display from the li element. So, our
 solution is:
 
-{% highlight css %}
+``` css
 div#da-body ul#da-menu a {
     display:inherit;
     width:100%
@@ -151,7 +151,7 @@ div#da-body ul#da-menu a {
 div#da-body ul#da-menu a:hover {
     background-color:#BFB6AF;
 }
-{% endhighlight %}
+```
 
 This will produce:
 
@@ -167,7 +167,7 @@ Incidentally, "display:block" will work too. To wrap up, here is the full code:
 
 <a href="http://peter-ajtai.com/examples/html/menu-good.html">Good Hover Menu:</a>
 
-{% highlight html %}
+``` html
 <pre><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -210,7 +210,7 @@ Incidentally, "display:block" will work too. To wrap up, here is the full code:
         </div>
     </body>
 </html></pre>
-{% endhighlight %}
+```
 
 Incidentally, you can see that I've got a few margin:0s and padding:0s thrown in to make things look neater. Instead of
  dealing with zeroing the margins, paddings, etc. for each item one by one, you can simply use a

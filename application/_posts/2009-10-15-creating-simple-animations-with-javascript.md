@@ -60,7 +60,7 @@ Below is a working example:
 Here is the code that makes the ball move. For the rest of this post, I'll go over the basic ideas required to put the
 code together and how the specific code works:
 
-{% highlight javascript %}
+``` javascript
 <script type="text/javascript">
     var distanceBall=0;
     var directionBall=1;
@@ -95,7 +95,7 @@ code together and how the specific code works:
 <div id="basketball" style="position: relative;">
     <img src="http://img.netlumination.com/Basketball_64x64-1.png" alt="Basketball" />
 </div>
-{% endhighlight %}
+```
 
 #### [Here's a jsFiddle for you to play with](http://jsfiddle.net/pajtai/QmGyf/)
 
@@ -109,7 +109,7 @@ Whenever you create an animation, or any sort of constantly running JavaScript, 
 stop the script somehow. This is done using the checkButton function. The checkButton function also starts the script
 running, so it serves a dual purpose.
 
-{% highlight javascript %}
+``` javascript
 function checkButton() {
     if (document.getElementById("ballButton").value == "Animate Basketball") {
         document.getElementById("ballButton").value = "Stop Basketball";
@@ -119,7 +119,7 @@ function checkButton() {
         clearTimeout(timerToggle);
     }
 }
-{% endhighlight %}
+```
 
 The checkButton function checks what the input button says and does  one of two things based upon what the button reads.
 Looking at the HTML of the `INPUT` button, you can see that the `INPUT` button has the `id` of "ballButton." So, we can
@@ -151,7 +151,7 @@ This is the heart of the animation, and what's startling is how few lines it tak
 Essentially what we want to do is move the DIV containing the basketball image small steps at a time. This requires two
 things: physical movement of the DIV and a time increment in which this movement will be done.
 
-{% highlight javascript %}
+``` javascript
 var distanceBall=0;
 var directionBall=1;
 var timerToggle=null;
@@ -169,17 +169,17 @@ function animateBall() {
         animateBall();
     },10);
 }
-{% endhighlight %}
+```
 
 If you look at the HTML, you'll see that the basketball image is in a div with the ID "basketball" and the it's CSS
 style of postion is set to RELATIVE. It's important to set the position to RELATIVE, since that means that we can use
 the TOP or LEFT CSS styles to change the position of the DIV relative to where you see it when the image loads.
 
-{% highlight html %}
+``` html
 <div id="basketball" style="position: relative;">
     <img src="http://img.netlumination.com/Basketball_64x64-1.png" alt="Basketball" />
 </div>
-{% endhighlight %}
+```
 
 There are three variables that the animateBall function uses. The first is distanceBall. distanceBall is how many pixels
 the TOP CSS property of the DIV with the basketball image in it is set to. So distanceBall will control where the image
@@ -204,20 +204,20 @@ up bouncing up and down 200 pixels. Here is an alternative way to write those tw
 codes look at this page on [JavaScript comparison and logical operators](http://www.w3schools.com/JS/js_comparisons.asp)
 ):
 
-{% highlight javascript %}
+``` javascript
 if (distanceBall > 200 || distanceBall < 0) {
     directionBall *= -1;
 }
-{% endhighlight %}
+```
 
 Anyway, this all looks great so far, but we've only moved the ball one pixel. We have to repeat this movement every few
 moments. This would be very easy if there was a function to pause a JavaScript program, but there isn't, and trying to
 make a custom function to do this can end up with very messy results. There is, however, a way to tell JavaScript to do
 an action in a set amount of time. It's like setting an alarm clock. It's called setTimeout() and here is how it works:
 
-{% highlight javascript %}
+``` javascript
 setTimeout( [What to do] , [How long to wait] );
-{% endhighlight %}
+```
 
 It's important to realize that when you use `setTimeout()`, Javascript will keep evaluating the lines below `setTimeout`
  immediately. It does not pause. It's like setting an alarm and keeping right on going, now with the alarm timer ticking
@@ -226,12 +226,12 @@ It's important to realize that when you use `setTimeout()`, Javascript will keep
 The way to use setTimeout in our animation function is to use it as the last line, and have it call our animation
 function itself. Like this:
 
-{% highlight javascript %}
+``` javascript
 function animateBall() {
     [ move ball one increment and show it at its new location ]
     setTimeout( function() { animateBall(); } , 10 );
 }
-{% endhighlight %}
+```
 
 This will perform the animateBall() function once every 10 milliseconds, since setTimeout measures time in milliseconds.
 It's important that animateBall is not a for, while, or do loop, since setTimeout does not pause the execution of the

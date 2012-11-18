@@ -17,15 +17,15 @@ output of one command and make it the input of another.
 
 So, lets say you want to look through the Odyssey and find all mentions of Sirens. That would be:
 
-{% highlight bash %}
+``` bash
 grep -in siren odyssey.txt
-{% endhighlight %}
+```
 
 But let's say you don't have the Odyssey on your hard drive, you could just get it from MIT and pipe it over to grep
 
-{% highlight bash %}
+``` bash
 curl http://classics.mit.edu/Homer/odyssey.mb.txt | grep -in siren
-{% endhighlight %}
+```
 
 In both cases, I used case insensitive search, `grep -i`, and I list what line number the instances are found on with
 `-n`.
@@ -33,9 +33,9 @@ In both cases, I used case insensitive search, `grep -i`, and I list what line n
 So far this has all been pretty straight forward, but I know that the Odyssey is divided into books, and I want to know
 which books contain the lines about sirens. This is where piping becomes very handy.
 
-{% highlight bash %}
+``` bash
 curl http://classics.mit.edu/Homer/odyssey.mb.txt | grep -in "siren\|^book" | grep -iB1 "siren"
-{% endhighlight %}
+```
 
 Let's look at this line from left to right in order to understand it. "curl ..." simply goes and gets whatever
 characters are at the referenced url. We pipe these lines of text into: `grep -in "siren\|^book"`.  This is another case

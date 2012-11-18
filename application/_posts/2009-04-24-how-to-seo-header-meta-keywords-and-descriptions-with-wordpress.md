@@ -49,11 +49,11 @@ editor in the admin panel. This is found at Appearance&gt;&gt;Editor. Under "The
 We want our meta information to appear in the header, usually right below the title. The end result we are looking for
 is something like this:
 
-{% highlight html %}
+``` html
 <title>Your Blogs Title</title>
 <meta name="description" content="[your custom description for this page]" />
 <meta name="keywords" content="[your custom keywords for this page]" />
-{% endhighlight %}
+```
 
 Let's start with the description. First we'll check whether the page or post has a custom description. If it does, we'll
 display that. If it doesn't we'll just display your blogs tagline. The trick here is that in Wordpress there is a
@@ -61,25 +61,25 @@ display that. If it doesn't we'll just display your blogs tagline. The trick her
 retrieve the custom keyword and description info you put in. If you on your site somewhere where you are showing only a
 single blog post or a single page this function will work.  Let's try:
 
-{% highlight php %}
+``` php
 <?php $seodescription = get_post_meta($post->ID, "seo-description", true); ?>
-{% endhighlight %}
+```
 
 This will get our meta description, “seo-description” for the post we are displaying and assign it to the variable
 `$seodescription` (it’s not good to use variables with hyphens in PHP ). Now we can simply use
 
-{% highlight php %}
+``` php
 <?php echo $seodescription; ?>
-{% endhighlight %}
+```
 
 This will print out the custom description. So far our solution is:
 
-{% highlight php %}
+``` php
 <meta name="description" content="<?php
     $seodescription = get_post_meta($post->ID, "seo-description", true);
     echo $seodescription;
   ?>" />
-{% endhighlight %}
+```
 
 This is one of the things that is so nice about PHP. You can insert it directly into XHTML wherever you want.  The only
 problem is that we may have a page or post that we haven't gotten around to adding custom keyword and description meta
@@ -88,25 +88,25 @@ the PHP variable $seodescription will be zero if get_post_meta finds nothing. We
 statement. In php an if statement will execute if the condition is not zero, and the if statement will not execute if
 the condition is zero.  In other words
 
-{% highlight php %}
+``` php
 <?php
 if ( $mynumber = 0 ) {
     echo "hi!";
 } else {
     echo "bye...";
 }
-{% endhighlight %}
+```
 
 Will print "bye..." because the if statement is 0. 0 means false to PHP. So, of course
 
-{% highlight php %}
+``` php
 <?php
 if ( $mynumber = 8.5 ) {
     echo "hi!";
 } else {
     echo "bye...";
 }
-{% endhighlight %}
+```
 
 Will print "hi!" since the if statement is not 0.  Let's apply this to meta tags. If there is custome meta description,
 we will display it, and if there is none, we will nothing. It's not a good idea to put a default description or keywords
@@ -115,25 +115,25 @@ engines, since how can two pages have the same descriptin but different content?
 description with an if statement. The only tricky part here is that PHP actually goes ahead and assigns a value to the
 variable inside the if statement. This is because we used "=" which means set equal to. So, here goes:
 
-{% highlight php %}
+``` php
 <?php
 if ($seodescription = get_post_meta($post->ID, "seo-description", true)) {
     ?>
     <meta name="description" content="<?php echo $seodescription; ?>" />
     <?php
 } ?>
-{% endhighlight %}
+```
 
 Now we just do the same for the keywords. So for keywords, using the same idea as above we have:
 
-{% highlight php %}
+``` php
 <?php
 if ($seokeywords = get_post_meta($post->ID, "seo-keywords", true)) {
     ?>
     <meta name="keywords" content="<?php echo $seokeywords; ?>" />
     <?php
 } ?>
-{% endhighlight %}
+```
 
 There is one final thing to take care of. If we use this code as is, then on pages that dispaly multiple posts, we're
 going to display the description and keywords for just the first post. To get around this we'll use the Wordpress
@@ -142,7 +142,7 @@ true if only one page or post is being displayed and false if not. You can use a
 data. This default meta date will only go on pages that show more than one post.  Ok, so here we have the whole
 enchilada starting with the title tag:
 
-{% highlight php %}
+``` php
 <title>CODE-TO-DISPLAY-MY-BLOG-NAME</title>
 <?php
 if ( is_singular() ) {
@@ -161,7 +161,7 @@ if ( is_singular() ) {
 
 }
 ?>
-{% endhighlight %}
+```
 
 
 Take a look at this page. Here is what my admin panel looked like for this post (before I migrated to Jekyll).

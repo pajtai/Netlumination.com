@@ -9,9 +9,9 @@ type: post
 ---
 Let's start with the simplest web page:
 
-{% highlight html %}
+``` html
 <h1>Hello World!</h1>
-{% endhighlight %}
+```
 
 Well, that's nice, but there's <a href="http://www.w3.org/TR/html401/struct/global.html">certain information missing</a>. 
 We should add a doctype to let the browser know what flavor of HTML, XHTML, etc we're using. This declares the document 
@@ -24,7 +24,7 @@ We should also let the browser know our character encoding with a meta tag.
 
 So now we have:
 
-{% highlight html %}
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/\\xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -35,11 +35,11 @@ So now we have:
         <h1>Hello World!</h1>
     </body>
 </html>
-{% endhighlight %}
+```
 
 What about the look of the page? Let's add some CSS:
 
-{% highlight html %}
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/\\xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -55,11 +55,11 @@ What about the look of the page? Let's add some CSS:
         <h1>Hello World!</h1>
     </body>
 </html>
-{% endhighlight %}
+```
 
 Of course we should throw that into an external style sheet:
 
-{% highlight html %}
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- sample.html -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -72,20 +72,20 @@ Of course we should throw that into an external style sheet:
         <h1>Hello World!</h1>
     </body>
 </html>
-{% endhighlight %}
+```
 
 and:
 
-{% highlight css %}
+``` css
 /* styles.css */
 body {
     background-color:#BDC4D4;
 }
-{% endhighlight %}
+```
 
 Let's add two images:
 
-{% highlight html %}
+``` html
 <p>
     An Image ==>
     <img src="images/one.png" alt="image 1" />
@@ -94,7 +94,7 @@ Let's add two images:
     Another Image ==>
     <img src="images/two.png" alt="image 2" />
 </p>
-{% endhighlight %}
+```
 
 Hmmm... but we're making two requests to the server for these two images. We can pass the same amount of information to 
 the user with only one request to the server using 
@@ -105,7 +105,7 @@ they'll be the background to an IMG element. "null.png" is simply a transparent 
 
 The HTML:
 
-{% highlight html %}
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- sample.html -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -126,11 +126,11 @@ The HTML:
         </p>
     </body>
 </html>
-{% endhighlight %}
+```
 
 The CSS:
 
-{% highlight css %}
+``` css
 /* styles.css */
 body {
     background-color:#BDC4D4;
@@ -143,7 +143,7 @@ body {
 .image2 {
     background-position:-80px;
 }
-{% endhighlight %}
+```
 
 Well, ok, but our sight isn't going to change much over time, so once a visitor see our site, they should cache it in 
 their browser for future use. This'll make the page load faster for everyone, since it reduces server load, and it 
@@ -153,7 +153,7 @@ We can accomplich this using HTTP headers. This is not the HTML HEADER tag. HTTP
 sends to the browser before the contents of the page... this means we can't put the HTTP headers into the HTML file. 
 We'll have to use something server side for this. PHP has a header() function, which makes things really easy:
 
-{% highlight php %}
+``` php
 <?php
 // Expires one year from now
 $expires = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1);
@@ -182,7 +182,7 @@ header("Expires: $date GMT");
         </p>
     </body>
 </html>
-{% endhighlight %}
+```
 
 We could have done the above with Apache or whatever server itself we're using. PHP is nice for illustration, since we 
 can keep all the code in the HTML file. Since the HTTP header comes before the HTML content, you cannot put any HTML 
@@ -192,7 +192,7 @@ Ok, now we're getting somewhere, but we've still got all this text and stuff on 
 could have all this stuff, if we had a big web page, or it may look like a lot of stuff to someone with a limping dial 
 up in East Timor. Well, why don't we compress all our stuff. Let's GZIP it.
 
-{% highlight html %}
+``` html
 <?php
 // Expires one year from now
 $expires = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")+1);
@@ -225,31 +225,31 @@ else
         </p>
     </body>
 </html>
-{% endhighlight %}
+```
 
 You can <a href="http://www.gidnetwork.com/tools/gzip-test.php">confirm that you're properly GZIPPED</a>.
 
 Ok. With PHP we can also <a href="http://php.net/manual/en/function.flush.php">flush</a> the buffer early:
 
-{% highlight php %}
+``` php
 </head>
     <?php flush(); ?>
 <body>
-{% endhighlight %}
+```
 
 It's great that our CSS is in its own file, but it still has a bunch of whitespace. Why don't we minify it.
 
 I used the <a href="http://developer.yahoo.com/yui/compressor/">YUI compressor</a> with this command:
 
-{% highlight bash %}
+``` bash
 java -jar yuicompressor-2.4.2.jar styles.css -o styles.min.css --type css
-{% endhighlight %}
+```
 
 To get this CSS file:
 
-{% highlight css %}
+``` css
 body{background-color:#BDC4D4;}.sprite{width:80px;height:80px;background:url('images/sprite.png');}.image2{background-position:-80px;}
-{% endhighlight %}
+```
 
 We can do the same minification with our Javascript if we have any, and remember to include your Javascript as far to 
 the bottom of the page as you can.

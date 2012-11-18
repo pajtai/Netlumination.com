@@ -24,12 +24,12 @@ Here's a snippet from my template file (let's say index.php). I've created my cu
 "scripts" directory with the file name "custom-js.js". You also have to make up a handle or name for your collection of
 custom JQuery functions. I called mine custom:
 
-{% highlight php %}
+``` php
 <?php
     wp_enqueue_script('jquery');
     wp_enqueue_script('custom', get_bloginfo('stylesheet_directory') . '/scripts/custom-js.js');
     wp_head(); // WP API Hook
-{% endhighlight %}
+```
 
 `get_bloginfo` is your friend. If you hard code your themes directory into your code anywhere, you won't be able to
 share it with others, and you'll break everything if you ever move hosts or just directories.
@@ -38,10 +38,10 @@ Here's another example. Let's say you want to use
 <a href="http://code.google.com/apis/maps/documentation/javascript/examples/index.html">Google Maps</a> on your page.
 Here is the line of WP code that makes that possible:
 
-{% highlight php %}
+``` php
 <?php
     wp_enqueue_script('googleMaps', 'http://maps.google.com/maps/api/js?sensor=false');  
-{% endhighlight %}
+```
 
 Finally, if you just want plain JS with no JQuery, you can simply leave out the line that calls JQuery but leave in the
 line that enqueues your custom functions. Wordpress comes with a lot of other JS goodies besides JQuery. Scroll down to
@@ -58,20 +58,20 @@ Write your JQuery. The only thing you have to look out for is that wp_enqueue_sc
 Here is how to define a new shortcut for JQuery functions, $j in this case. The script shown is a very effective test to
 see if you've got JQuery working in your theme. It's a little blunt, but it's effects are hard to miss.
 
-{% highlight javascript %}
+``` javascript
 var $j = jQuery.noConflict();
 $j(document).ready(function() {
  $j("body").html("Your page is belong to us... just kidding, but you can use JQuery now.");
 });
-{% endhighlight %}
+```
 
 Here is how to use a wrapper in order to use the default JQuery shortcut:
 
-{% highlight javascript %}
+``` javascript
 jQuery(document).ready(function($) {
     $("body").html("Your page is belong to us... just kidding, but you can use JQuery now.");
 });
-{% endhighlight %}
+```
 
 Make sure you pay attention to all the curly brackets and parentheses. If the long and multiple parenthetical
 expressions annoy you, go check out <a href="http://www.cs.cmu.edu/afs/cs/project/theo-11/www/decision-trees.lisp">Lisp</a>.

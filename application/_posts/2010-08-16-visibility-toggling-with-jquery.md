@@ -58,14 +58,14 @@ a total of 3 functions, but it's more convenient and maintainable to generalize.
 class ".toggler" to toggle the divs. You, of course, don't have to use buttons, you can use other divs, or images, or
 whatever your little heart desires. So, so far we have:
 
-{% highlight javascript %}
+``` javascript
 $(document).ready(function(){
       // Toggle the visibility of all divs when one is clicked.
     $("input.toggler").click(function() {
         $( "#" + $(this).attr("id") + "-content" ).toggle();
     });
 });
-{% endhighlight %}
+```
 
 <a href="http://jsfiddle.net/N4PDK/">jsFiddle example</a>
 
@@ -85,15 +85,15 @@ end, we must make all the other divs invisible when we make one div visible.
 
 We only have to change one line to achieve this. We'll go from:
 
-{% highlight javascript %}
+``` javascript
 $( "#" + $(this).attr("id") + "-content" ).toggle();
-{% endhighlight %}
+```
 
 to:
 
-{% highlight javascript %}
+``` javascript
 $( "#" + $(this).attr("id") + "-content" ).toggle().siblings().hide();
-{% endhighlight %}
+```
 
 Notice how I chained the methods .siblings() and .hide() onto the previous line. This means that after toggling our 
 content block, we'll select the DOM siblings of that block and make them invisible. This means you have to make sure 
@@ -103,14 +103,14 @@ makes sense, maybe to have content LIs in a parent UL or OL.
 One final change is that you may not want the content to disappear if a button is pressed twice, so we'll switch out 
 .toggle() with .show() to give:<span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">​</span>
 
-{% highlight javascript %}
+``` javascript
 $(document).ready(function(){
       // Toggle the visibility of all divs when one is clicked.
     $("input.toggler").click(function() {
         $( "#" + $(this).attr("id") + "-content" ).show().siblings().hide();
     });
 });
-​{% endhighlight %}
+​```
 
 <a href="http://jsfiddle.net/NeVDs/">jsFiddle example</a>
 
@@ -120,27 +120,27 @@ To toggle any set of elements we want, all we have to do is create jQuery set of
 
 First, let's say that we have 3 content divs. Let's select all of them with jQuery:
 
-{% highlight javascript %}
+``` javascript
 var theDivs = $("#block-1-content, #block-2-content, #block-3-content);
-{% endhighlight %}
+```
 
 So, now theDivs is a jQuery selection of out content DIVs, let's use that in combination with our click handler and .not() to toggle the appropriate content divs. Except, now I'm going to use an unordered list, so our content will be in LIs. If we're dealing with unordered lists, we could easy have a situation where all the individual content LIs are not siblings of each other.
 
 To show the corresponding content LI of a button, we'll still use:
 
-{% highlight javascript %}
+``` javascript
 $( "#" + $(this).attr("id") + "-content" ).show();
-{% endhighlight %}
+```
 
 But now we can't simply make the siblings disappear. Instead we'll make everything from our jQuery slection "theDivs" that isn't the corresponding content LI vanish. Like this:
 
-{% highlight javascript %}
+``` javascript
 theDivs.not( $( "#" + $(this).attr("id") + "-content" ) ).hide();
-{% endhighlight %}
+```
 
 And that's it! You can of course replace the .show() and .hide() methods with fancier animations like .slideDown() and .slideUp(), but overall we have a relatively simple to implement, generalizable way of toggling the visibility of a group of content divs. The full code will look something like this:
 
-{% highlight javascript %}
+``` javascript
 $(document).ready(function(){
       // Create a selection of the content divs of interest
     var theDivs = $("#block-1-content, #block-2-content, #block-3-content");
@@ -150,6 +150,6 @@ $(document).ready(function(){
         theDivs.not( $( "#" + $(this).attr("id") + "-content" ) ).hide();
     });
 });​
-{% endhighlight %}
+```
 
 <a href="http://jsfiddle.net/NNLzj/">jsFiddle example</a>

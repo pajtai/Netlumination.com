@@ -45,17 +45,17 @@ using multiple query_posts, the only trick is that you should save and reset the
 that later down the page (like in the Sidebar) you can use all the functions that apply to the page you're on and not
 on the last query_post you performed. The query is stored in `$wp_query`, so we can use 
 
-{% highlight php %}
+``` php
 <?php
 $temp_query = $wp_query;
-{% endhighlight %}
+```
 
 before the Loops to save the query, and we can use 
 
-{% highlight php %}
+``` php
 <?php
 $wp_query = $temp_query;
-{% endhighlight %}
+```
 
 at the end of the Loops to retrieve it. This is like in Multiple Loops Example 2 from
 [The Loops Wordpress page](http://codex.wordpress.org/The_Loop#Multiple_Loops).
@@ -66,10 +66,10 @@ all the categories we'll use [get_categories()](http://codex.wordpress.org/Func
 simply returns an array with all the categories. Now, this array has a lot of information associated with it. To get an
 idea of what it looks like you can always print the array out in readable form with
 
-{% highlight php %}
+``` php
 <?php
 print_r( get_categories() );
-{% endhighlight %}
+```
 
 There's information like the name and category ID for each category. We'll make use of those.
 
@@ -79,17 +79,17 @@ The name of the category isn't always the best solution. For example if you have
 Juices," the ampersand will trip the PHP up, so we'll just use the ID number of the category. If we make our category
 array like this: 
 
-{% highlight php %}
+``` php
 <?php
 $categories=get_categories();
-{% endhighlight %}
+```
 
 Then we can retrieve the category ID from the created array with `$category->cat_ID`, and We can retrieve
 the name of the category with `$category->name`.
 
 Finally, putting everything together we get:
 
-{% highlight php %}
+``` php
 <?php $temp_query = $wp_query; ?>
   <?php $categories=get_categories();
   foreach($categories as $category)
@@ -105,7 +105,7 @@ Finally, putting everything together we get:
   } ?>
 
 <?php $wp_query = $temp_query; ?>
-{% endhighlight %}
+```
 
 If you want to see what happens if you don't reassign the original query just remove the last line. It will probably
 make your sidebar say something odd... though the particulars will depend on the theme you're using.
@@ -118,7 +118,7 @@ child before we display it's posts. To do this we'll use <code>$category-&gt;par
 the category. If it returns nothing, or false, we know that the category is not a child but a parent. We'll put an if
 statement that only proceeds if there is no parent of the category inside the foreach loop. Here we go:
 
-{% highlight php %}
+``` php
 <?php $temp_query = $wp_query; ?>
 
 <?php $categories=get_categories();
@@ -141,5 +141,5 @@ foreach($categories as $category)
 }
 
 $wp_query = $temp_query; ?>
-{% endhighlight %}
+```
 
