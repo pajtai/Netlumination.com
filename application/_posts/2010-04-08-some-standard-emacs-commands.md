@@ -166,9 +166,9 @@ There may be some keytrokes you wish were defined. For example, `M-x goto-line` 
 define `C-c g` to jump you to the line you enter, then you could add the following line to your init.el file, which is
 usually in your .emacs.d directory:
 
-{% highlight cl %}
+``` cl
 (global-set-key "\C-cg" 'goto-line)
-{% endhighlight %}
+```
 
 These days (since Emacs 22) these sort of customizations (the Lisp commands that are automatically executed when Emacs
 is started) are placed in the ".emacs.d" directory within the init.el file. They used to be put simply in a ".emacs"
