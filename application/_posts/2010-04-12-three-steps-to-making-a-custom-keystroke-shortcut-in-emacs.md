@@ -14,17 +14,17 @@ Emacs.
 2. Type `C-s [KEYBINDING YOU WANT WRITTEN OUT]` to double check that the shortcut isn't taken using search. For example
     to check that `C-c t` isn't taken type `C-s C-c t`.
 3. Modify your .emacs.d/init.el file like this
-{% highlight cl %}
+``` cl
 ;; [USEFUL COMMENTS]
 (global-set-key (kbd "[KEYSTROKES WRITTEN OUT]") '[FUNCTION NAME])
-{% endhighlight %}
+```
 
 For example to set C-c g to trigger goto-line:
 
-{% highlight cl %}
+``` cl
 ;; Define C-c g as a shortcut for goto-line.
 (global-set-key (kbd "C-c g") 'goto-line)
-{% endhighlight %}
+```
 
 That's all there is to it. A little bit more about
 <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Rebinding.html">setting key binding in the GNU Emacs
@@ -43,29 +43,29 @@ keystrokes written out using M-, C-, etc. into a form that can be passed as an a
 of using kbd, you can also write out your keystroke combinations using a Lisp string. This will only work , "for ASCII
 characters and Meta-modified ASCII characters."
 
-{% highlight cl %}
+``` cl
 ;; Alternate definition of C-c g as a shortcut for goto-line using Lisp strings.
 (global-set-key "\C-cg" 'goto-line)
-{% endhighlight %}
+```
 
 
 Finally, you can use a Lisp vector. Vectors are written in square brackets, and characters in vectors are written with a
 question mark and slash in front of them.
 
-{% highlight cl %}
+``` cl
 ;; Alternate definition of C-c g as a shortcut for goto-line using Lisp vectors.
 (global-set-key [?\C-c ?\g] 'goto-line)
-{% endhighlight %}
+```
 
 I usually try the kbd method first, since it will usually work. You can use array to make use of strange keytrokes.
 Simply type C-q and the keystroke you're interested in to insert the code for it.
 
 For example, if we type C-q C-c we get ^C, and C-q g gives simply g, so the example above can also be written like:
 
-{% highlight cl %}
+``` cl
 ;; Another alternate definition of C-c g as a shortcut for goto-line using Lisp vectors.
 (global-set-key [?^C ?g] 'goto-line)
-{% endhighlight %}
+```
 
 I have to say, that there are some keystrokes whose codes I have trouble getting emacs to understand this way, but using
 `C-c h` and kbd will usually do the trick. There's certain keys you won't be able to use. For example if you're on a
