@@ -3,3 +3,4 @@ pygments: true
 permalink: /:title/
 destination: ../targets/stage/site/
 auto: true
+markdown: redcarpet

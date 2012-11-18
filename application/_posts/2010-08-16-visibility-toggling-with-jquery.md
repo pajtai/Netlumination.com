@@ -24,14 +24,14 @@ Ok, let's get started. First let's toggle the visibility of an element with jQue
 using <a href="http://api.jquery.com/toggle/">.toggle()</a>. Since we're talking about user interfaces, we'll probably
 trigger the toggle with an action, let's say a <a href="http://api.jquery.com/click/">.click()</a>:
 
-{% highlight javascript %}
+```javascript
 $(document).ready(function(){
     // Toggle the visibility of all divs when one is clicked.
     $("input").click(function() {
         $("div").toggle();
     });
 });
-{% endhighlight %}
+```
 
 <a href="http://jsfiddle.net/QXZ7p/">jsFiddle example</a>
 
