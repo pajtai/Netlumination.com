@@ -12,7 +12,7 @@ Twitter user's Tweets, and it makes a guess at their sleep schedule. The idea is
 Tweet (obviously this only applies to amateur Tweeters). Once you enter a person's nickname, the site draws out a
 visualization of the sleep schedule. For example <a href="http://www.sleepingtime.org/Peter_Ajtai">here is my sleep schedule</a>.
 
-<img class="aligncenter size-full wp-image-1346" title="Sleep" src="http://netlumination.com/wp-content/uploads/2010/07/sleep.jpg" alt="sleep schedule" width="440" height="256" />
+<img class="aligncenter size-full wp-image-1346" title="Sleep" src="http://img.netlumination.com/sleep.jpg" alt="sleep schedule" width="440" height="256" />
 
 Well, the first impression one gets is that I sleep as much as a
 <a href="http://science.education.nih.gov/supplements/nih3/sleep/guide/info-sleep.htm">brown bat</a> (19.9 hours per day
