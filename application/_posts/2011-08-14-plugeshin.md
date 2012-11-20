@@ -8,10 +8,6 @@ status: publish
 <h2>A Wordpress Plugin for GeSHi</h2>
 <h3><a name="description"></a>Description</h3>
 
-** Note: syntax highlighting on this page is no longer done by PluGeSHin.... line number, etc are not added yet **
-** This blog is no longer Wordpress **
-** PluGeSHin is still a working plugin for Wordpress **
-
 &nbsp;<a href="http://netlumination.com/blog/plugeshin">PluGeSHin</a> is a <a href="http://wordpress.org/">Wordpress</a> 
 plugin by Peter Ajtai that lets you use the syntax highlighting of  <a href="http://qbnz.com/highlighter/">GeSHi</a> 
 through Wordpress <a href="http://codex.wordpress.org/Shortcode_API">shortcodes</a>.
@@ -24,66 +20,22 @@ This page has samples of PluGeSHin in action.
 
     [geshi]CODE[/geshi]
 
-``` javascript
-var toggle = function(theId) {
-    var ellie = document.getElementById(theId);
-    (ellie.style.display   !== 'none' ?
-         ellie.style.display = 'none' :
-         ellie.style.display = 'block'  );
-```
+![Example1](http://img.netlumination.com/plugeshin1.png)
 
 <strong>Highlighting PHP without line numbers:</strong>
 
     [geshi lang="php" nums="0"]CODE[/geshi]
 
-``` php
-<?php
-class SumOfPower {
-    function __construct () {
-        // Start Timer
-        $Timer1 = new CalcTimer;
-        $Timer1 -> StartTimer();
-        $number = sprintf( number_format(pow(2,1000), 0));
-        for ($count=0; $count < strlen($number); $count++) {
-            $digit+=$number[$count];
-        }
-        echo "The sum is $digit.<br/>";
-        // Stop Timer
-        $Timer1 -> StopTimer();
-    }
-}
-?>
-```
+![Example2](http://img.netlumination.com/plugeshin2.png)
 
 <strong>Highlighting C++ with line numbers, starting at line 37 and drawing attention to the fourth and 13th lines:</strong>
 
     [geshi lang="cpp" start="37" nums="1" highlight="4,13"]CODE[/geshi]
 
-``` c++
-    #include <iostream>
-    #include <string>
-    #include <sstream>
-    #include <algorithm>
-    #include <iterator>
-     
-    int main() {
-    using namespace std;
-    string sentence = "où chante une rivière";
-    istringstream iss(sentence);
-    copy(istream_iterator<string>(iss),
-    istream_iterator<string>(),
-    ostream_iterator<string>(cout, "\n"));
-    }
-```
+![Example3](http://img.netlumination.com/plugeshin3.png)
 
 Opening documentation links in a new tab:
 
     [geshi lang="php" target="_blank"]CODE[/geshi]
 
-``` php
-<?php
-    $string = 
-        "July 1, 2000 is on a " . 
-        date("l", mktime(0, 0, 0, 7, 1, 2000));
-?>
-```
+![Example4](http://img.netlumination.com/plugeshin4.png)
