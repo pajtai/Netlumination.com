@@ -23,7 +23,7 @@ tried to do this, I simply clicked on my JQuery src file link:
 
 ... and this is what I saw:
 
-<img class="alignnone size-full wp-image-1243" title="Happy reading" src="http://netlumination.com/wp-content/uploads/2010/06/wall-o-text.jpg" alt="Wall o text JQuery" width="419" height="323" />
+<img class="alignnone size-full wp-image-1243" title="Happy reading" src="http://img.netlumination.com/wall-o-text.jpg" alt="Wall o text JQuery" width="419" height="323" />
 
 Fun reading, huh? <!--more-->Well, when your browser loads Javascript, it has to load each charachter, so the less
 whitespace there is, and the shorter the variable names are, the faster it will load.
@@ -35,4 +35,4 @@ but for some reason, it took me a while to realize that there is an uncompressed
 <a href="http://code.jquery.com/jquery-latest.js">uncompressed version of the latest version is here</a>. The
 uncompressed version is actually very readable:
 
-<img class="alignnone size-full wp-image-1244" title="That's better" src="http://netlumination.com/wp-content/uploads/2010/06/readable.jpg" alt="Readable JQuery" width="423" height="352" />
+<img class="alignnone size-full wp-image-1244" title="That's better" src="http://img.netlumination.com/readable.jpg" alt="Readable JQuery" width="423" height="352" />

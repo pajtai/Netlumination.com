@@ -110,7 +110,7 @@ $(document).ready(function(){
         $( "#" + $(this).attr("id") + "-content" ).show().siblings().hide();
     });
 });
-​```
+```
 
 <a href="http://jsfiddle.net/NeVDs/">jsFiddle example</a>
 
