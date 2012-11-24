@@ -41,7 +41,7 @@ easier to read.
 Removing the `not`s makes it clearer, and in this case, switching to `and` makes it clearer. There are
 four cases we are concerned with: one of the variables is true while the other is false (2 possibilities for this one),
 both are true, or both are false. With the first `if`, the `or` is capturing three of these possibilities, with the
-second snippet - the `and` - we are only capturing one. In this case specificity means clarity. It's easy to imagine
+second snippet - the `and` - we are only capturing one. In this case specificity means clarity. It's easier to imagine
 both `previouslyCached` and `linked` being true then it is to imagine the either one or both of the opposites of
 `previouslyCached` or `linked` being true. The `else` acts as a natural "catch all" in the second snippet, while it acts
 as a strangely specific and narrow filter in the second one.
