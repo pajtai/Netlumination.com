@@ -18,8 +18,10 @@
                 <h2>{{ page.title }}</h2>
                 {{ content }}
             </section>
-            <footer class="pull-right">
-                <h4>{{ page.date | date_to_string }}</h4>
+            <footer>
+                {% assign thisPost=page%}
+                {% include tags.html%}
+                <h4 class="pull-right">{{ page.date | date_to_string }}</h4>
             </footer>
         </div>
     </body>
