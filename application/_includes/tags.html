@@ -1,0 +1,5 @@
+<p>
+    {% for tag in thisPost.tags %}
+    <a href="/tags.html#{{ tag }}" class="btn btn-success">{{ tag }}</a>&nbsp;
+    {% endfor %}
+</p>

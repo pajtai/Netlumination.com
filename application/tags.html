@@ -1,0 +1,11 @@
+---
+layout: home
+title: Netlumination
+---
+
+{% for tag in site.tags %}
+    <h2 class="label label-success" id="{{tag[0]}}">{{tag[0]}}</h2>
+    {% for aPost in tag[1] %}
+    <h3><a href="{{ aPost.url }}">{{ aPost.title }}</a> <small>: {{ aPost.date | date_to_string }}</small></h3>
+    {% endfor %}
+{% endfor %}
