@@ -11,17 +11,26 @@
     </head>
     <body>
         <div class="container">
-            <header class="page-header">
-                <h1><a href="/">Netlumination</a></h1>
+            <header class="well">
+                <h1 class="page-header">{{ page.title }}</h1>
+                {% if page.previous %}
+                <a class="badge badge-success text-white" href="{{page.previous.url}}">« {{page.previous.title | truncate 5}}</a>&nbsp;&nbsp;
+                {% endif %}
+                <a class="badge badge-success text-white" href="/">Home</a>
+                {% if page.next %}
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="{{page.next.url}}">{{page.next.title | truncate 5}} »</a>
+                {% endif %}
             </header>
             <section>
-                <h2>{{ page.title }}</h2>
                 {{ content }}
             </section>
             <footer>
                 {% assign thisPost=page%}
                 {% include tags.html%}
-                <h4 class="pull-right">{{ page.date | date_to_string }}</h4>
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    <h4 class="pull-right">{{ page.date | date_to_string }}</h4>
+                </div>
             </footer>
         </div>
     </body>
