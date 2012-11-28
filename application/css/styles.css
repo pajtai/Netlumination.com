@@ -490,7 +490,7 @@ a:hover {
     clear: both;
 }
 p {
-    text-indent: 1em;
+    text-indent: 0
     margin: 0 0 0.7em;
 }
 a.btn {
@@ -573,7 +573,7 @@ h6 small {
 h1 {
     font-size: 36px;
     line-height: 40px;
-    margin: 0.5em 0 0;
+    margin: 60px 0 0;
 }
 h2 {
     font-size: 30px;
@@ -4508,7 +4508,7 @@ p.logo {
     text-indent:0;
     color:#468847;
     font-size:14px;
-    margin-bottom:3em;
+    margin-bottom:40px;
 }
 a.label:hover,
 a.badge:hover {

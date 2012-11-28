@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Quick Note on Recursion</title>
+        <link rel="stylesheet" href="/css/styles.concat.min.css"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Quick Note on Recursion</h1>
+                
+                <a class="badge badge-success text-white" href="/not-much-help-but-there-is-truth-in-advertising/">« Not much help,...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/a-recursive-php-function-to-turn-digits-into-words/">A recursive PHP... »</a>
+                
+            </header>
+            <section>
+                <p><a href="http://en.wikipedia.org/wiki/Recursion_%28computer_science%29">Recursion</a></p>
+
+<p>Example in PHP using the factorial:</p>
+<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<span class="c1">// $n must be a positive integer or 0 - function returns 1 for 0 and all errors</span>
+<span class="k">function</span> <span class="nf">factorial</span><span class="p">(</span><span class="nv">$n</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$n</span><span class="p">))</span>
+  <span class="p">{</span>
+
+    <span class="c1">// factorial of positive integer</span>
+
+    <span class="k">return</span> <span class="nv">$n</span> <span class="o">*</span> <span class="nx">factorial</span><span class="p">(</span><span class="nv">$n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="p">}</span> <span class="k">else</span>
+  <span class="p">{</span>
+
+    <span class="c1">// factorial of 0</span>
+
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>There are many other blog posts that cover this topic well. Some include:</p>
+
+<p><a href="http://devzone.zend.com/article/1235">Recursion in PHP (and iteration)</a></p>
+
+<p><a href="http://php.net/manual/en/regexp.reference.recursive.php">Recursive patterns in Regex from the PHP manual</a></p>
+
+<p>Here is a little snippet of a C++ function that will ask for user input and make sure it is a float. If it&#39;s not a
+float, the functions recurses (is that a word?)... calls itself. The end effect is that the user is asked to enter a
+float until they do. You must include both iostream and limits.</p>
+<div class="highlight"><pre><code class="c++"><span class="kt">float</span> <span class="n">collectFloat</span><span class="p">()</span>
+<span class="p">{</span>
+
+  <span class="kt">float</span> <span class="n">user_input</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+
+  <span class="k">try</span>
+  <span class="p">{</span>
+
+    <span class="c1">// Could also use cin.fail() to check for success</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">user_input</span><span class="p">)</span> <span class="n">cinIgnoreRest</span><span class="p">();</span>
+    <span class="k">else</span>
+
+      <span class="k">throw</span> <span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Not a float entered.</span><span class="se">\n</span><span class="s"> Please enter a number.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="k">catch</span> <span class="p">(</span><span class="n">string</span> <span class="n">error</span><span class="p">)</span>
+  <span class="p">{</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">error</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;==&gt; &quot;</span><span class="p">;</span>
+
+    <span class="n">cin</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+
+    <span class="n">cinIgnoreRest</span><span class="p">();</span>
+
+    <span class="c1">// This will keep repeating until user enters a float</span>
+
+    <span class="n">user_input</span> <span class="o">=</span> <span class="n">collectFloat</span><span class="p">();</span>
+  <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">user_input</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#PHP" class="badge badge-inverse">PHP</a>&nbsp;
+    
+    <a href="/tags.html#recursion" class="badge badge-inverse">recursion</a>&nbsp;
+    
+</p>
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    <h4 class="pull-right">29 Mar 2010</h4>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
