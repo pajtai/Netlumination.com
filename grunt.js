@@ -42,8 +42,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-useref');
     grunt.loadNpmTasks('grunt-cp');
     grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-css');
-    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('build', 'cp:temp useref concat cssmin shell:clean shell:jekyll');
 };
