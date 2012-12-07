@@ -5,3 +5,14 @@ incomplete.
 I was working on a section of code where I passed a method three arguments, but the method only
 admitted to receiving to argument. The code looked something like this:
 
+```javascript
+var checkPurchase(item, price, budget) {
+    ...
+}
+
+...
+checkPurchase(item, price, budget);
+```
+
+
+
