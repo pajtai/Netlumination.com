@@ -3,7 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title>Style guides</title>
-        <link rel="stylesheet" href="/css/styles.concat.min.css"/>
+        <!-- build:css /css/styles.concat.min.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
     </head>
     <body>
@@ -31,6 +36,20 @@ before to edit your current pages and add new pages to your site while maintaini
 website. This guarantees that your site will not only look good the first day it goes live, but that your site will
 continue to look good after years of edits and updates.</p>
 
+                
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'netlumination'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var s = document.createElement('script'); s.async = true;
+                        s.type = 'text/javascript';
+                        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+                        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                    }());
+                </script>
+                
             </section>
             <footer>
                 
