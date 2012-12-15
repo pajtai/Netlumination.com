@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Piping grep into the Odyssey</title>
+        <!-- build:css /css/styles.concat.min.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Piping grep into the Odyssey</h1>
+                
+                <a class="badge badge-success text-white" href="/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs/">« Three Steps to...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/why-use-a-content-management-system/">Why use a... »</a>
+                
+            </header>
+            <section>
+                <p><a href="http://www.gnu.org/software/grep/manual/grep.html">Grep</a> and piping ( <code>|</code> ) are two powerful tools in Linux.
+Grep allows you to search lines of text for certain patterns using regular expressions. Piping allows you to take the
+output of one command and make it the input of another.</p>
+
+<p>So, lets say you want to look through the Odyssey and find all mentions of Sirens. That would be:</p>
+<div class="highlight"><pre><code class="bash">grep -in siren odyssey.txt
+</code></pre></div>
+<p>But let&#39;s say you don&#39;t have the Odyssey on your hard drive, you could just get it from MIT and pipe it over to grep</p>
+<div class="highlight"><pre><code class="bash">curl http://classics.mit.edu/Homer/odyssey.mb.txt | grep -in siren
+</code></pre></div>
+<p>In both cases, I used case insensitive search, <code>grep -i</code>, and I list what line number the instances are found on with
+<code>-n</code>.</p>
+
+<p>So far this has all been pretty straight forward, but I know that the Odyssey is divided into books, and I want to know
+which books contain the lines about sirens. This is where piping becomes very handy.</p>
+<div class="highlight"><pre><code class="bash">curl http://classics.mit.edu/Homer/odyssey.mb.txt | grep -in <span class="s2">&quot;siren\|^book&quot;</span> | grep -iB1 <span class="s2">&quot;siren&quot;</span>
+</code></pre></div>
+<p>Let&#39;s look at this line from left to right in order to understand it. &quot;curl ...&quot; simply goes and gets whatever
+characters are at the referenced url. We pipe these lines of text into: <code>grep -in &quot;siren\|^book&quot;</code>.  This is another case
+insensitive search, but it is looking for each line that matches any one of two possible patterns. In regular
+expressions the pipe, <code>|</code>, means OR. When using Linux, you have to escape the pipe, and write | to mean OR in a regular
+expression. So we are looking for  an appearance of the word siren OR a line that begins with the word &quot;book.&quot; (^ is the
+beginning of a line). It is important that we only use -n in the first instance of grep, since this first instance will
+return the line number in the original text file. If you use -n in the second grep, you won&#39;t get the line numbers of
+the original file, you&#39;ll get the line numbers from the first grep output, which is probably meaningless to you.</p>
+
+<p>At this point we have all the lines which reference sirens and we have all the lines that say, &quot;BOOK ...&quot; from BOOK I to
+BOOK XXIV, whether these books contain siren references or not. To clean all of this up, we take these lines, the book
+lines and the siren lines, and pipe them over to:  grep -iB1 &quot;sirens&quot;</p>
+
+<p>This will take our list and display the lines one previous to a siren reference and the siren reference line. This will
+show us the siren references and which of the 24 books in the Odyssey reference sirens. So, if you want to read about
+sirens, look for Books XII and XXIII in the Odyssey.</p>
+
+<p>Here is the output (edited a little for shorter lines), without the curl status output... notice that none of the lines
+are repeated, and that the blocks of text are separated by 2 dashes... grep at work:</p>
+<div class="highlight"><pre><code class="text">4936:BOOK XII
+4972:you will come to the Sirens
+4974:of the Sirens, his wife and
+4978:these Sirens by, and stop
+4986:past these Sirens, I cannot
+5074:the Sirens, who sit and sing
+5083:two Sirens, for the wind had
+5094:good rate, the Sirens saw
+5109:Sirens&#39; voices. Then my men
+--
+9638:BOOK XXIII
+9921:wondrous singing of the Sirens
+</code></pre></div>
+<p>And of course, this is just the tip of the iceberg, or should I say, just the beginning of the Siren&#39;s song?</p>
+
+<p>To learn more about grep type, <code>man grep</code> in Linux or, <code>M-x woman ENTER grep</code> in Emacs.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#curl" class="badge badge-inverse">curl</a>&nbsp;
+    
+    <a href="/tags.html#grep" class="badge badge-inverse">grep</a>&nbsp;
+    
+    <a href="/tags.html#Linux" class="badge badge-inverse">Linux</a>&nbsp;
+    
+    <a href="/tags.html#pipe" class="badge badge-inverse">pipe</a>&nbsp;
+    
+    <a href="/tags.html#regex" class="badge badge-inverse">regex</a>&nbsp;
+    
+    <a href="/tags.html#regular expression" class="badge badge-inverse">regular expression</a>&nbsp;
+    
+    <a href="/tags.html#search" class="badge badge-inverse">search</a>&nbsp;
+    
+</p>
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    <h4 class="pull-right">09 May 2010</h4>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
