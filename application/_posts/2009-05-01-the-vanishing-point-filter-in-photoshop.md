@@ -2,11 +2,8 @@
 layout: post
 title: The Vanishing Point Filter in Photoshop
 tags:
-- perspective
-- photo retouching
-- Photoshop
+- photoshop
 - tutorial
-- vanishing point filter
 ---
 In this Photoshop tutuorial I'll discuss the many uses of the vanishing point filter. You can use this tool to place
 labels on bottles and jars, to add or remove windows and doors from buildings, and in general, to transform the
