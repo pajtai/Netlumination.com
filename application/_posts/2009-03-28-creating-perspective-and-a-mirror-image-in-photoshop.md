@@ -3,9 +3,7 @@ layout: post
 title: Creating perspective and a mirror image in Photoshop
 tags:
 - design
-- perspective
-- Photoshop
-- reflection
+- photoshop
 - tutorial
 status: publish
 type: post
