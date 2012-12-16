@@ -2,11 +2,8 @@
 layout: post
 title: Web page validity
 tags:
-- accessibility
-- compliance
 - standards
-- validation
-- Website Advice
+- html
 status: publish
 type: post
 published: true
