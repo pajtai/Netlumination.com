@@ -2,13 +2,8 @@
 layout: post
 title: Style guides
 tags:
-- CSS
 - design
-- HTML
-- layout
-- site maintenance
-- upkeep
-- Website Advice
+- branding
 type: post
 ---
 One of the difficulties in having a web site designed for you is that you may not know what to look for. A way to get
