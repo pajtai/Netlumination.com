@@ -14,7 +14,7 @@
         "url": "https://github.com/pajtai/Netlumination.com/issues"
     },
     "dependencies": {
-        "grunt-useref" : ">=0.0.7",
+        "grunt-useref" : ">=0.0.9",
         "grunt-cp": ">=0.1.0",
         "grunt-shell": ">=0.1.3"
     }
