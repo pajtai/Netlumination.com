@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JQuery for a little night time reading</title>
+        <link rel="stylesheet" href="/css/styles.concat.min.css"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">JQuery for a little night time reading</h1>
+                
+                <a class="badge badge-success text-white" href="/the-joys-of-toxic-asset-ownership/">« The joys of...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/pimp-my-web-page-simple-to-complex/">Pimp My Web... »</a>
+                
+            </header>
+            <section>
+                <p>If you use Javascript, <a href="http://jquery.com/">JQuery</a> is a great framework to speed up your coding. It&#39;s
+essentially a collection of really convenient shortcuts. It does more, since JQuery also handles a lot of browser
+compatibility issues. So, you don&#39;t have to go through your JQuery code to update it for new browsers, all you have to
+do is download the new version of JQuery, and your old commands will learn new tricks.</p>
+
+<p>Ah, speaking of downloading JQuery, you just might want to understand how JQuery works if you use it. The first time I
+tried to do this, I simply clicked on my JQuery src file link:</p>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://peter-ajtai.com/jquery/jquery-1.4.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>... and this is what I saw:</p>
+
+<p><img class="alignnone size-full wp-image-1243" title="Happy reading" src="http://img.netlumination.com/wall-o-text.jpg" alt="Wall o text JQuery" width="419" height="323" /></p>
+
+<p>Fun reading, huh? &lt;!--more--&gt;Well, when your browser loads Javascript, it has to load each charachter, so the less
+whitespace there is, and the shorter the variable names are, the faster it will load.</p>
+
+<p>This means you should be using this, the minified, version of JQuery on your site, but if you want some
+<del>pleasant and relaxing</del> reading... you should look at the uncompressed version.
+<a href="http://docs.jquery.com/Downloading_jQuery">JQuery shows you both versions very clearly on their download page</a>,
+but for some reason, it took me a while to realize that there is an uncompressed version. The
+<a href="http://code.jquery.com/jquery-latest.js">uncompressed version of the latest version is here</a>. The
+uncompressed version is actually very readable:</p>
+
+<p><img class="alignnone size-full wp-image-1244" title="That's better" src="http://img.netlumination.com/readable.jpg" alt="Readable JQuery" width="423" height="352" /></p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#framework" class="badge badge-inverse">framework</a>&nbsp;
+    
+    <a href="/tags.html#Javascript" class="badge badge-inverse">Javascript</a>&nbsp;
+    
+    <a href="/tags.html#JQuery" class="badge badge-inverse">JQuery</a>&nbsp;
+    
+    <a href="/tags.html#source code" class="badge badge-inverse">source code</a>&nbsp;
+    
+</p>
+                
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'netlumination'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    <h4 class="pull-right">14 Jun 2010</h4>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
         shell: {
             jekyll: {
-                command: "jekyll --server temp",
+                command: "jekyll --server",
                 stdout: true,
                 stderr: true,
                 execOptions: {
