@@ -27,6 +27,21 @@ module.exports = function(grunt) {
                 }
             },
 
+            css: {
+                command: "rm -rf targets/live/cdn/css && mv temp/css targets/live/cdn/",
+                stdout: true,
+                stderr: true
+            },
+
+            ref: {
+                command: 'find . -type f -print0 | xargs -0 -n 1 sed -i -e \'s/rel="stylesheet" href="\\/css/rel="stylesheet" href="http:\\/\\/img\\.netlumination\\.com\\/css/g\'',
+                stdout: true,
+                stderr: true,
+                execOptions: {
+                    cwd: './temp'
+                }
+            },
+
             clean: {
                 command: "rm buttons.css responsive.min.css styles.css syntax.css",
                 stdout: true,
@@ -43,5 +58,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-cp');
     grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('build', 'cp:temp useref concat cssmin shell:clean shell:jekyll');
+    grunt.registerTask('build', 'cp:temp useref concat cssmin shell:clean shell:css shell:ref shell:jekyll');
 };
