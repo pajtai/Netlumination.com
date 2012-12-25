@@ -1,6 +1,6 @@
 safe: false
 pygments: true
 permalink: /:title/
-destination: ../targets/stage/site/
+destination: ../targets/live/site/
 auto: true
 markdown: redcarpet
