@@ -15,6 +15,8 @@
                 
                 <a class="badge badge-success text-white" href="/">Home</a>
                 
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/making-a-2d-javascript-game-engine/">Making a 2D... »</a>
+                
             </header>
             <section>
                 <p>I was running the <a href="https://addons.mozilla.org/en-us/firefox/addon/yslow/">YSLOW add-on</a> for my site, and the only two
@@ -23,7 +25,7 @@ suggestions it had was Gzipping content and adding expire dates.</p>
 <p>Below is how to do both in your <code>.htaccess</code> file:</p>
 <div class="highlight"><pre><code class="apache"><span class="nb">AddOutputFilterByType</span> DEFLATE text/html text/plain application/javascript text/css
 
-<span class="nt">&lt;FilesMatch</span> <span class="s">&quot;\.(js|css|png|jpg|jpeg|gif)$&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;FilesMatch</span> <span class="s">&quot;\.(js|css|png|jpg|jpeg|gif|ico)$&quot;</span><span class="nt">&gt;</span>
   <span class="nb">ExpiresActive</span> <span class="k">on</span>
   <span class="nb">ExpiresDefault</span> <span class="s2">&quot;access plus 1 month&quot;</span>
 <span class="nt">&lt;/FilesMatch&gt;</span>
