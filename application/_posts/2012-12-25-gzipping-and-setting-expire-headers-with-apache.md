@@ -14,7 +14,7 @@ Below is how to do both in your `.htaccess` file:
 ```apache
 AddOutputFilterByType DEFLATE text/html text/plain application/javascript text/css
                                                                                                                                   
-<FilesMatch "\.(js|css|png|jpg|jpeg|gif)$">
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico)$">
   ExpiresActive on
   ExpiresDefault "access plus 1 month"
 </FilesMatch>
