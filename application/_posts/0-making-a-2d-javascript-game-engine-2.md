@@ -34,3 +34,7 @@ Now that I've read [this](http://gamedev.stackexchange.com/questions/1589/fixed-
  in the future.
 
 The difference hardware makes was fascinating. Burly computation power makes many problems go away.
+
+* general problem: mobile not supported 
+sometimes not even rendering, often no controls
+http://entityjs.com/games
