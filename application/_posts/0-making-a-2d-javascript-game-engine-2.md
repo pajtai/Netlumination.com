@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Making a 2D JavaScript game engine: Part 2
+title: Making a 2D JavaScript game engine - Part 2
 tags:
 - javascript
 - game engine
 - animation
-status: publish
+published: false
 type: post
 ---
 My first thought was to separate "physics" ticks from ui ticks, but several failing tests for the number of expected
