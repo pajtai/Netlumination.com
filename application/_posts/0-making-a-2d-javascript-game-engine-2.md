@@ -38,6 +38,13 @@ is fascinating. Burly computation power makes many problems go away. I think I'l
 render and a separate requestFrameAnimation for the UI render. I'll keep the game interval faster than the render update
 so that I won't have to worry about interpolation.
 
+---
+
+### Notes
+
 * general problem: mobile not supported 
 sometimes not even rendering, often no controls
 http://entityjs.com/games
+
+* Decided to use AMD to for ease of writing
+* AMD and qUnit: https://gist.github.com/4417534
