@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Making a 2D JavaScript game engine - Part 2
+title: "Making a 2D JavaScript game engine: Part 2"
 tags:
 - javascript
 - game engine
