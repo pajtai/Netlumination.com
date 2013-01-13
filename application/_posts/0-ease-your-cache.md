@@ -39,7 +39,7 @@ Below is an example for easing in and out with a sine function:
       }
 ```
 
-(jsFiddle using the above](http://jsfiddle.net/pajtai/VX5xK/show/) - ([code](http://jsfiddle.net/pajtai/VX5xK/)
+[jsFiddle using the above](http://jsfiddle.net/pajtai/VX5xK/show/) - ([code](http://jsfiddle.net/pajtai/VX5xK/))
 
 This complicates your animation equation, since you have to normalize your time intervale and change interval, but the
 payoff is a smoother animation.
