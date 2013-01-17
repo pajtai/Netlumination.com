@@ -10,6 +10,7 @@ module.exports = function(grunt) {
             }
         },
 
+        // useref 0.0.9 worked
         useref: {
             // specify which files contain the build blocks
             html: 'temp/**/*.html',
