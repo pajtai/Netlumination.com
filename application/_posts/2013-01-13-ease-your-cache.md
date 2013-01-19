@@ -51,6 +51,18 @@ easeInOutSine = (function () {
 
 [**jsFiddle using the above**](http://jsfiddle.net/pajtai/VX5xK/show/) - ([code](http://jsfiddle.net/pajtai/VX5xK/))
 
+Or, if you are an [underscore](http://underscorejs.org/) fan:
+
+```javascript
+// Use underscores built in memoize for caching
+easeInOutSine: _.memoize(function(t) {
+
+    return -1/2 * (Math.cos(Math.PI*t) - 1)
+})
+```
+
+[**jsFiddle using the above**](http://jsfiddle.net/pajtai/8kU85/show/) - ([code](http://jsfiddle.net/pajtai/8kU85/))
+
 This complicates your animation equation, since you have to normalize your time and change intervals, but the
 payoff is a smoother animation, since you're doing fewer computations.
 

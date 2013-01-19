@@ -15,6 +15,8 @@
                 
                 <a class="badge badge-success text-white" href="/">Home</a>
                 
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/build-automation/">Build automation »</a>
+                
             </header>
             <section>
                 <h2>Easing: 4 sentence intro</h2>
@@ -57,6 +59,15 @@ so we can store points on that single curve from all our animations that share t
 <span class="p">}());</span>
 </code></pre></div>
 <p><a href="http://jsfiddle.net/pajtai/VX5xK/show/"><strong>jsFiddle using the above</strong></a> - (<a href="http://jsfiddle.net/pajtai/VX5xK/">code</a>)</p>
+
+<p>Or, if you are an <a href="http://underscorejs.org/">underscore</a> fan:</p>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// Use underscores built in memoize for caching</span>
+<span class="nx">easeInOutSine</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">memoize</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="nx">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
+<p><a href="http://jsfiddle.net/pajtai/8kU85/show/"><strong>jsFiddle using the above</strong></a> - (<a href="http://jsfiddle.net/pajtai/8kU85/">code</a>)</p>
 
 <p>This complicates your animation equation, since you have to normalize your time and change intervals, but the
 payoff is a smoother animation, since you&#39;re doing fewer computations.</p>
