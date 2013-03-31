@@ -61,7 +61,6 @@ module.exports = function(grunt) {
 
     // plugin tasks
     grunt.loadNpmTasks('grunt-useref');
-    grunt.loadNpmTasks('grunt-cp');
     grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask('build', ['shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'shell:jekyll']);
