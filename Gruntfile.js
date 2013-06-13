@@ -12,12 +12,15 @@ module.exports = function(grunt) {
         },
 
         shell: {
+            rm: {
+                command: "rm -rf temp && rm -rf targets"
+            },
             cp: {
                 command: "cp -R application temp"
             },
 
             jekyll: {
-                command: "jekyll serve",
+                command: "jekyll serve -w",
                 options: {
                     stdout: true,
                     stderr: true,
@@ -63,5 +66,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-useref');
     grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('build', ['shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'shell:jekyll']);
+    grunt.registerTask('build', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'shell:jekyll']);
 };

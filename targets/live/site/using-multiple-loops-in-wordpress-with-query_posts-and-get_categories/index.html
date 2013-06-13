@@ -26,7 +26,7 @@ problem and solution, but I didn&#39;t find many posts describing how to do it, 
 <p>In some blogs, it can be useful to show entire posts from multiple categories on one page. For instance for a recipe
 blog you may want to list the name of each of your recipe categories and the recipes in each of those categories.
 This would look something like:</p>
-<div class="highlight"><pre><code class="text">Breakfast Recipes
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Breakfast Recipes
     [Eggs Benedicts Recipe Post]
     [Pancakes Recipe Post]
 Lunch Recipes
@@ -49,11 +49,11 @@ multiple times in order to run The Loop multiple times on the same page.</p>
 using multiple query<em>posts, the only trick is that you should save and reset the original query for the page. This is so
 that later down the page (like in the Sidebar) you can use all the functions that apply to the page you&#39;re on and not
 on the last query</em>post you performed. The query is stored in <code>$wp_query</code>, so we can use </p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nv">$temp_query</span> <span class="o">=</span> <span class="nv">$wp_query</span><span class="p">;</span>
 </code></pre></div>
 <p>before the Loops to save the query, and we can use </p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nv">$wp_query</span> <span class="o">=</span> <span class="nv">$temp_query</span><span class="p">;</span>
 </code></pre></div>
 <p>at the end of the Loops to retrieve it. This is like in Multiple Loops Example 2 from
@@ -64,7 +64,7 @@ we cycle through that array and retrieve all the posts from each category, one c
 all the categories we&#39;ll use <a href="http://codex.wordpress.org/Function_Reference/get_categories">get_categories()</a>. This
 simply returns an array with all the categories. Now, this array has a lot of information associated with it. To get an
 idea of what it looks like you can always print the array out in readable form with</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nb">print_r</span><span class="p">(</span> <span class="nx">get_categories</span><span class="p">()</span> <span class="p">);</span>
 </code></pre></div>
 <p>There&#39;s information like the name and category ID for each category. We&#39;ll make use of those.</p>
@@ -73,14 +73,14 @@ idea of what it looks like you can always print the array out in readable form w
 The name of the category isn&#39;t always the best solution. For example if you have a category called, &quot;Breakfast &amp;
 Juices,&quot; the ampersand will trip the PHP up, so we&#39;ll just use the ID number of the category. If we make our category
 array like this: </p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="nv">$categories</span><span class="o">=</span><span class="nx">get_categories</span><span class="p">();</span>
 </code></pre></div>
 <p>Then we can retrieve the category ID from the created array with <code>$category-&gt;cat_ID</code>, and We can retrieve
 the name of the category with <code>$category-&gt;name</code>.</p>
 
 <p>Finally, putting everything together we get:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> <span class="nv">$temp_query</span> <span class="o">=</span> <span class="nv">$wp_query</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nv">$temp_query</span> <span class="o">=</span> <span class="nv">$wp_query</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
 <span class="x">  </span><span class="cp">&lt;?php</span> <span class="nv">$categories</span><span class="o">=</span><span class="nx">get_categories</span><span class="p">();</span>
   <span class="k">foreach</span><span class="p">(</span><span class="nv">$categories</span> <span class="k">as</span> <span class="nv">$category</span><span class="p">)</span>
   <span class="p">{</span> <span class="cp">?&gt;</span><span class="x"></span>
@@ -106,7 +106,7 @@ simplest way is to only display parent categories and not child categories. To d
 child before we display it&#39;s posts. To do this we&#39;ll use <code>$category-&gt;parent</code>. This returns the parent of
 the category. If it returns nothing, or false, we know that the category is not a child but a parent. We&#39;ll put an if
 statement that only proceeds if there is no parent of the category inside the foreach loop. Here we go:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> <span class="nv">$temp_query</span> <span class="o">=</span> <span class="nv">$wp_query</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nv">$temp_query</span> <span class="o">=</span> <span class="nv">$wp_query</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
 
 <span class="cp">&lt;?php</span> <span class="nv">$categories</span><span class="o">=</span><span class="nx">get_categories</span><span class="p">();</span>
 
@@ -156,7 +156,7 @@ statement that only proceeds if there is no parent of the category inside the fo
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">05 May 2009</h4>
+
                 </div>
             </footer>
         </div>

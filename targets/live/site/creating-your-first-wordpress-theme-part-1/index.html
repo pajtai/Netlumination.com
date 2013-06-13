@@ -72,7 +72,7 @@ you can pick the theme to use through the Wordpress admin panel.</p>
 <p><img src="http://netlumination.com/wp-content/uploads/2010/05/wp-011.jpg" alt="Wordpress themes"></p>
 
 <p>The directory that the themes you can pick from are in is:</p>
-<div class="highlight"><pre><code class="text">/wp-content/themes/
+<div class="highlight"><pre><code class="text language-text" data-lang="text">/wp-content/themes/
 </code></pre></div>
 <p>Each directory in themes is a theme you can use. Understanding how Wordpress knows that the contents of these
 directories are themes will help us create our first theme.</p>
@@ -103,7 +103,7 @@ reload the Manage Themes page in the admin panel to see what happened:</p>
 <p>This shows you that I was telling the truth about WP looking in the wp-content/themes directory for the available themes. It looked in your empty directory called mythemes, and since it the information about each theme is supposed to be in the main style sheet, and there is no style sheet in mythemes, we have a broken theme.</p>
 
 <p>Let&#39;s add a stylesheet over at wp-content/themes/mytheme/style.css. This style sheet will contain all the necessary information to create a Wordpress theme. Here are all of the contents:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="cm">/*</span>
 <span class="cm">Theme Name:     My Theme</span>
 <span class="cm">Theme URI:      http: //netlumination.com/</span>
@@ -126,10 +126,10 @@ reload the Manage Themes page in the admin panel to see what happened:</p>
 <strong><em>except</em></strong> the style sheet. That&#39;s a little odd right? Especially if you&#39;re used to dealing with
 inheritance in things like children and object oriented programming, but no matter, it&#39;s easier to fix than your....
 well, than, many things. So, let&#39;s grab the style sheet from the classic theme using the line:</p>
-<div class="highlight"><pre><code class="css"><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&quot;../classic/style.css&quot;</span><span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&quot;../classic/style.css&quot;</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 <p>So now our entire <code>wp-content/themes/mytheme/style.css</code> file looks like:</p>
-<div class="highlight"><pre><code class="css"><span class="o">&lt;?</span><span class="nt">php</span>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="o">&lt;?</span><span class="nt">php</span>
 <span class="c">/*</span>
 <span class="c">Theme Name:     My Theme</span>
 <span class="c">Theme URI:      http: //netlumination.com/</span>
@@ -142,7 +142,7 @@ well, than, many things. So, let&#39;s grab the style sheet from the classic the
 <span class="k">@import</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&quot;../classic/style.css&quot;</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 <p>Ok, now go and check on how your home page looks.... Just like classic, huh? Well, that&#39;s not very interesting, let&#39;s make things a very tiny bit more interesting by adding one more line to prove that we have a theme that uses default but has some of it&#39;s own rules:</p>
-<div class="highlight"><pre><code class="css"><span class="c">/*</span>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="c">/*</span>
 <span class="c">Theme Name:     My Theme</span>
 <span class="c">Theme URI:      http: //netlumination.com/</span>
 <span class="c">Description:    Child theme spawned by the Classic theme</span>
@@ -186,7 +186,7 @@ of this series for that... until then we&#39;ll..... well, we&#39;ll see you lat
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">26 May 2010</h4>
+
                 </div>
             </footer>
         </div>

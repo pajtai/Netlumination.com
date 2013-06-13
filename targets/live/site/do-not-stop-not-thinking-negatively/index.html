@@ -25,7 +25,7 @@
 <p>With this in mind, it&#39;s usually clearer to write <code>if something</code> than it is to write <code>if not something</code>. Of course, there
 are times you don&#39;t have a choice - you have to use <code>not</code>. But the other day I ran across a case where I didn&#39;t
 immediately realize I had a choice. I caught myself staring at something like:</p>
-<div class="highlight"><pre><code class="javascript"><span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nx">previouslyCached</span> <span class="o">||</span> <span class="o">!</span> <span class="nx">linked</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nx">previouslyCached</span> <span class="o">||</span> <span class="o">!</span> <span class="nx">linked</span> <span class="p">)</span> <span class="p">{</span>
     <span class="nx">methodA</span><span class="p">();</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">methodB</span><span class="p">();</span>
@@ -35,7 +35,7 @@ immediately realize I had a choice. I caught myself staring at something like:</
 this case, the <code>or</code> gets in the way too.</p>
 
 <p>Is this clearer?</p>
-<div class="highlight"><pre><code class="javascript"><span class="k">if</span> <span class="p">(</span> <span class="nx">previouslyCached</span> <span class="o">&amp;&amp;</span> <span class="nx">linked</span> <span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span> <span class="nx">previouslyCached</span> <span class="o">&amp;&amp;</span> <span class="nx">linked</span> <span class="p">)</span> <span class="p">{</span>
     <span class="nx">methodB</span><span class="p">();</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">methodA</span><span class="p">();</span>
@@ -67,7 +67,7 @@ as a strangely specific and narrow filter in the second one.</p>
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">23 Nov 2012</h4>
+
                 </div>
             </footer>
         </div>

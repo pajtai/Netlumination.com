@@ -40,7 +40,7 @@ normalize our easing equation then we must draw many curves, but if we do normal
 so we can store points on that single curve from all our animations that share the same easing function.</p>
 
 <p>Below is an example for easing in and out with a sine function:</p>
-<div class="highlight"><pre><code class="javascript"><span class="nx">easeInOutSine</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">easeInOutSine</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 
     <span class="c1">// Our cache in a closure</span>
     <span class="kd">var</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">{};</span>
@@ -61,7 +61,7 @@ so we can store points on that single curve from all our animations that share t
 <p><a href="http://jsfiddle.net/pajtai/VX5xK/show/"><strong>jsFiddle using the above</strong></a> - (<a href="http://jsfiddle.net/pajtai/VX5xK/">code</a>)</p>
 
 <p>Or, if you are an <a href="http://underscorejs.org/">underscore</a> fan:</p>
-<div class="highlight"><pre><code class="javascript"><span class="c1">// Use underscores built in memoize for caching</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// Use underscores built in memoize for caching</span>
 <span class="nx">easeInOutSine</span><span class="o">:</span> <span class="nx">_</span><span class="p">.</span><span class="nx">memoize</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="nx">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -73,7 +73,7 @@ so we can store points on that single curve from all our animations that share t
 payoff is a smoother animation, since you&#39;re doing fewer computations.</p>
 
 <p>The above is better for caching then for example something like:</p>
-<div class="highlight"><pre><code class="javascript"><span class="c1">// This is hard to cache, since there&#39;s going to be cache entries for each combination of arguments</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// This is hard to cache, since there&#39;s going to be cache entries for each combination of arguments</span>
 <span class="nx">easeInOutSine</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">startValue</span><span class="p">,</span> <span class="nx">changeInValue</span><span class="p">,</span> <span class="nx">msElapsed</span><span class="p">,</span> <span class="nx">msDuration</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">-</span><span class="nx">changeInValue</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="nx">msElapsed</span><span class="o">/</span><span class="nx">msDuration</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">startValue</span><span class="p">;</span>
 <span class="p">},</span>
@@ -86,7 +86,7 @@ in value from the start and end value at each tick. Also, it doesn&#39;t seem li
  equation. So, let&#39;s put the normalization into the animation engine.</p>
 
 <p>For example, adding normalization to <code>easeInOutSine</code> and moving a box around would make something like:</p>
-<div class="highlight"><pre><code class="javascript"><span class="c1">// The animation equation with user friendly arguments</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// The animation equation with user friendly arguments</span>
 <span class="c1">// This will take care of normalization before calling the easing equation,</span>
 <span class="c1">// * tickHook - function that get called on each tick with the updated number</span>
 <span class="c1">// * startNum - initial value</span>
@@ -153,7 +153,7 @@ roll your own caching (a.k.a. memoization) function, or you can use something li
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">13 Jan 2013</h4>
+
                 </div>
             </footer>
         </div>

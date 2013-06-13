@@ -34,7 +34,7 @@ to check that <code>C-c t</code> isn&#39;t taken type <code>C-s C-c t</code>.</l
 </ol>
 
 <p>For example to set C-c g to trigger goto-line:</p>
-<div class="highlight"><pre><code class="cl"><span class="c1">;; Define C-c g as a shortcut for goto-line.</span>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="c1">;; Define C-c g as a shortcut for goto-line.</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-c g&quot;</span><span class="p">)</span> <span class="ss">&#39;goto-line</span><span class="p">)</span>
 </code></pre></div>
 <p>That&#39;s all there is to it. A little bit more about
@@ -52,19 +52,19 @@ macro. The <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Ini
 keystrokes written out using M-, C-, etc. into a form that can be passed as an argument to global-set-key.</a> Instead
 of using kbd, you can also write out your keystroke combinations using a Lisp string. This will only work , &quot;for ASCII
 characters and Meta-modified ASCII characters.&quot;</p>
-<div class="highlight"><pre><code class="cl"><span class="c1">;; Alternate definition of C-c g as a shortcut for goto-line using Lisp strings.</span>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="c1">;; Alternate definition of C-c g as a shortcut for goto-line using Lisp strings.</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="s">&quot;\C-cg&quot;</span> <span class="ss">&#39;goto-line</span><span class="p">)</span>
 </code></pre></div>
 <p>Finally, you can use a Lisp vector. Vectors are written in square brackets, and characters in vectors are written with a
 question mark and slash in front of them.</p>
-<div class="highlight"><pre><code class="cl"><span class="c1">;; Alternate definition of C-c g as a shortcut for goto-line using Lisp vectors.</span>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="c1">;; Alternate definition of C-c g as a shortcut for goto-line using Lisp vectors.</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="nv">[?\C-c</span> <span class="nv">?\g]</span> <span class="ss">&#39;goto-line</span><span class="p">)</span>
 </code></pre></div>
 <p>I usually try the kbd method first, since it will usually work. You can use array to make use of strange keytrokes.
 Simply type C-q and the keystroke you&#39;re interested in to insert the code for it.</p>
 
 <p>For example, if we type C-q C-c we get ^C, and C-q g gives simply g, so the example above can also be written like:</p>
-<div class="highlight"><pre><code class="cl"><span class="c1">;; Another alternate definition of C-c g as a shortcut for goto-line using Lisp vectors.</span>
+<div class="highlight"><pre><code class="cl language-cl" data-lang="cl"><span class="c1">;; Another alternate definition of C-c g as a shortcut for goto-line using Lisp vectors.</span>
 <span class="p">(</span><span class="nv">global-set-key</span> <span class="nv">[?^C</span> <span class="nv">?g]</span> <span class="ss">&#39;goto-line</span><span class="p">)</span>
 </code></pre></div>
 <p>I have to say, that there are some keystrokes whose codes I have trouble getting emacs to understand this way, but using
@@ -89,7 +89,7 @@ of a keystroke sent to Emacs.</p>
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">12 Apr 2010</h4>
+
                 </div>
             </footer>
         </div>

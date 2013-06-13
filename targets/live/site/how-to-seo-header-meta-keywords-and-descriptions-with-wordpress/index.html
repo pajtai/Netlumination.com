@@ -59,7 +59,7 @@ files are located in, &quot;themes/blah-blah.&quot; Go to that directory and fet
 editor in the admin panel. This is found at Appearance&gt;&gt;Editor. Under &quot;Theme Files&quot; click on &quot;Heder (header.php).&quot;
 We want our meta information to appear in the header, usually right below the title. The end result we are looking for
 is something like this:</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;title&gt;</span>Your Blogs Title<span class="nt">&lt;/title&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;title&gt;</span>Your Blogs Title<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;[your custom description for this page]&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;[your custom keywords for this page]&quot;</span> <span class="nt">/&gt;</span>
 </code></pre></div>
@@ -68,14 +68,14 @@ display that. If it doesn&#39;t we&#39;ll just display your blogs tagline. The t
 <a href="http://codex.wordpress.org/Function_Reference/get_post_meta">get<em>post</em>meta function</a> that you can use to
 retrieve the custom keyword and description info you put in. If you on your site somewhere where you are showing only a
 single blog post or a single page this function will work.  Let&#39;s try:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> <span class="nv">$seodescription</span> <span class="o">=</span> <span class="nx">get_post_meta</span><span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">ID</span><span class="p">,</span> <span class="s2">&quot;seo-description&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="nv">$seodescription</span> <span class="o">=</span> <span class="nx">get_post_meta</span><span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">ID</span><span class="p">,</span> <span class="s2">&quot;seo-description&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>This will get our meta description, “seo-description” for the post we are displaying and assign it to the variable
 <code>$seodescription</code> (it’s not good to use variables with hyphens in PHP ). Now we can simply use</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$seodescription</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$seodescription</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>This will print out the custom description. So far our solution is:</p>
-<div class="highlight"><pre><code class="php"><span class="x">&lt;meta name=&quot;description&quot; content=&quot;</span><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">&lt;meta name=&quot;description&quot; content=&quot;</span><span class="cp">&lt;?php</span>
     <span class="nv">$seodescription</span> <span class="o">=</span> <span class="nx">get_post_meta</span><span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">ID</span><span class="p">,</span> <span class="s2">&quot;seo-description&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
     <span class="k">echo</span> <span class="nv">$seodescription</span><span class="p">;</span>
   <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
@@ -86,7 +86,7 @@ tags to. The about code will not create an error in this case. It will just prin
 the PHP variable $seodescription will be zero if get<em>post</em>meta finds nothing. We can make use of this with an if
 statement. In php an if statement will execute if the condition is not zero, and the if statement will not execute if
 the condition is zero.  In other words</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">if</span> <span class="p">(</span> <span class="nv">$mynumber</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">&quot;hi!&quot;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -94,7 +94,7 @@ the condition is zero.  In other words</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>Will print &quot;bye...&quot; because the if statement is 0. 0 means false to PHP. So, of course</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">if</span> <span class="p">(</span> <span class="nv">$mynumber</span> <span class="o">=</span> <span class="mf">8.5</span> <span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">&quot;hi!&quot;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -107,7 +107,7 @@ on pages, since this will make multiple pages have the same description and keyw
 engines, since how can two pages have the same descriptin but different content? We will check if there is a custom
 description with an if statement. The only tricky part here is that PHP actually goes ahead and assigns a value to the
 variable inside the if statement. This is because we used &quot;=&quot; which means set equal to. So, here goes:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$seodescription</span> <span class="o">=</span> <span class="nx">get_post_meta</span><span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">ID</span><span class="p">,</span> <span class="s2">&quot;seo-description&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span> <span class="p">{</span>
     <span class="cp">?&gt;</span><span class="x"></span>
 <span class="x">    &lt;meta name=&quot;description&quot; content=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$seodescription</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
@@ -115,7 +115,7 @@ variable inside the if statement. This is because we used &quot;=&quot; which me
 <span class="p">}</span> <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Now we just do the same for the keywords. So for keywords, using the same idea as above we have:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$seokeywords</span> <span class="o">=</span> <span class="nx">get_post_meta</span><span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">ID</span><span class="p">,</span> <span class="s2">&quot;seo-keywords&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span> <span class="p">{</span>
     <span class="cp">?&gt;</span><span class="x"></span>
 <span class="x">    &lt;meta name=&quot;keywords&quot; content=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$seokeywords</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
@@ -128,7 +128,7 @@ function <a href="http://codex.wordpress.org/Function_Reference/is_singular">is_
 true if only one page or post is being displayed and false if not. You can use an else statement to display defualt meta
 data. This default meta date will only go on pages that show more than one post.  Ok, so here we have the whole
 enchilada starting with the title tag:</p>
-<div class="highlight"><pre><code class="php"><span class="x">&lt;title&gt;CODE-TO-DISPLAY-MY-BLOG-NAME&lt;/title&gt;</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">&lt;title&gt;CODE-TO-DISPLAY-MY-BLOG-NAME&lt;/title&gt;</span>
 <span class="cp">&lt;?php</span>
 <span class="k">if</span> <span class="p">(</span> <span class="nx">is_singular</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
 
@@ -172,7 +172,7 @@ enchilada starting with the title tag:</p>
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">24 Apr 2009</h4>
+
                 </div>
             </footer>
         </div>

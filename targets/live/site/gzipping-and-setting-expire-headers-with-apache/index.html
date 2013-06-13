@@ -23,7 +23,7 @@
 suggestions it had was Gzipping content and adding expire dates.</p>
 
 <p>Below is how to do both in your <code>.htaccess</code> file:</p>
-<div class="highlight"><pre><code class="apache"><span class="nb">AddOutputFilterByType</span> DEFLATE text/html text/plain application/javascript text/css
+<div class="highlight"><pre><code class="apache language-apache" data-lang="apache"><span class="nb">AddOutputFilterByType</span> DEFLATE text/html text/plain application/javascript text/css
 
 <span class="nt">&lt;FilesMatch</span> <span class="s">&quot;\.(js|css|png|jpg|jpeg|gif|ico)$&quot;</span><span class="nt">&gt;</span>
   <span class="nb">ExpiresActive</span> <span class="k">on</span>
@@ -48,7 +48,7 @@ suggestions it had was Gzipping content and adding expire dates.</p>
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">25 Dec 2012</h4>
+
                 </div>
             </footer>
         </div>

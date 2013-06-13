@@ -20,7 +20,7 @@
             </header>
             <section>
                 <p>Let&#39;s start with the simplest web page:</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
 </code></pre></div>
 <p>Well, that&#39;s nice, but there&#39;s <a href="http://www.w3.org/TR/html401/struct/global.html">certain information missing</a>. 
 We should add a doctype to let the browser know what flavor of HTML, XHTML, etc we&#39;re using. This declares the document 
@@ -32,7 +32,7 @@ for the contents.</p>
 <p>We should also let the browser know our character encoding with a meta tag.</p>
 
 <p>So now we have:</p>
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/\\xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/\\xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;head&gt;</span>
         <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html;charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
@@ -44,7 +44,7 @@ for the contents.</p>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
 <p>What about the look of the page? Let&#39;s add some CSS:</p>
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/\\xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/\\xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;head&gt;</span>
         <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html;charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
@@ -61,7 +61,7 @@ for the contents.</p>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
 <p>Of course we should throw that into an external style sheet:</p>
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
 <span class="c">&lt;!-- sample.html --&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;head&gt;</span>
@@ -75,13 +75,13 @@ for the contents.</p>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
 <p>and:</p>
-<div class="highlight"><pre><code class="css"><span class="c">/* styles.css */</span>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="c">/* styles.css */</span>
 <span class="nt">body</span> <span class="p">{</span>
     <span class="k">background-color</span><span class="o">:</span><span class="m">#BDC4D4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Let&#39;s add two images:</p>
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>
     An Image ==&gt;
     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/one.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;image 1&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/p&gt;</span>
@@ -98,7 +98,7 @@ the user with only one request to the server using
 they&#39;ll be the background to an IMG element. &quot;null.png&quot; is simply a transparent pixel:</p>
 
 <p>The HTML:</p>
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
 <span class="c">&lt;!-- sample.html --&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;head&gt;</span>
@@ -120,7 +120,7 @@ they&#39;ll be the background to an IMG element. &quot;null.png&quot; is simply 
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div>
 <p>The CSS:</p>
-<div class="highlight"><pre><code class="css"><span class="c">/* styles.css */</span>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="c">/* styles.css */</span>
 <span class="nt">body</span> <span class="p">{</span>
     <span class="k">background-color</span><span class="o">:</span><span class="m">#BDC4D4</span><span class="p">;</span>
 <span class="p">}</span>
@@ -140,7 +140,7 @@ speeds up the loading of pages by repeat visitors.</p>
 <p>We can accomplich this using HTTP headers. This is not the HTML HEADER tag. HTTP headers are lines that the server 
 sends to the browser before the contents of the page... this means we can&#39;t put the HTTP headers into the HTML file. 
 We&#39;ll have to use something server side for this. PHP has a header() function, which makes things really easy:</p>
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="cp">&lt;?php</span>
 <span class="c1">// Expires one year from now</span>
 <span class="nv">$expires</span> <span class="o">=</span> <span class="nb">mktime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">),</span>   <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">),</span>   <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
 <span class="c1">// Format date</span>
@@ -176,7 +176,7 @@ before the PHP header() function.</p>
 <p>Ok, now we&#39;re getting somewhere, but we&#39;ve still got all this text and stuff on our web page.... ok we don&#39;t, but we 
 could have all this stuff, if we had a big web page, or it may look like a lot of stuff to someone with a limping dial 
 up in East Timor. Well, why don&#39;t we compress all our stuff. Let&#39;s GZIP it.</p>
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="cp">&lt;?php</span>
 <span class="cp">// Expires one year from now</span>
 <span class="cp">$expires = mktime(0, 0, 0, date(&quot;m&quot;),   date(&quot;d&quot;),   date(&quot;Y&quot;)+1);</span>
 <span class="cp">// Format date</span>
@@ -212,17 +212,17 @@ up in East Timor. Well, why don&#39;t we compress all our stuff. Let&#39;s GZIP 
 <p>You can <a href="http://www.gidnetwork.com/tools/gzip-test.php">confirm that you&#39;re properly GZIPPED</a>.</p>
 
 <p>Ok. With PHP we can also <a href="http://php.net/manual/en/function.flush.php">flush</a> the buffer early:</p>
-<div class="highlight"><pre><code class="php"><span class="x">&lt;/head&gt;</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">&lt;/head&gt;</span>
 <span class="x">    </span><span class="cp">&lt;?php</span> <span class="nb">flush</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="x"></span>
 <span class="x">&lt;body&gt;</span>
 </code></pre></div>
 <p>It&#39;s great that our CSS is in its own file, but it still has a bunch of whitespace. Why don&#39;t we minify it.</p>
 
 <p>I used the <a href="http://developer.yahoo.com/yui/compressor/">YUI compressor</a> with this command:</p>
-<div class="highlight"><pre><code class="bash">java -jar yuicompressor-2.4.2.jar styles.css -o styles.min.css --type css
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">java -jar yuicompressor-2.4.2.jar styles.css -o styles.min.css --type css
 </code></pre></div>
 <p>To get this CSS file:</p>
-<div class="highlight"><pre><code class="css"><span class="nt">body</span><span class="p">{</span><span class="k">background-color</span><span class="o">:</span><span class="m">#BDC4D4</span><span class="p">;}</span><span class="nc">.sprite</span><span class="p">{</span><span class="k">width</span><span class="o">:</span><span class="m">80px</span><span class="p">;</span><span class="k">height</span><span class="o">:</span><span class="m">80px</span><span class="p">;</span><span class="k">background</span><span class="o">:</span><span class="sx">url(&#39;images/sprite.png&#39;)</span><span class="p">;}</span><span class="nc">.image2</span><span class="p">{</span><span class="k">background-position</span><span class="o">:-</span><span class="m">80px</span><span class="p">;}</span>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="nt">body</span><span class="p">{</span><span class="k">background-color</span><span class="o">:</span><span class="m">#BDC4D4</span><span class="p">;}</span><span class="nc">.sprite</span><span class="p">{</span><span class="k">width</span><span class="o">:</span><span class="m">80px</span><span class="p">;</span><span class="k">height</span><span class="o">:</span><span class="m">80px</span><span class="p">;</span><span class="k">background</span><span class="o">:</span><span class="sx">url(&#39;images/sprite.png&#39;)</span><span class="p">;}</span><span class="nc">.image2</span><span class="p">{</span><span class="k">background-position</span><span class="o">:-</span><span class="m">80px</span><span class="p">;}</span>
 </code></pre></div>
 <p>We can do the same minification with our Javascript if we have any, and remember to include your Javascript as far to 
 the bottom of the page as you can.</p>
@@ -244,7 +244,7 @@ the bottom of the page as you can.</p>
                 
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-                    <h4 class="pull-right">21 Jun 2010</h4>
+
                 </div>
             </footer>
         </div>
