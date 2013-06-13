@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             },
 
             jekyll: {
-                command: "jekyll --server",
+                command: "jekyll serve",
                 options: {
                     stdout: true,
                     stderr: true,
