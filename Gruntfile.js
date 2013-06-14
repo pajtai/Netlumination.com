@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
         shell: {
             rm: {
-                command: "rm -rf temp && rm -rf targets"
+                command: "rm -rf temp && rm -rf targets/live/site"
             },
             cp: {
                 command: "cp -R application temp"

@@ -34,7 +34,9 @@
                 {% endif %}
                 <div class="pull-right">
                     <h3 class="logo"><a href="/">Netlumination</a></h3>
-
+                    {% if page.date %}
+                    <h4 class="pull-right">{{ page.date | date_to_string }}</h4>
+                    {% endif %}
                 </div>
             </footer>
         </div>
