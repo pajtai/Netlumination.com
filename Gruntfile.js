@@ -1,6 +1,9 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+    // load all grunt tasks
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
     // Project configuration.
     grunt.initConfig({
 
@@ -59,12 +62,16 @@ module.exports = function(grunt) {
                     }
                 }
             }
+        },
+
+        open : {
+            dev : {
+                path: 'http://localhost:4000'
+            }
         }
     });
 
-    // plugin tasks
-    grunt.loadNpmTasks('grunt-useref');
-    grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('build', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'shell:jekyll']);
+
+    grunt.registerTask('build', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'open:dev', 'shell:jekyll']);
 };

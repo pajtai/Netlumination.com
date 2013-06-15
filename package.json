@@ -1,23 +1,27 @@
 {
-    "name": "Netlumination",
-    "description": "The Netlumination website",
-    "version": "0.1.0",
-    "homepage": "",
-    "author": {
-        "name": "Peter Ajtai"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/pajtai/Netlumination.com.git"
-    },
-    "bugs": {
-        "url": "https://github.com/pajtai/Netlumination.com/issues"
-    },
-    "dependencies": {
-        "grunt-useref" : "0.0.16",
-        "grunt-shell": "0.2.1"
-    },
-    "devDependencies": {
-        "grunt" : "~0.4.0"
-    }
+  "name": "Netlumination",
+  "description": "The Netlumination website",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Peter Ajtai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pajtai/Netlumination.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pajtai/Netlumination.com/issues"
+  },
+  "dependencies": { },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-useref": "0.0.16",
+    "grunt-shell": "0.2.1",
+    "grunt-open": "~0.2.0",
+    "matchdep": "~0.1.2"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
 }
