@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Our Javascript Tool Chain</title>
+        <link rel="stylesheet" href="/css/styles.0.1.0.css"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Our Javascript Tool Chain</h1>
+                
+                <a class="badge badge-success text-white" href="/build-automation/">« Build automation</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>The themes at the jQuery conference were automation, modularity, and efficiency. There were
+many topcis covered in the talks, but the overlap among the talks was relatively clear, and
+it highlighted a handful of patterns and technologies that are in use across many JavaScript
+projects.</p>
+
+<p>For a long time JavaScript had a negative association with the term, &quot;scripting language.&quot;
+To this day, some people have the impression that JavaScript is not suited for large
+complex apps. Whether the language is well suited to such a purpose remains a question, but
+there are now many examples of maintainable, testable, large scale apps. Since we are
+dealing with such a flexible language there are many ways and tool chains to use for
+creating large apps. The speakers at the conference were mostly using variants of one
+similar tool chain. I was pleasantly surprised at how much of this tool chain we are using
+at Solid. The tool chain is MV* (often Backbone), AMD (usually requirejs), and automated
+builds using Grunt. The builds usually include running unit tests. There are many options
+for unit tests, we tend to use Jasmine.</p>
+
+<p>There are several places the JavaScript tool chain has yet to mature. One is true integration
+tests and the other is error handling. There was also a good talk about A/B testing at the
+conference.</p>
+
+<p>Asynchronous Module Definitions (AMD) is a more recent concept for JavaScript. Most other
+languages have a means to create dependency hierarchies by defining and pulling
+dependencies into files. AMD is the idea that solves this problem for JavaScript, and
+Requirejs is a good and useful implentation of AMD.</p>
+
+<p>To create apps with intricate and varied functionality, like many of the one page apps
+on the web, it&#39;s necessary to write tens of thousands of lines of code. Many of the apps
+we build run over 10k lines, and some run over 30k. One of the speakers (reference) said
+the it is no longer, if it ever was, a badge of honor to work on a giant 10k JavaScript
+file. Breaking the code up into modules makes general code management a more realistic
+task, and it also helps a developer think about the code one little chunk at a time. This
+reduces the total amount of code that you have to hold in your head at once. Modules also
+make more decoupled, more testable, and more reusable code. Finally, AMD are loaded on the
+fly, so Requirejs takes care of the load order, which means no more worrying about the
+order of script tags in the head or body of a page. When ready to deploy, Requirejs
+modules can be optimized into on file that is either stripped of Requirejs itself, or it
+contains a minimal version called Almond.</p>
+
+<p>Optimizing and sometimes deploying scripts with a build engine is also a common pattern.
+Over the past year Grunt gained greatly in popularity. Grunt runs on Node which itself
+uses a flavor of module definitions. One of the many nice things about Grunt is that it is
+very flexible. You can
+execute arbitrary system commands or even kick off other build processes with it. So, you
+could both optimize the JavaScript in and Android project, as well due a full Maven or Ant
+build for the Java. So, while the home site of Grunt says it is for use with JavaScript,
+that is not necessarily so, and it can be used to build projects in theoretically any
+language. We used it for several PHP projects. Grunt can also be used to deploy projects.
+It is a great Swiss Army knife for developers who are most comfortable with JavaScript.</p>
+
+<p>Large projects inevitably end up containing repeated code snippets and other boiler plate.
+To keep things DRY (Don&#39;t Repeat Yourself), pulling boiler plate into factories or other
+methods is very important. Several talks touched on jQuery UIs often overlooked Widget
+Factory. The factory pattern is very simple and useful to implement in JavaScript.
+Eliminating boiler plate not only saves the amount you have to type, but it makes
+refactoring much simpler, since updating a method means only doing it in one centralized
+place.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// without a factory
+makeVisible: {
+    this.addEventListeners();
+    this.model.set(&quot;viewState:visibility&quot;, true);
+},
+addEventListeners: {
+    this.listenTo(
+}
+</code></pre></div>
+<p>Backbone has an especially large amount of such boilerplate, and there are some libraries
+like Marionette that attempt to solve this problem.</p>
+
+<p>jQuery plugins also have a large amount of boiler plate. To handle this, the jQuery UI team
+created a jQuery plugin factory. There was also a talk introducing a similar and new jQuery
+plugin factory. This is an illustration of using common design patterns in JavaScript.
+Another common design pattern that was reference in many talks is the Publish / Subscribe
+pattern.</p>
+
+<p>There are many libraries including Backbone that use the PubSub pattern. There was a talk
+about using events to help decouple views in a large app. There are many ways to use events
+and to create even buses. In backbone models can be listened to. This allows things to
+subscribe to changes on models. The use of changing and listening to changes in models
+allows the decoupling of views in Backbone. Views can be injected with the models that they
+ are interested in. This allows the coordination of multiple views based on important data.
+ It allows views to not need to know of the existence of other views. Instead view can just
+ respond to data and changes in data, which is much more modular and flexible.</p>
+
+<p>Events can also be triggered arbitrarily, unrelated to any model changes. A common way to
+ do this is either by having a global event bus or through the use of more targeted channels.
+ Backbone allows extending arbitrary objects with Events. In fact Backbone itself can be
+ used as a global event bus. We use channels to broadcast events. For example if views can
+ trigger or subscribe to the <code>channels.visible</code>. This would be a channel that views that are
+ visible trigger events on. This allows the dropping of direct reference from other views.
+ This can be especially helpful with modals and child or nested views.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">24 Jun 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

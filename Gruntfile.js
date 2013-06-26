@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             },
 
             css: {
-                command: "rm -rf targets/live/cdn/css && mv temp/css targets/live/cdn/",
+                command: "mv temp/css targets/live/site/css",
                 options: {
                     stdout: true,
                     stderr: true
@@ -74,4 +74,6 @@ module.exports = function(grunt) {
 
 
     grunt.registerTask('build', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'open:dev', 'shell:jekyll']);
+
+    grunt.registerTask('server', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'open:dev', 'shell:jekyll']);
 };
