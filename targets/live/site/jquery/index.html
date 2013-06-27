@@ -2,14 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Our Javascript Tool Chain</title>
+        <title>Our JavaScript Tool Chain</title>
         <link rel="stylesheet" href="/css/styles.0.1.0.css"/>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
     </head>
     <body>
         <div class="container">
             <header class="well">
-                <h1 class="page-header">Our Javascript Tool Chain</h1>
+                <h1 class="page-header">Our JavaScript Tool Chain</h1>
                 
                 <a class="badge badge-success text-white" href="/build-automation/">« Build automation</a>&nbsp;&nbsp;
                 
@@ -17,25 +17,59 @@
                 
             </header>
             <section>
-                <p>The themes at the jQuery conference were automation, modularity, and efficiency. There were
-many topcis covered in the talks, but the overlap among the talks was relatively clear, and
-it highlighted a handful of patterns and technologies that are in use across many JavaScript
-projects.</p>
-
-<p>For a long time JavaScript had a negative association with the term, &quot;scripting language.&quot;
+                <p>For a long time JavaScript had a negative association with the term, &quot;scripting language.&quot;
 To this day, some people have the impression that JavaScript is not suited for large
 complex apps. Whether the language is well suited to such a purpose remains a question, but
-there are now many examples of maintainable, testable, large scale apps. Since we are
-dealing with such a flexible language there are many ways and tool chains to use for
-creating large apps. The speakers at the conference were mostly using variants of one
-similar tool chain. I was pleasantly surprised at how much of this tool chain we are using
-at Solid. The tool chain is MV* (often Backbone), AMD (usually requirejs), and automated
-builds using Grunt. The builds usually include running unit tests. There are many options
-for unit tests, we tend to use Jasmine.</p>
+there are examples of maintainable, testable, large scale apps. Since we are
+dealing with such a flexible language there are many ways and tool chains to use.</p>
+
+<p>At Solid we&#39;re using the same tool chain across multiple projects to manage our JavaScript
+apps. Recently a colleague and I went to the jQuery conference in Portland, and it looks
+like many teams are using variants of this tool chain. The tool chain is MV* (MVC, MVP, MVPP
+MVWTF...) (often Backbone), dependency management with AMD (usually requirejs), CSS compilation
+from SASS, LESS, or other, and automated builds using Grunt. The builds usually include
+running unit tests. There are many options for unit tests, we tend to use Jasmine.</p>
+
+<blockquote>
+<p>Our JavaScript Tool Chain</p>
+
+<ul>
+<li>MV* &amp; PubSub
+
+<ul>
+<li>Backbone</li>
+</ul></li>
+<li>Templating
+
+<ul>
+<li>Underscore - client</li>
+<li>Jade - server</li>
+</ul></li>
+<li>CSS management
+
+<ul>
+<li>SASS</li>
+</ul></li>
+<li>Dependency management
+
+<ul>
+<li>RequireJS</li>
+</ul></li>
+<li>DOM interaction
+
+<ul>
+<li>jQuery</li>
+</ul></li>
+<li>Build manager
+
+<ul>
+<li>Grunt</li>
+</ul></li>
+</ul>
+</blockquote>
 
 <p>There are several places the JavaScript tool chain has yet to mature. One is true integration
-tests and the other is error handling. There was also a good talk about A/B testing at the
-conference.</p>
+tests and the other is error handling.</p>
 
 <p>Asynchronous Module Definitions (AMD) is a more recent concept for JavaScript. Most other
 languages have a means to create dependency hierarchies by defining and pulling
