@@ -9,9 +9,9 @@ module.exports = function(grunt) {
 
         useref: {
             // specify which files contain the build blocks
-            html: 'temp/**/*.html',
+            html: 'build/**/*.html',
             // explicitly specify the temp directory you are working in
-            temp: 'temp'
+            temp: 'build'
         },
 
         shell: {
@@ -24,41 +24,15 @@ module.exports = function(grunt) {
 
             jekyll: {
                 command: "jekyll serve -w",
+                callback: function() {
+                    grunt.log.writeln("***** --- *****");
+                    grunt.tasks.run('open:dev');
+                },
                 options: {
                     stdout: true,
                     stderr: true,
                     execOptions: {
                         cwd: './temp'
-                    }
-                }
-            },
-
-            css: {
-                command: "mv temp/css targets/live/site/css",
-                options: {
-                    stdout: true,
-                    stderr: true
-                }
-            },
-
-            ref: {
-                command: 'find . -type f -print0 | xargs -0 -n 1 sed -i -e \'s/rel="stylesheet" href="\\/css/rel="stylesheet" href="http:\\/\\/img\\.netlumination\\.com\\/css/g\'',
-                option: {
-                    stdout: true,
-                    stderr: true,
-                    execOptions: {
-                        cwd: './temp'
-                    }
-                }
-            },
-
-            clean: {
-                command: "rm buttons.css responsive.min.css styles.css syntax.css",
-                option: {
-                    stdout: true,
-                    stderr: true,
-                    execOptions: {
-                        cwd: './temp/css'
                     }
                 }
             }
@@ -68,12 +42,33 @@ module.exports = function(grunt) {
             dev : {
                 path: 'http://localhost:4000'
             }
+        },
+
+        build_gh_pages: {
+            ghPages: {
+                options: {
+                    build_branch: "gh-pages",
+                    dist: "build"
+                }
+            }
         }
     });
 
 
+    grunt.registerTask("customJekyll", "custom kickoff of Jekyll", function() {
+
+        var jekyll = grunt.util.spawn({
+            cmd: 'jekyll',
+            args: ["serve", "-w"]
+        }, function(error, result, code) {
+            return grunt.warn("Error!");
+        });
+
+
+
+    });
 
     grunt.registerTask('build', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'open:dev', 'shell:jekyll']);
 
-    grunt.registerTask('server', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'open:dev', 'shell:jekyll']);
+    grunt.registerTask('server', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'customJekyll', 'open:dev']);
 };

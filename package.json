@@ -13,13 +13,14 @@
   "bugs": {
     "url": "https://github.com/pajtai/Netlumination.com/issues"
   },
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.0",
     "grunt-useref": "0.0.16",
     "grunt-shell": "0.2.1",
     "grunt-open": "~0.2.0",
-    "matchdep": "~0.1.2"
+    "matchdep": "~0.1.2",
+    "grunt-contrib-watch": "~0.4.4"
   },
   "engines": {
     "node": ">=0.8.0"
