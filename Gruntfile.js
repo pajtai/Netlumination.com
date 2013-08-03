@@ -15,13 +15,6 @@ module.exports = function(grunt) {
         },
 
         shell: {
-            rm: {
-                command: "rm -rf temp && rm -rf targets/live/site"
-            },
-            cp: {
-                command: "cp -R application temp"
-            },
-
             jekyll: {
                 command: "jekyll serve -w",
                 callback: function() {
@@ -32,15 +25,24 @@ module.exports = function(grunt) {
                     stdout: true,
                     stderr: true,
                     execOptions: {
-                        cwd: './temp'
+                        cwd: './application'
                     }
                 }
-            }
-        },
+            },
 
-        open : {
-            dev : {
-                path: 'http://localhost:4000'
+            jekyllDeploy: {
+                command: "jekyll",
+                callback: function() {
+                    grunt.log.writeln("***** --- *****");
+                    grunt.tasks.run('open:dev');
+                },
+                options: {
+                    stdout: true,
+                    stderr: true,
+                    execOptions: {
+                        cwd: './application'
+                    }
+                }
             }
         },
 
@@ -51,24 +53,27 @@ module.exports = function(grunt) {
                     dist: "build"
                 }
             }
+        },
+
+        jekyll: {
+            server : {
+                src : 'templates',
+                dest: 'dev',
+                server : true,
+                server_port : 8000,
+                auto : true
+            },
+            dev: {
+                src: 'templates',
+                dest: 'dev'
+            },
+            prod: {
+                src: 'templates',
+                dest: 'prod'
+            }
         }
     });
 
+    grunt.registerTask("deploy", "Deploy to gh-pages", ["shell:jekyllDeploy", "build_gh_pages"]);
 
-    grunt.registerTask("customJekyll", "custom kickoff of Jekyll", function() {
-
-        var jekyll = grunt.util.spawn({
-            cmd: 'jekyll',
-            args: ["serve", "-w"]
-        }, function(error, result, code) {
-            return grunt.warn("Error!");
-        });
-
-
-
-    });
-
-    grunt.registerTask('build', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'shell:ref', 'open:dev', 'shell:jekyll']);
-
-    grunt.registerTask('server', ['shell:rm', 'shell:cp', 'useref', 'concat', 'cssmin', 'shell:clean', 'shell:css', 'customJekyll', 'open:dev']);
 };
