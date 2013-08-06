@@ -1,6 +1,10 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+    'user strict';
+
+    var port = 8000;
+
     // load all grunt tasks
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -14,38 +18,6 @@ module.exports = function(grunt) {
             temp: 'build'
         },
 
-        shell: {
-            jekyll: {
-                command: "jekyll serve -w",
-                callback: function() {
-                    grunt.log.writeln("***** --- *****");
-                    grunt.tasks.run('open:dev');
-                },
-                options: {
-                    stdout: true,
-                    stderr: true,
-                    execOptions: {
-                        cwd: './application'
-                    }
-                }
-            },
-
-            jekyllDeploy: {
-                command: "jekyll",
-                callback: function() {
-                    grunt.log.writeln("***** --- *****");
-                    grunt.tasks.run('open:dev');
-                },
-                options: {
-                    stdout: true,
-                    stderr: true,
-                    execOptions: {
-                        cwd: './application'
-                    }
-                }
-            }
-        },
-
         build_gh_pages: {
             ghPages: {
                 options: {
@@ -56,24 +28,32 @@ module.exports = function(grunt) {
         },
 
         jekyll: {
-            server : {
-                src : 'templates',
-                dest: 'dev',
-                server : true,
-                server_port : 8000,
+            options: {
+                src : 'application',
+                dest: 'build',
                 auto : true
             },
-            dev: {
-                src: 'templates',
-                dest: 'dev'
+            server : {
+                options: {
+                    server : true,
+                    watch: true,
+                    server_port : port
+                }
             },
-            prod: {
-                src: 'templates',
-                dest: 'prod'
+            build: { }
+        },
+
+        open: {
+            server: {
+                path: 'http://localhost:' + port
             }
         }
     });
 
-    grunt.registerTask("deploy", "Deploy to gh-pages", ["shell:jekyllDeploy", "build_gh_pages"]);
+    grunt.registerTask("kickoff", function() {
+       grunt.util.spawn("grunt", ["jekyll:server"]);
+    });
+    grunt.registerTask('server', 'Deploy website on localhost', ['open:server', 'jekyll:server']);
+    grunt.registerTask("deploy", "Deploy to gh-pages", ['jekyll:build', 'build_gh_pages']);
 
 };
