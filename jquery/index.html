@@ -20,6 +20,8 @@
                 
                 <a class="badge badge-success text-white" href="/">Home</a>
                 
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/if-it-is-impossible-it-did-not-happen/">Do not stop... »</a>
+                
             </header>
             <section>
                 <h2>Intro</h2>
@@ -137,6 +139,47 @@ allows the decoupling of views in Backbone. Views can be injected with the model
  up nicely with the old MVC concept that a View should just the the visual presentation of
  a filtered model.</p>
 
+<h2>Dependency Management</h2>
+
+<p>Asynchronous Module Definitions (AMD) is a more recent concept for JavaScript. Most other
+languages have a means to create dependency hierarchies by defining and pulling
+dependencies into files. AMD is the idea that solves this problem for JavaScript, and
+Requirejs is a good and useful implentation of AMD. AMD is not perfect, but it is certainly
+an improvement over tracking tens of script includes and what order they should be added.
+Just like script includes (and build blocks), Requirejs can be optimized into one file.
+There are other AMD implementations like CommonJS. CommonJS is what Node uses.
+Modules not only help in dependency management and ease of testing, they also allow you to
+conceptually isolate logical pieces of the code, so that you don&#39;t have to keep the entire
+app in your head at all times.</p>
+
+<h2>DOM Manipulation</h2>
+
+<p>We use jQuery for interacting with the DOM. While it is sometimes fun to try and reach into
+the DOM yourself, the moment you realize how work intensive supporting multiple browsers and
+browser version in any sort of sain and sustainable way is, you&#39;ll go back to using a library
+like jQuery. Looking at some of the original DOM element selection snippets is fun. For example
+the one written by Dean Edward:</p>
+
+<p>TODO: find code snippet and reference to both code snippets</p>
+
+<h2>Promises</h2>
+
+<p>A relatively recent addition to jQuery as an implementation to PromisesA.</p>
+
+<h2>CSS Management</h2>
+
+<p>For me, one of the most important recent changes in Web Development was CSS precompilers.
+Working with CSS files that stretch to thousands of lines is painful. Not only is it almost
+impossible to not not not repeat yourself, but where to add new CSS is often ambigous. Forcing
+structure on to a large CSS file is possible, but it comes with the price of bloating your
+total number of selectors, which will break IE. Definitely not finally, a big annoyance is that due
+to a lack of variables, updating things like colors requires an error prone search and
+replace tactic. Functions are also lacking in CSS.</p>
+
+<p>SASS let&#39;s you organize your CSS into files. It allows the use of reusable methods (mixins)
+and variables as well as nesting. Additionally SASS supports source maps, so that you know the corresponding
+SASS lines to your CSS lines.</p>
+
 <h2>Templating</h2>
 
 <p>Templating is one of those things you don&#39;t realize you really need until after you start
@@ -153,32 +196,7 @@ injects the data into the templates. The ability to develop portions of your app
 like this is also one of the big advantages of using MV*. As long as the team can agree
 on the interfaces ahead of time, they can work on individual components at their own pace.</p>
 
-<h2>CSS Management</h2>
-
-<p>For me, one of the most important recent changes in Web Development was CSS precompilers.
-Working with CSS files that stretch to thousands of lines is painful. Not only is it almost
-impossible to not not not repeat yourself, but where to add new CSS is often ambigous. Forcing
-structure on to a large CSS file is possible, but it comes with the price of bloating your
-total number of selectors, which will break IE. Definitely not finally, a big annoyance is that due
-to a lack of variables, updating things like colors requires an error prone search and
-replace tactic. Functions are also lacking in CSS.</p>
-
-<p>SASS let&#39;s you organize your CSS into files. It allows the use of reusable methods (mixins)
-and variables as well as nesting. Additionally SASS supports source maps, so that you know the corresponding
-SASS lines to your CSS lines.</p>
-
-<h2>Dependency Management</h2>
-
-<p>Asynchronous Module Definitions (AMD) is a more recent concept for JavaScript. Most other
-languages have a means to create dependency hierarchies by defining and pulling
-dependencies into files. AMD is the idea that solves this problem for JavaScript, and
-Requirejs is a good and useful implentation of AMD. AMD is not perfect, but it is certainly
-an improvement over tracking tens of script includes and what order they should be added.
-Just like script includes (and build blocks), Requirejs can be optimized into one file.
-There are other AMD implementations like CommonJS. CommonJS is what Node uses.
-Modules not only help in dependency management and ease of testing, they also allow you to
-conceptually isolate logical pieces of the code, so that you don&#39;t have to keep the entire
-app in your head at all times.</p>
+<h2>Testing</h2>
 
 <h2>Build Management</h2>
 

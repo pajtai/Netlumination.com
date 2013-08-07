@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Do not stop not thinking negatively</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Do not stop not thinking negatively</h1>
+                
+                <a class="badge badge-success text-white" href="/jquery/">« Our JavaScript Tool...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>If a bug can only be explained by an impossible event, then - almost always - your assumptions
+of what happened are wrong, and once in a blue moon, your understanding of the possible is
+incomplete.</p>
+
+<p>I was working on a section of code in a large, old, and tangled code base. I passed a method three arguments, but the method only
+admitted to receiving two. The code looked something like this:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">checkPurchase</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">budget</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nx">price</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nx">budget</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+<span class="nx">checkPurchase</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;budget&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>The above always showed:
+<code>
+item - price - undefined - 2
+</code></p>
+
+<p>This looks like some sort of horrible core JavaScript bug where arguments are being lost. Clearly
+this is approaching the level of impossible. After hunting around for a while, I realized
+the method was being spied on and called through, but only the first two of the arguments were being passed
+on, since the legacy code only had two arguments..... the spy had been baked into the code
+for some quick testing in an unrelated file and forgotten about.... so somewhere else in the
+codebase there was a:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">oldCheckPurchase</span> <span class="o">=</span> <span class="nx">checkPurchase</span><span class="p">;</span>
+<span class="nx">checkPurchase</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">price</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do some checks etc here</span>
+    <span class="p">...</span>
+    <span class="nx">oldCheckPurchase</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">price</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>So if the only possible solution for your bug is something close to impossible - like JavaScript
+randomly dropping the third argument of one specific method - then you probably failed to
+consider something much more likely.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#logic" class="badge badge-inverse">logic</a>&nbsp;
+    
+    <a href="/tags.html#style" class="badge badge-inverse">style</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">07 Aug 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
