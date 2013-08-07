@@ -62,9 +62,11 @@ pathways that include multiple callbacks. They work with both synchronous and as
 general concept and jQuery has an impementation.
 
 ```javascript
-purchasePathway = $.when(checkUserBallance())
-	.done(tryToMakePurchase)
-	.done(showConfirmation);
+function purchasePathway() {
+    checkUserBallance()
+	    .done(tryToMakePurchase)
+	    .done(showConfirmation);
+}
 
 $("#buy").click(purchasePathway);
 ```

@@ -1,9 +1,0 @@
----
-layout: post
-title: "True hourly wage"
-tags:
-- javascript
-published: false
-type:
-http://www.bls.gov/eag/eag.us.htm
-http://www.cdc.gov/nchs/fastats/lifexpec.htm
