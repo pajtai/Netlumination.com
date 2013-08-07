@@ -44,7 +44,11 @@ module.exports = function(grunt) {
                     server_port : port
                 }
             },
-            build: { }
+            build: {
+                options: {
+                    baseurl: 'http://pajtai.github.io/Netlumination.com/'
+                }
+            }
         },
 
         watch: {
