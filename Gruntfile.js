@@ -45,9 +45,6 @@ module.exports = function(grunt) {
                 }
             },
             build: {
-                options: {
-                    base_url: 'http://pajtai.github.io/Netlumination.com/'
-                }
             }
         },
 
