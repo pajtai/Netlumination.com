@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Making a 2D JavaScript game engine - Intro</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Making a 2D JavaScript game engine - Intro</h1>
+                
+                <a class="badge badge-success text-white" href="/gzipping-and-setting-expire-headers-with-apache/">« Gzipping and setting...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/curated-reading-list/">A Curated Reading... »</a>
+                
+            </header>
+            <section>
+                <p>My first gaming experience was Hunt The Wumpus on a Texas Instruments 99. But what I really sunk a lot of time into was
+the original Nintendo. My favorite was Metroid, then Kid Icarus. I never had any of the later Nintendos, but I did play
+quite a bit of The Lost Vikings on NesTicle. Platform games always fascinated me... the huge map (seeing the full
+Metroid map with the secret worlds was somehow mesmerizing), the slowly scrolling gameplay, the cumulative experience,
+slowly working toward one far off goal through a labyrinthine guantlet.</p>
+
+<p>So, out of some vague sense of nostalgia, but mostly as a technical exercies, I decided to make a game engine. I&#39;ve been
+using a lot of JavaScript, and I thought picking JavaScript as the engine language would make it maximally accessible.
+Due to my recent reminiscing on Metroid et al. it will be a 2D enginge specifically targeted at platform games.</p>
+
+<p>There are already some <a href="http://www.melonjs.org/">great</a> <a href="http://jawsjs.com/">choices</a> if you want to use a 2D JavaScript
+platform <a href="https://github.com/bebraw/jswiki/wiki/Game-Engines">game engine</a>, and as I look at them, I have many
+questions. Hopefully creating my own engine will answer some of theses questions.</p>
+
+<p>One of the questions I had is what performance gain - if any - is there in JavaScript by using linked lists instead of
+arrays. In many languages, the size of an array cannot be modified once created, so the use of linked lists is
+necessary for storing unknown amounts of objects. In JavaScript items can easilly be added dynamically to an array.
+<a href="http://jsperf.com/usage-of-linked-list-vs-array/2">This jsperf test</a> seems to indicate that - at least for a simple
+linked list implementation - there is performance HIT in using a linked list vs an array. I noticed that <a href="https://github.com/playcraft/gamecore.js">gamecore.js</a>
+uses a <a href="https://github.com/playcraft/gamecore.js/blob/master/src/linkedlist.js">linked list</a>. If I get around to it,
+I&#39;ll try to compare their linked list performance to an array&#39;s performance.</p>
+
+<p>Another question I had came immediately when I started writing <a href="https://github.com/pajtai/platformista">platformista</a>. I
+decided to start with the core of the game, the engine itself. The code that redraws the screen every few moments to
+give the viewer the illusion of motion on the canvas. The idea is that one has an ideal frames per second (fps) to
+achieve, but not all machines will achieve this fps. For example (using Jaws), you can see that on an iPhone / iPad /
+ iPod / my 10 year old laptop, <a href="http://pajtai.github.com/Noun-Space/">this game</a> only achieves about half the target 60
+ fps. Well, what if you have a game that tries to depict a falling object? A naive implementation of fps would cause
+ objects to fall slower on slower machines. In other words each tick of the user interface has to be separate from the
+ ticks of the game code itself, or there must be some other mechanism of allowing the game to keep try of some sort of
+ &quot;real&quot; time that is not dependent on the fps. I&#39;m keeping things separte by having <a href="https://github.com/pajtai/platformista/blob/master/application/Workers/Engine.js">separate ui ticks and game ticks</a>.
+ This type of separation would also be essential in multi player games where things have to be synched among multiple
+ machines.</p>
+
+<p>I found <a href="http://nokarma.org/2011/02/02/javascript-game-development-the-game-loop/index.html">these</a> <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">two</a>
+ articles to be really helpful theoretical and technical overviews of game loops.</p>
+
+<p>So, I&#39;ve begun, and I&#39;m already surprised at the number of large decisions I&#39;ve had to make regarding the architecture
+ of the entire project just by trying to write the game engine. I&#39;ve decided to try and keep things event and data
+  driven using <a href="http://backbonejs.org/">Backbone</a>. So, I&#39;m trying to plan things by using how I <a href="http://programmers.stackexchange.com/questions/163185/torvalds-quote-about-good-programmer">structure my data</a>
+   in models (we&#39;ve yet to see if I&#39;ll have to use any data structure fancier than a JavaScript Array and Object). Using
+   Backbone means I  also have access to jQuery and Underscore / Lodash. Since I&#39;m using jQuery, I&#39;m giving qUnit a go
+   instead of my usual Jasmine.</p>
+
+<p>You can check on the state of my game engine project <a href="https://github.com/pajtai/platformista">here (codename: platformista)</a>.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#game engine" class="badge badge-inverse">game engine</a>&nbsp;
+    
+    <a href="/tags.html#animation" class="badge badge-inverse">animation</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">29 Dec 2012</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

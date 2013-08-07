@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>http://netlumination.com</loc>
+        <lastmod>2013-08-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    
+    <url>
+        <loc>http://netlumination.com/jquery//</loc>
+        <lastmod>2013-06-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/build-automation//</loc>
+        <lastmod>2013-01-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/ease-your-cache//</loc>
+        <lastmod>2013-01-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/curated-reading-list//</loc>
+        <lastmod>2013-01-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/making-a-2d-javascript-game-engine//</loc>
+        <lastmod>2012-12-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/gzipping-and-setting-expire-headers-with-apache//</loc>
+        <lastmod>2012-12-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/do-not-stop-not-thinking-negatively//</loc>
+        <lastmod>2012-11-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/javascript-quizzes//</loc>
+        <lastmod>2012-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/ebnfer//</loc>
+        <lastmod>2011-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/plugeshin//</loc>
+        <lastmod>2011-08-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/visibility-toggling-with-jquery//</loc>
+        <lastmod>2010-08-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/data-visualization//</loc>
+        <lastmod>2010-07-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/a-few-code-snippets//</loc>
+        <lastmod>2010-07-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/pimp-my-web-page-simple-to-complex//</loc>
+        <lastmod>2010-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/jquery-for-a-little-night-time-reading//</loc>
+        <lastmod>2010-06-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/the-joys-of-toxic-asset-ownership//</loc>
+        <lastmod>2010-06-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/three-steps-for-using-jquery-in-your-wordpress-theme//</loc>
+        <lastmod>2010-05-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/big-button-css-menu-links//</loc>
+        <lastmod>2010-05-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/creating-your-first-wordpress-theme-part-1//</loc>
+        <lastmod>2010-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/why-use-a-content-management-system//</loc>
+        <lastmod>2010-05-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/piping-grep-into-the-odyssey//</loc>
+        <lastmod>2010-05-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/three-steps-to-making-a-custom-keystroke-shortcut-in-emacs//</loc>
+        <lastmod>2010-04-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/some-standard-emacs-commands//</loc>
+        <lastmod>2010-04-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/a-completely-random-guide-to-emacs//</loc>
+        <lastmod>2010-04-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/a-recursive-php-function-to-turn-digits-into-words//</loc>
+        <lastmod>2010-03-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/quick-note-on-recursion//</loc>
+        <lastmod>2010-03-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/not-much-help-but-there-is-truth-in-advertising//</loc>
+        <lastmod>2010-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/i-hope-your-inheritance-isnt-an-em//</loc>
+        <lastmod>2010-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/creating-simple-animations-with-javascript//</loc>
+        <lastmod>2009-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/initial-preferences-for-photoshop//</loc>
+        <lastmod>2009-05-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/using-multiple-loops-in-wordpress-with-query_posts-and-get_categories//</loc>
+        <lastmod>2009-05-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/the-vanishing-point-filter-in-photoshop//</loc>
+        <lastmod>2009-05-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/how-to-seo-header-meta-keywords-and-descriptions-with-wordpress//</loc>
+        <lastmod>2009-04-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/creating-perspective-and-a-mirror-image-in-photoshop//</loc>
+        <lastmod>2009-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/style-guides//</loc>
+        <lastmod>2008-06-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/web-page-validity//</loc>
+        <lastmod>2008-06-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/about//</loc>
+        <lastmod>2008-06-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+
+    
+    <url>
+        <loc>http://netlumination.com/bites/testing-test/</loc>
+        <lastmod>2013-08-06</lastmod>
+        
+        
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/index.html</loc>
+        <lastmod>2013-08-06</lastmod>
+        
+        
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/tags.html</loc>
+        <lastmod>2013-08-06</lastmod>
+        
+        
+    </url>
+    
+</urlset>
