@@ -3,4 +3,4 @@ pygments: true
 permalink: /:title/
 destination: ../build
 markdown: redcarpet
-baseurl: http://pajtai.github.io/Netlumination.com/
+baseurl: http://pajtai.github.io/Netlumination.com
