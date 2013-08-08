@@ -2,7 +2,7 @@
 layout: post
 title: I Hope Your Inheritance Isn't An EM
 tags:
-- CSS
+- css
 - ems
 - fonts
 - ratios

@@ -3,7 +3,7 @@ layout: post
 title: Initial preferences for Photoshop
 tags:
 - options
-- Photoshop
+- photoshop
 - preferences
 - set up
 ---

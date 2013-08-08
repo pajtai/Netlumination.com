@@ -4,7 +4,7 @@ title: Not much help, but there is truth in advertising
 tags:
 - advertising
 - percentage
-- Zany
+- zany
 status: publish
 type: post
 published: true

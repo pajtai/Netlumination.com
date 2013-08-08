@@ -2,7 +2,7 @@
 layout: post
 title: Quick Note on Recursion
 tags:
-- PHP
+- php
 - recursion
 ---
 [Recursion](http://en.wikipedia.org/wiki/Recursion_%28computer_science%29)

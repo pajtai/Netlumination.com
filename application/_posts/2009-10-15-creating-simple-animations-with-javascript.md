@@ -3,10 +3,10 @@ layout: post
 title: Creating Simple Animations With Javascript
 tags:
 - animation
-- CSS
+- css
 - functions
-- HTML
-- Javascript
+- html
+- javascript
 - loop
 - programming
 - timer

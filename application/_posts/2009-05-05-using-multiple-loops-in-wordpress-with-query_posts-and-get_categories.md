@@ -2,14 +2,14 @@
 layout: post
 title: Using Multiple Loops in Wordpress with query_posts() and get_categories()
 tags:
-- Category
+- category
 - foreach
 - get_categories
-- PHP
+- oho
 - query_posts
-- Template
-- The Loop
-- Wordpress
+- template
+- the loop
+- wordpress
 ---
 
 This is a tutorial to demonstrate how to show entire posts from multiple categories in Wordpress. This would be

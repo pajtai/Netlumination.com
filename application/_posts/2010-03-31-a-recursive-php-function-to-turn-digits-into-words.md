@@ -2,7 +2,7 @@
 layout: post
 title: A recursive PHP function to turn digits into words
 tags:
-- PHP
+- php
 - recursion
 ---
 Warning: This is a big spoiler for Project Euler Problem 17, so if you're still working on it, don't keep reading!

@@ -7,7 +7,6 @@ tags:
 - callbacks
 - Deferred
 - promises
-published: false
 type: post
 ---
 

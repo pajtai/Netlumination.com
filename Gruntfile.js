@@ -28,7 +28,6 @@ module.exports = function(grunt) {
                 options: {
                     build_branch: "gh-pages",
                     dist: "build",
-                    cname: "www.netlumination.com"
                 }
             }
         },
@@ -38,13 +37,23 @@ module.exports = function(grunt) {
                 src : 'application',
                 dest: 'build'
             },
-            server : {
+            build: {
                 options: {
-                    server : true,
-                    server_port : port
+                    //baseurl: "http://pajtai.github.io/Netlumination.com/"
                 }
             },
-            build: {
+            server: {
+                options: {
+                    config: 'application/_config_server.yml'
+                    //baseurl: "http://pajtai.github.io/Netlumination.com/"
+                }
+            },
+            drafts: {
+                options: {
+                    config: 'application/_config_server.yml',
+                    //baseurl: "http://pajtai.github.io/Netlumination.com/"
+                    drafts: true
+                }
             }
         },
 
@@ -54,13 +63,13 @@ module.exports = function(grunt) {
                 livereload: true,
                 spawn: true
             },
-            spec: {
-                files: [
-                    'application/**/*'
-                ],
-                tasks: [
-                    'jekyll:build'
-                ]
+            server: {
+                tasks: ['jekyll:server'],
+                files: ['application/**/*']
+            },
+            drafts: {
+                tasks: ['jekyll:drafts'],
+                files: ['application/**/*']
             }
         },
 
@@ -87,7 +96,8 @@ module.exports = function(grunt) {
     grunt.registerTask("kickoff", function() {
        grunt.util.spawn("grunt", ["jekyll:server"]);
     });
-    grunt.registerTask('server', 'Deploy website on localhost', ['jekyll:build', 'connect:livereload', 'open:server','watch']);
+    grunt.registerTask('server', 'Deploy website on localhost', ['jekyll:server', 'connect:livereload', 'open:server','watch:server']);
+    grunt.registerTask('drafts', 'Deploy website on localhost', ['jekyll:drafts', 'connect:livereload', 'open:server','watch:drafts']);
     grunt.registerTask("deploy", "Deploy to gh-pages", ['jekyll:build', 'build_gh_pages']);
 
 };

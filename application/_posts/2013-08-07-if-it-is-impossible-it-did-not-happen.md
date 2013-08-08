@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Do not stop not thinking negatively
+title: If it is impossilbe it did not happen
 tags:
 - logic
 - style
