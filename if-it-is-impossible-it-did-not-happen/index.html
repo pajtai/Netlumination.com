@@ -28,7 +28,7 @@ incomplete.</p>
 
 <p>I was working on a section of code in a large, old, and tangled code base. I passed a method three arguments, but the method only
 admitted to receiving two. The code looked something like this:</p>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">checkPurchase</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">budget</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">checkPurchase</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">budget</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nx">price</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nx">budget</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
     <span class="p">...</span>
 <span class="p">}</span>
