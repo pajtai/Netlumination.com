@@ -3,3 +3,4 @@ pygments: true
 permalink: /:title/
 destination: ../build
 markdown: redcarpet
+baseurl: /
