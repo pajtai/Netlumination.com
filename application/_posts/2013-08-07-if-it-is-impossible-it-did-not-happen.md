@@ -1,6 +1,6 @@
 ---
 layout: post
-title: If it is impossilbe it did not happen
+title: If it is impossible it did not happen
 tags:
 - logic
 - style
