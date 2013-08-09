@@ -15,7 +15,7 @@ I was working on a section of code in a large, old, and tangled code base. I pas
 admitted to receiving two. The code looked something like this:
 
 ```javascript
-var checkPurchase(item, price, budget) {
+function checkPurchase(item, price, budget) {
     console.log(item + ' - ' + price + ' - ' + budget + ' - ' + arguments.length);
     ...
 }
