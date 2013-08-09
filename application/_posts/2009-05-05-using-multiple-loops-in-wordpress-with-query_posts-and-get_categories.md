@@ -10,6 +10,7 @@ tags:
 - template
 - the loop
 - wordpress
+- tutorial
 ---
 
 This is a tutorial to demonstrate how to show entire posts from multiple categories in Wordpress. This would be

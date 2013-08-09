@@ -6,6 +6,7 @@ tags:
 - photoshop
 - preferences
 - set up
+- tutorial
 ---
 
 This is a quick post about some of the things I have found to be most important when you initially set up your Photoshop

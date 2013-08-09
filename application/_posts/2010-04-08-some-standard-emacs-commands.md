@@ -3,7 +3,7 @@ layout: post
 title: Some Standard Emacs Commands / Keystrokes
 tags:
 - commands
-- Emacs
+- emacs
 - keyboard shortcuts
 - keystrokes
 - reference

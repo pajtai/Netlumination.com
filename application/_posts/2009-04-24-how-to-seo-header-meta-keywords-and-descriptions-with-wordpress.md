@@ -4,6 +4,7 @@ title: How to SEO header meta keywords and descriptions with Wordpress
 tags:
 - seo
 - wordpress
+- tutorial
 type: post
 ---
 The default Wordpress installation does not produce either a description or keywords meta tag in the header. There are

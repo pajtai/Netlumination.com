@@ -2,10 +2,11 @@
 layout: post
 title: Big Button CSS Menu Links
 tags:
-- CSS
+- css
 - highlight
 - hover
 - menu
+- tutorial
 status: publish
 ---
 

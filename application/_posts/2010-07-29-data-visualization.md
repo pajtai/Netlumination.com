@@ -3,7 +3,7 @@ layout: post
 title: Data Visualization
 tags:
 - visualization
-- Zany
+- zany
 status: publish
 type: post
 ---

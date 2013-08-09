@@ -3,10 +3,6 @@ layout: post
 title: Why use a Content Management System
 tags:
 - cms
-- control
-- convenience
-- usability
-- Website Advice
 ---
 You can feel free to skip this entire article if you have a website that you are happy with... hold on, there's
 something else... and you can easily update it. Notice that I said you, not your latte drinking, jargon spouting, charge

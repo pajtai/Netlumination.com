@@ -3,10 +3,10 @@ layout: post
 title: A few code snippets.
 tags:
 - coding
-- CSS
-- HTML
-- Javascript
-- PHP
+- css
+- html
+- javascript
+- php
 - samples
 status: publish
 type: post

@@ -10,6 +10,7 @@ tags:
 - loop
 - programming
 - timer
+- tutorial
 ---
 
 This is a basic JavaScript tutorial. I will describe how to move an element around the page using a simple animation

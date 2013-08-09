@@ -3,10 +3,11 @@ layout: post
 title: Three Steps for Using JQuery in Your Wordpress Theme
 tags:
 - cms
-- Javascript
-- JQuery
+- javascript
+- jquery
 - theme
-- Wordpress
+- wordpress
+- tutorial
 status: publish
 type: post
 ---

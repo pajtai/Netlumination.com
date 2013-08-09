@@ -3,8 +3,8 @@ layout: post
 title: JQuery for a little night time reading
 tags:
 - framework
-- Javascript
-- JQuery
+- javascript
+- jquery
 - source code
 status: publish
 type: post

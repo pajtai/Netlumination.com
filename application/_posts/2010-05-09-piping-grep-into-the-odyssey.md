@@ -4,7 +4,7 @@ title: Piping grep into the Odyssey
 tags:
 - curl
 - grep
-- Linux
+- linux
 - pipe
 - regex
 - regular expression

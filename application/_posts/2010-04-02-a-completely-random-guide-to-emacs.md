@@ -2,7 +2,7 @@
 layout: post
 title: A Completely Random Guide to Emacs
 tags:
-- Emacs
+- emacs
 - tutorial
 ---
 [Emacs](http://www.gnu.org/software/emacs/) is more than a text editor. It's a beast that runs on everything from Unix

@@ -3,7 +3,7 @@ layout: post
 title: ! 'Pimp My Web Page: Simple to Complex'
 tags:
 - optimization
-- Website Advice
+- website advice
 status: publish
 type: post
 ---

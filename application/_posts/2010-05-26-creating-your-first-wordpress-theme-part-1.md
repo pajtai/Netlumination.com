@@ -3,8 +3,8 @@ layout: post
 title: Creating your first Wordpress theme - Part 1
 tags:
 - cms
-- convenience
-- Wordpress
+- wordpress
+- tutorial
 ---
 Content Management Systems and <a href="http://wordpress.org/">Wordpress</a> is so powerful because it allows site
 owners to update their sites efficiently and to customize their sites and their CMS experience.

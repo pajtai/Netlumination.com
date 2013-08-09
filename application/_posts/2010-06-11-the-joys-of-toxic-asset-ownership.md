@@ -3,10 +3,10 @@ layout: post
 title: The joys of toxic asset ownership
 tags:
 - economics
-- Planet Money
+- planet money
 - real estate
 - toxic assets
-- Zany
+- zany
 status: publish
 type: post
 ---

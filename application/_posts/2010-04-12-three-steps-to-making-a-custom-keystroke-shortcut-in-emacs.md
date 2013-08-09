@@ -2,9 +2,10 @@
 layout: post
 title: Three Steps to Making a Custom Keystroke Shortcut in Emacs
 tags:
-- Emacs
+- emacs
 - keystrokes
 - tips
+- tutorial
 ---
 
 This one's short (ish?) and sweet. It describes how to make your own global key bindings for functions of your choice in

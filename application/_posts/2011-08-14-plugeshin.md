@@ -2,7 +2,8 @@
 layout: post
 title: PluGeSHin
 tags:
-- Wordpress
+- wordpress
+- plugins
 status: publish
 ---
 <h2>A Wordpress Plugin for GeSHi</h2>

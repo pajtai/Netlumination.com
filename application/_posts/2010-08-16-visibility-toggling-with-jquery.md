@@ -2,8 +2,8 @@
 layout: post
 title: Visibility Toggling with jQuery
 tags:
-- Javascript
-- JQuery
+- javascript
+- jquery
 - toggling
 - visibility
 status: publish
