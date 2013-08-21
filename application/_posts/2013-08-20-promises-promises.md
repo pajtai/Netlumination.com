@@ -14,6 +14,11 @@ Promises are a powerful tool for managing mutliple asynchronous tasks. Promises 
 callback wrappers, and promises are a widely available solution for breaking out of
 callback hell.
 
+* References
+    * [`$.Deferred` documentation](http://api.jquery.com/category/deferred-object/)
+    * [Companion sample `$.Deferred` project: Demo](http://pajtai.github.io/deferred-example/) - [Source](https://github.com/pajtai/deferred-example)
+    * [`$.Deferred` exploratory tests](http://pajtai.github.io/exploratory-javascript-tests/index-jquery.html?grep=Deferred)
+
 Callbacks are references to functions to be executed after a certain task is done or event is fired.
 
 ```javascript
@@ -22,8 +27,8 @@ $("#buy").click(function() {
         cost = $this.data("cost"),
         item = $this.data("item");
 
-    checkUserBallance(function(ballance) {
-        if (ballance>=cost) {
+    checkUserbalance(function(balance) {
+        if (balance>=cost) {
             buy(item, function(success){
                 if (success) {
                     alert("now you own it");
@@ -42,17 +47,17 @@ reuse or unit test the buy callback? There's no way to get to it.
 Using named references will improve our code.
 
 ```javascript
-$("#buy").click(checkUserBallance);
+$("#buy").click(checkUserbalance);
 
-function checkUserBallance() {
+function checkUserbalance() {
     var $this = $(this),
         cost = $this.data("cost"),
         item = $this.data("item");
-    checkUserBallanceApiCall(tryToMakePurchase, cost, item)
+    checkUserbalanceApiCall(tryToMakePurchase, cost, item)
 }
 
-function tryToMakePurchase(ballance, cost, item) {
-         if (ballance>=cost) {
+function tryToMakePurchase(balance, cost, item) {
+         if (balance>=cost) {
             buy(item, showConfirmation);
 	}
 }
@@ -80,7 +85,7 @@ general concept and jQuery has an impementation.
 $("#buy").click(purchasePathway);
 
 function purchasePathway() {
-    checkUserBallance()
+    checkUserbalance()
 	    .done(tryToMakePurchase)
 	    .done(showConfirmation);
 }
@@ -90,7 +95,7 @@ Like this our intent of triggering a purchase pathway on click is clear, and the
 methods in the purchase pathway are chained is obvious. Additionally, the order the methods
 in the purchase pathway are used can be easilly altered. This greatly increase reusability.
 
-There is a cost to using promises. The complexity of each method is slightly increase, since
+There is a cost to using promises. The complexity of each method is slightly increased, since
  each method has to implement a deferred.
  So the entirety of the
 code would look like this:
@@ -100,24 +105,24 @@ code would look like this:
 $("#buy").click(purchasePathway);
 
 function purchasePathway() {
-    checkUserBallance()
+    checkUserbalance()
         .done(tryToMakePurchase)
         .done(showConfirmation);
 }
 
-function checkUserBallance() {
+function checkUserbalance() {
     var $deferred = new $.Deferred(),
         $this = $(this),
         cost = $this.data("cost"),
         item = $this.data("item");
 
-    checkUserBallanceApiCall($deferred, cost, item);
+    checkUserbalanceApiCall($deferred, cost, item);
     return $deferred.promise();
 }
 
-function tryToMakePurchase(ballance, cost, item) {
+function tryToMakePurchase(balance, cost, item) {
     var $deferred = new $.Deferred();
-    if (ballance>=cost) {
+    if (balance>=cost) {
         $deferred.resolve();
 	} else {
 	    $deferred.reject();
@@ -141,8 +146,8 @@ with deferreds using either `.fail()` or `.then(doneCallback, failCallback)`. Fo
 
 ```javascript
 function purchasePathway() {
-    checkUserBallance()
-        .then(tryToMakePurchase, showBallanceTooSmallWarning)
+    checkUserbalance()
+        .then(tryToMakePurchase, showbalanceTooSmallWarning)
         .then(showConfirmation, showPurchaseErrorWarning);
 }
 ```
@@ -157,7 +162,7 @@ To look at a working example of jQuery deferreds with chaining, error handling, 
 look at [this working deferred example](http://pajtai.github.io/deferred-example/).
 
 To see the methods available on deferreds and promises, see the jQuery documentation and
-these [exploratory jQuery tests](http://pajtia.github.io/exploratory-javascript-tests/index-jquery.html)
+these [exploratory jQuery tests](http://pajtai.github.io/exploratory-javascript-tests/index-jquery.html?grep=Deferred)
 
 There are other promise implementations than `$.Deferred` and there are other solutions for
 managing async tasks, like the node `async` library (which also works in the browser); however,
