@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Promises Promises</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Promises Promises</h1>
+                
+                <a class="badge badge-success text-white" href="/if-it-is-impossible-it-did-not-happen/">« If it is...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>Promises are a powerful tool for managing mutliple asynchronous tasks. Promises are essentially
+callback wrappers, and promises are a widely available solution for breaking out of
+callback hell.</p>
+
+<p>Callbacks are references to functions to be executed after a certain task is done or event is fired.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#buy&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+        <span class="nx">cost</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">),</span>
+        <span class="nx">item</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">);</span>
+
+    <span class="nx">checkUserBallance</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ballance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ballance</span><span class="o">&gt;=</span><span class="nx">cost</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">buy</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">success</span><span class="p">){</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;now you own it&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Nested callbacks like this are a common site in much JavaScript code. They make things difficult on multiple levels.</p>
+
+<p>First, anonymous functions are often used for callbacks. This makes both code reuse and testing difficult. How could I
+reuse or unit test the buy callback? There&#39;s no way to get to it.</p>
+
+<p>Using named references will improve our code.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#buy&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">checkUserBallance</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">checkUserBallance</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+        <span class="nx">cost</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">),</span>
+        <span class="nx">item</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">);</span>
+    <span class="nx">checkUserBallanceApiCall</span><span class="p">(</span><span class="nx">tryToMakePurchase</span><span class="p">,</span> <span class="nx">cost</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">tryToMakePurchase</span><span class="p">(</span><span class="nx">ballance</span><span class="p">,</span> <span class="nx">cost</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="nx">ballance</span><span class="o">&gt;=</span><span class="nx">cost</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">buy</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">showConfirmation</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">showConfirmation</span><span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;now you own it&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now each method can be tested and reused to an extent. The scoping is nicer, in that the
+ methods get their variables passed in instead of relying on the outer scope. The problem
+ now is that the code is difficult to read, and the
+chaining of the methods is hard coded into the methods. The code is difficult to read, since
+the business logic of the purchase path is not immediately apparent. All the methods have
+to be read to see how they chain together. Calling one method directly from another reduces
+reusability, since the order of the methods are hard coded.</p>
+
+<p>To make the code more modular and readable, we can use promises. Promises are essentially a way to manage callbacks and
+pathways that include multiple callbacks. They work with both synchronous and asynchronous callbacks. Promises is a
+general concept and jQuery has an impementation.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#buy&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">purchasePathway</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">purchasePathway</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">checkUserBallance</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">tryToMakePurchase</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">showConfirmation</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Like this our intent of triggering a purchase pathway on click is clear, and the way the
+methods in the purchase pathway are chained is obvious. Additionally, the order the methods
+in the purchase pathway are used can be easilly altered. This greatly increase reusability.</p>
+
+<p>There is a cost to using promises. The complexity of each method is slightly increase, since
+ each method has to implement a deferred.
+ So the entirety of the
+code would look like this:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#buy&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">purchasePathway</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">purchasePathway</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">checkUserBallance</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">tryToMakePurchase</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">showConfirmation</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">checkUserBallance</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">(),</span>
+        <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+        <span class="nx">cost</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;cost&quot;</span><span class="p">),</span>
+        <span class="nx">item</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">);</span>
+
+    <span class="nx">checkUserBallanceApiCall</span><span class="p">(</span><span class="nx">$deferred</span><span class="p">,</span> <span class="nx">cost</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">$deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">tryToMakePurchase</span><span class="p">(</span><span class="nx">ballance</span><span class="p">,</span> <span class="nx">cost</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ballance</span><span class="o">&gt;=</span><span class="nx">cost</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">$deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">$deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">showConfirmation</span><span class="p">(</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;now you own it&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>$.Deferred</code> breaks the managing of promises in two. The original deferred object created with
+<code>new $.Deferred()</code> gives you a reference that you can use to eventually <code>.resolve()</code> or <code>.fail()</code>
+your async task. Both of the previous methods accept arguments. Additionally a deferred
+object can be used to create and return a <code>.promise()</code>. A jQuery <code>promise</code> can only listen to the fate
+of an async task. It cannot resolve or fail it.</p>
+
+<p>The above code has no error handling or retries. Error handling can be easily implemented
+with deferreds using either <code>.fail()</code> or <code>.then(doneCallback, failCallback)</code>. For example:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">purchasePathway</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">checkUserBallance</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">tryToMakePurchase</span><span class="p">,</span> <span class="nx">showBallanceTooSmallWarning</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">showConfirmation</span><span class="p">,</span> <span class="nx">showPurchaseErrorWarning</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To implement the above is already a little tricky due to the chaining. Chaining is not well
+supported in <code>$.Deferred</code>, but it can be implemented.</p>
+
+<p>Additionally, the fail methods could retry the <code>purchasePathway</code> after some user input. This
+is where deferreds get tricky, since they weren&#39;t really designed for chaining / retries.</p>
+
+<p>To look at a working example of jQuery deferreds with chaining, error handling, and retries take a
+look at <a href="http://pajtai.github.io/deferred-example/">this working deferred example</a>.</p>
+
+<p>To see the methods available on deferreds and promises, see the jQuery documentation and
+these <a href="http://pajtia.github.io/exploratory-javascript-tests/index-jquery.html">exploratory jQuery tests</a></p>
+
+<p>There are other promise implementations than <code>$.Deferred</code> and there are other solutions for
+managing async tasks, like the node <code>async</code> library (which also works in the browser); however,
+<code>$.Deferred</code> is a very convenient solution, since it is available in any app that depends on
+jQuery.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#jquery" class="badge badge-inverse">jquery</a>&nbsp;
+    
+    <a href="/tags.html#callbacks" class="badge badge-inverse">callbacks</a>&nbsp;
+    
+    <a href="/tags.html#deferred" class="badge badge-inverse">deferred</a>&nbsp;
+    
+    <a href="/tags.html#promises" class="badge badge-inverse">promises</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">20 Aug 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
