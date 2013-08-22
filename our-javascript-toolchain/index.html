@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Our JavaScript Tool Chain</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Our JavaScript Tool Chain</h1>
+                
+                <a class="badge badge-success text-white" href="/running-shell-commands-from-phpstorm/">« Running shell commands...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <h2>Intro</h2>
+
+<p>For a long time, JavaScript had a negative association with the term, &quot;scripting language.&quot;
+To this day, some people have the impression that JavaScript is not suited for large
+complex apps. Whether the language is well suited to such a purpose remains a question, but
+there are examples of maintainable, testable, large scale JavaScript apps. Since JavaScript
+is such a flexible language there are many possible tool chains to use.</p>
+
+<p>At Solid we&#39;ve found a tool chain that works across multiple projects to manage our JavaScript
+apps. Recently a colleague and I went to the jQuery conference in Portland, and it looks
+like many teams are using variants of this same tool chain. The tool chain involves a combination
+of a set of given concept implementations. The concepts are: MV* (MVC, MVP, MVPP
+MVWTF...), PubSub, dependency management, DOM Management, Promises, CSS compilation, templating, testing, and automated builds.
+The implementation we use for the previous are: Backbone, RequireJS, jQuery, SASS, underscore and Jade,
+Mocha/Chai/Sinon, and Grunt.</p>
+
+<h2>Our JavaScript Tool Chain</h2>
+
+<ul>
+<li>MV* &amp; PubSub
+
+<ul>
+<li>Backbone</li>
+</ul></li>
+<li>Dependency management
+
+<ul>
+<li>RequireJS</li>
+</ul></li>
+<li>DOM manipulation &amp; Promises (Async Management)
+
+<ul>
+<li>jQuery</li>
+</ul></li>
+<li>CSS management
+
+<ul>
+<li>SASS / Compass</li>
+</ul></li>
+<li>Templating
+
+<ul>
+<li>Underscore - client</li>
+<li>Jade - server</li>
+</ul></li>
+<li>Testing
+
+<ul>
+<li>Mocha / Chai / Sinon</li>
+</ul></li>
+<li>Build manager
+
+<ul>
+<li>Grunt</li>
+</ul></li>
+</ul>
+
+<p>In addition to the basic tools above, we make the dev environment nicer in several other ways.
+For example we make use of livereload for SASS and JavaScript for the app and tests. We also
+generate documentation for projects, but have not yet found a preferred method to do so.</p>
+
+<p>The purpose of all of these tools is to help organize thoughts and code.</p>
+
+<h2>MV*</h2>
+
+<p>Using an MV* framework forces you to separate the different concerns of your app to
+some minimum level. In the past few years, many options for doing this have been written for
+JavaScript. I like Backbone for its simplicity, it&#39;s readable source, and that it depends
+on other libraries (jQuery and underscore) that we use in projects even without
+Backbone. The important thing about picking an MV* framework is not which one you pick,
+but that you&#39;re trying to separate UI, data, and user interaction.</p>
+
+<h2>PubSub</h2>
+
+<p>The publish / subscribe design pattern is a way of decoupling your code. You can create event
+channels and listen to events transmitted on these channels. You can also listen to changes
+on objects, such as models, and respond to these changes. As with all decoupling solutions
+the price you pay is complexity. Decoupled code is generally slightly more difficult to
+read and sometimes even harder to debug than tightly couple code, but decoupled code is much
+more reusable and is easier to maintain in the long run due to the possibilities for reuse
+and isolated testing.</p>
+
+<p>Events can be triggered arbitrarily, unrelated to any model changes. A common way to
+ do this is either by having a global event bus or through the use of more targeted channels.
+ Backbone allows extending arbitrary objects with Events. In fact Backbone itself can be
+ used as a global event bus. We use channels to broadcast events. For example if views can
+ trigger or subscribe to the <code>channels.visible</code>. This would be a channel that views that are
+ visible trigger events on. This allows the dropping of direct reference from other views.
+ This can be especially helpful with modals and child or nested views.</p>
+
+<p>Backbone has a good Events implementation. Backbone models come with
+change events built in, and it is easy to extend arbitrary object with these Events, so
+while Backbone itself can be use as an Event bus, it is simple to create dedicated event
+chanels:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// Create some empty objects that will become channels</span>
+<span class="kd">var</span> <span class="nx">channels</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">thisChannel</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="nx">thatChannel</span><span class="o">:</span> <span class="p">{};</span>
+<span class="p">};</span>
+
+<span class="c1">// Turn the objects into channels</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">channels</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">oneChannel</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">oneChannel</span><span class="p">,</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Events</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>The use of changing and listening to changes in models
+allows the decoupling of views in Backbone. Views can be injected with the models that they
+ are interested in. This allows the coordination of multiple views based on important data.
+ It allows views to not need to know of the existence of other views. Instead view can just
+ respond to data and changes in data, which is much more modular and flexible. This lines
+ up nicely with the old MVC concept that a View should just the the visual presentation of
+ a filtered model.</p>
+
+<h2>Dependency Management</h2>
+
+<p>Asynchronous Module Definitions (AMD) is a more recent concept for JavaScript. Most other
+languages have a means to create dependency hierarchies by defining and pulling
+dependencies into files. AMD is the idea that solves this problem for JavaScript, and
+Requirejs is a good and useful implentation of AMD. AMD is not perfect, but it is certainly
+an improvement over tracking tens of script includes and what order they should be added.
+Just like script includes (and build blocks), Requirejs can be optimized into one file.
+There are other AMD implementations like CommonJS. CommonJS is what Node uses.
+Modules not only help in dependency management and ease of testing, they also allow you to
+conceptually isolate logical pieces of the code, so that you don&#39;t have to keep the entire
+app in your head at all times.</p>
+
+<h2>DOM Manipulation</h2>
+
+<p>We use jQuery for interacting with the DOM. While it is sometimes fun to try and reach into
+the DOM yourself, the moment you realize how work intensive supporting multiple browsers and
+browser version in any sort of sain and sustainable way is, you&#39;ll go back to using a library
+like jQuery. Looking at some of the original DOM element selection snippets is fun. For example
+the one written by Dean Edward:</p>
+
+<p>TODO: find code snippet and reference to both code snippets</p>
+
+<h2>Promises</h2>
+
+<p>A relatively recent addition to jQuery as an implementation to PromisesA.</p>
+
+<h2>CSS Management</h2>
+
+<p>For me, one of the most important recent changes in Web Development was CSS precompilers.
+Working with CSS files that stretch to thousands of lines is painful. Not only is it almost
+impossible to not not not repeat yourself, but where to add new CSS is often ambigous. Forcing
+structure on to a large CSS file is possible, but it comes with the price of bloating your
+total number of selectors, which will break IE. Definitely not finally, a big annoyance is that due
+to a lack of variables, updating things like colors requires an error prone search and
+replace tactic. Functions are also lacking in CSS.</p>
+
+<p>SASS let&#39;s you organize your CSS into files. It allows the use of reusable methods (mixins)
+and variables as well as nesting. Additionally SASS supports source maps, so that you know the corresponding
+SASS lines to your CSS lines.</p>
+
+<h2>Templating</h2>
+
+<p>Templating is one of those things you don&#39;t realize you really need until after you start
+using it. Just like doing things without MV*, it is possible to create apps without templating,
+but once you start using templates, you won&#39;t want to stop.</p>
+
+<p>Templates separate variable
+data from constants, and let you splice them together elegantly. They allow you to organize
+your code
+more, and they make it easier to split up work in a team, since one person can create
+the templates and CSS that will be placed into the DOM, while another person can create the
+code that
+injects the data into the templates. The ability to develop portions of your app piecemeal
+like this is also one of the big advantages of using MV*. As long as the team can agree
+on the interfaces ahead of time, they can work on individual components at their own pace.</p>
+
+<h2>Testing</h2>
+
+<p>Testing apps is important in order to prevent bugs and to provide, in essence, and always
+current documentation (as long as your tests are passing). We&#39;ve used Jasmine before, and
+it works well, but recently we switched over to Mocha due to <code>Mocha.should</code>, the ease of
+creating test runners for both HTML and Node, and its flexibility.</p>
+
+<p>Setting up watch and liverload tasks around the tests makes it much more enjoyable to write
+them.</p>
+
+<h2>Build Management</h2>
+
+<p>Optimizing and sometimes deploying scripts with a build engine is also a common pattern.
+Over the past year Grunt gained greatly in popularity. Grunt runs on Node. One of the many
+nice things about Grunt is that it is
+very flexible. You can
+execute arbitrary system commands or even kick off other build processes with it. So, you
+could both optimize the JavaScript in an Android project, as well do a full Maven or Ant
+build for the Java. So, while the home site of Grunt says it is for use with JavaScript,
+that is not necessarily so, and it can be used to build projects in theoretically any
+language. We use Grunt for several PHP projects. Grunt can also be used to deploy projects.
+It is a great Swiss Army knife for developers who are most comfortable with JavaScript.</p>
+
+<p>In addition to helping you manage an ongoing project, Grunt helps you setup projects quickly.
+You can setup project templates for initial scaffolding, and apply these templates based
+on a set of questions Grunt initially asks on setting up a project.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#jquery" class="badge badge-inverse">jquery</a>&nbsp;
+    
+    <a href="/tags.html#backbone" class="badge badge-inverse">backbone</a>&nbsp;
+    
+    <a href="/tags.html#underscore" class="badge badge-inverse">underscore</a>&nbsp;
+    
+    <a href="/tags.html#requirejs" class="badge badge-inverse">requirejs</a>&nbsp;
+    
+    <a href="/tags.html#sass" class="badge badge-inverse">sass</a>&nbsp;
+    
+    <a href="/tags.html#jade" class="badge badge-inverse">jade</a>&nbsp;
+    
+    <a href="/tags.html#mocha" class="badge badge-inverse">mocha</a>&nbsp;
+    
+    <a href="/tags.html#grunt" class="badge badge-inverse">grunt</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">22 Aug 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
