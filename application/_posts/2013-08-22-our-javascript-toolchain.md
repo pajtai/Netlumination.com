@@ -23,7 +23,7 @@ complex apps. Whether the language is well suited to such a purpose remains a qu
 there are examples of maintainable, testable, large scale JavaScript apps. Since JavaScript
 is such a flexible language there are many possible tool chains to use.
 
-At Solid we've found a tool chain that works across multiple projects to manage our JavaScript
+At [Solid](http://www.thinksolid.com) we've found a tool chain that works across multiple projects to manage our JavaScript
 apps. Recently a colleague and I went to the jQuery conference in Portland, and it looks
 like many teams are using variants of this same tool chain. The tool chain involves a combination
 of a set of given concept implementations. The concepts are: MV* (MVC, MVP, MVPP
