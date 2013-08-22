@@ -3,13 +3,21 @@ layout: post
 title: Our JavaScript Tool Chain
 tags:
 - javascript
+- jquery
+- backbone
+- underscore
+- requirejs
+- sass
+- jade
+- mocha
+- grunt
 status: publish
 type: post
 ---
 
 ## Intro
 
-For a long time JavaScript had a negative association with the term, "scripting language."
+For a long time, JavaScript had a negative association with the term, "scripting language."
 To this day, some people have the impression that JavaScript is not suited for large
 complex apps. Whether the language is well suited to such a purpose remains a question, but
 there are examples of maintainable, testable, large scale JavaScript apps. Since JavaScript
@@ -18,28 +26,28 @@ is such a flexible language there are many possible tool chains to use.
 At Solid we've found a tool chain that works across multiple projects to manage our JavaScript
 apps. Recently a colleague and I went to the jQuery conference in Portland, and it looks
 like many teams are using variants of this same tool chain. The tool chain involves a combination
-of a set of given concept implementations. The concecpts are: MV* (MVC, MVP, MVPP
+of a set of given concept implementations. The concepts are: MV* (MVC, MVP, MVPP
 MVWTF...), PubSub, dependency management, DOM Management, Promises, CSS compilation, templating, testing, and automated builds.
 The implementation we use for the previous are: Backbone, RequireJS, jQuery, SASS, underscore and Jade,
 Mocha/Chai/Sinon, and Grunt.
 
-> Our JavaScript Tool Chain
+## Our JavaScript Tool Chain
 
-> * MV* & PubSub
->    * Backbone
-> * Dependency management
->    * RequireJS
-> * DOM manipulation & Promises (Async Management)
->    * jQuery
-> * CSS management
->    * SASS
-> * Templating
->    * Underscore - client
->    * Jade - server
-> * Testing
->    * Mocha / Chai / Sinon
-> * Build manager
->    * Grunt
+* MV* & PubSub
+    * Backbone
+* Dependency management
+    * RequireJS
+* DOM manipulation & Promises (Async Management)
+    * jQuery
+* CSS management
+    * SASS / Compass
+* Templating
+    * Underscore - client
+    * Jade - server
+* Testing
+    * Mocha / Chai / Sinon
+* Build manager
+    * Grunt
 
 In addition to the basic tools above, we make the dev environment nicer in several other ways.
 For example we make use of livereload for SASS and JavaScript for the app and tests. We also
@@ -158,6 +166,14 @@ like this is also one of the big advantages of using MV*. As long as the team ca
 on the interfaces ahead of time, they can work on individual components at their own pace.
 
 ## Testing
+
+Testing apps is important in order to prevent bugs and to provide, in essence, and always
+current documentation (as long as your tests are passing). We've used Jasmine before, and
+it works well, but recently we switched over to Mocha due to `Mocha.should`, the ease of
+creating test runners for both HTML and Node, and its flexibility.
+
+Setting up watch and liverload tasks around the tests makes it much more enjoyable to write
+them.
 
 ## Build Management
 
