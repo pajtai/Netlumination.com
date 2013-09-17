@@ -120,50 +120,5 @@ function customStuff(defaultOptions) {
 ```
 
 The above is an example of how to customize a function use a combination of default and actual options objects. It is
-very flexible.
-
-Let's finish with a simple, slightly contrived, but nonetheless useful example. Let's say we want to write some sync and async functions using `$.Deferred`. For the
-async methods we don't want to have to create a `$.Deferred` and return a `promise` manually for each function. Instead
-we'll just use a convention like `mocha`, where if we have 0 arguments, the function is sync, and if there is one
-expected argument, the function is async, and that first argument will be the function's `$.Deferred`:
-
-```javascript
-function optionallyDeferred(method, context) {
-
-    return function() {
-
-        var $deferred,
-        returned;
-
-        if (method.length) {
-            $deferred = new $.Deferred();
-        }
-
-        // NOTE: we should probably unshift $deferred onto an Array converted arguments - just in case - leaving that out for readability
-        returned = method.call(context, $deferred);
-
-        return $deferred ? $deferred.promise() : returned;
-    }
-}
-```
-
-Then, for example, we can do the following:
-
-```javascript
-function something(deferred) {
-    var progress = 0;
-    setTimeout(function() {
-        deferred.resolve();
-    }, 10000);
-    setInterval(function() {
-        deferred.progress(++progress);
-    }, 1000);
-}
-
-optionallyDeferred(something)().then(success, failure, progress);
-```
-
-The above is an illustration of how you can use currying to customize a function and remove
-boiler plate. Without the curry, each async method would have 2 to 3 extra identical lines.
-
-Once you can stomach curry, only your imagination is the limit.
+very flexible, and the concept of extending default options with the actual options is used in libraris from Grunt to
+Backbone.
