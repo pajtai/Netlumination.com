@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Pass the Curry</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Pass the Curry</h1>
+                
+                <a class="badge badge-success text-white" href="/our-javascript-toolchain/">« Our JavaScript Tool...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p><em>Currying is a functional programming technique that allows you to customize functions. It uses function references to do this.</em></p>
+
+<p>In programming a definition for currying is pretty easy to come by, but these definitions don&#39;t generally communicate
+the power of currying to most people.</p>
+
+<p>For example, from <a href="http://en.wikipedia.org/wiki/Currying">wikipedia&#39;s curry page</a> we can read that:</p>
+
+<blockquote>
+<p>In mathematics and computer science, currying is the technique of transforming a function that takes multiple
+arguments (or a tuple of arguments) in such a way that it can be called as a chain of functions, each with a single
+argument (partial application). It was originated by Moses Schönfinkel and later re-discovered by Haskell
+Curry. Because of this, some say it would be more correct to name it schönfinkeling.</p>
+</blockquote>
+
+<p>That doesn&#39;t sound very exciting, and unless you&#39;re already familiar with currying, it&#39;s difficult to see how this
+technique can be used in every day JavaScript.</p>
+
+<p>Currying is a way to allow the customization of individual functions. This means it can be used to build a library of
+functions for later use and possible attachment to objects unrelated by an inheritance hierarchy.</p>
+
+<p>For example, let&#39;s say we have a <code>greet</code> function. It takes two arguments: who to greet and what to greet with:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">greeting</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In certain situations, especially if this function is mixed into objects, you might end up always calling the function
+with the same <code>name</code> argument.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function Alarm(alarmOwner) {
+    this.alarmOwner = alarmOwner;
+}
+
+// Mixin the greet function
+Alarm.prototype.greet = greet;
+// Other alarm clock functions
+// ...
+</code></pre></div>
+<p>Since the alarm will always be greeting its owner, the <code>greet</code> method will always be called as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">this.greet(this.alarmOwner, greeting);
+</code></pre></div>
+<p>The above is a procedural solution. We&#39;re feeding all the data into the function with arguments, and we&#39;re not using context.
+The problem with it is that it can quickly become difficult to manage multiple such methods with many calls to each method.</p>
+
+<p>A possible object oriented solution is to modify the original <code>greet</code> function to use a field:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">greeting</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The above would work okay with our alarm clock, we could just add <code>this.name = this.alarmOwner</code> into the constructor.
+The problem with this solution is that it ties the use of the method to the availability of a field. In other words, it
+is an object oriented approach, since object are combinations of data and methods. This means that
+you have to know to add a <code>this.name</code> whenever you want to use <code>greet()</code>. This is okay, until you start working with
+an object that uses <code>this.name</code> for something else. For example let&#39;s say you have a CoffeeMaker whose <code>this.name</code> is
+<code>Model XTR4302</code>. When the CoffeMaker greets you in the morning, it should do so with your name, and not its own model
+name.</p>
+
+<p>The solution is to put a slight twist on the procedural implementation of <code>greet(name, greeting)</code>, we can break the
+function into two chained functions. The first call of <code>greet</code> will take <code>name</code> as an argument, and it will return a
+function that has <code>name</code> baked into it. This second generated - curried - function can now be called with <code>greeting</code>, and
+it will always greet <code>name</code>.</p>
+
+<p>Specifically:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="nx">greeting</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This method is powerful because it creates a customized function with the first call. This is the <code>chain of functions</code>
+that the wikipedia definition of currying refers to. Using currying to build a library of functions, allows the creation
+of extremely flexible libraries.</p>
+
+<p>There&#39;s no need to limit yourself to a single curry. With currying you can do things like setup default options, and
+then pass in specific options to finally return a customized function:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">// Start building your custom function by calling it with the default options object
+function customStuff(defaultOptions) {
+
+    // Continue building your custom function by calling it with your specific options for this case
+    return function(options) {
+
+        var config = {};
+
+        _.extend(config, defaultOptions, options);
+
+        // And now you have a customized function with access to the created options / config object, and it can
+        // also be called with any number of arguments
+        return function(arg1, arg2) {
+            // In here we have acces to the final config - a combination of the default and specific options
+            if (config.that &amp;&amp; config.other) {
+                // do stuff with arg1 / arg2
+            }
+        }
+    }
+}
+</code></pre></div>
+<p>The above is an example of how to customize a function use a combination of default and actual options objects. It is
+very flexible.</p>
+
+<p>Let&#39;s finish with a simple, slightly contrived, but nonetheless useful example. Let&#39;s say we want to write some sync and async functions using <code>$.Deferred</code>. For the
+async methods we don&#39;t want to have to create a <code>$.Deferred</code> and return a <code>promise</code> manually for each function. Instead
+we&#39;ll just use a convention like <code>mocha</code>, where if we have 0 arguments, the function is sync, and if there is one
+expected argument, the function is async, and that first argument will be the function&#39;s <code>$.Deferred</code>:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">optionallyDeferred</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">$deferred</span><span class="p">,</span>
+        <span class="nx">returned</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// NOTE: we should probably unshift $deferred onto arguments - just in case - leaving that out for readability</span>
+        <span class="nx">returned</span> <span class="o">=</span> <span class="nx">method</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">$deferred</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">$deferred</span> <span class="o">?</span> <span class="nx">$deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">()</span> <span class="o">:</span> <span class="nx">returned</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Then, for example, we can do the following:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">something</span><span class="p">(</span><span class="nx">deferred</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">progress</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">10000</span><span class="p">);</span>
+    <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">deferred</span><span class="p">.</span><span class="nx">progress</span><span class="p">(</span><span class="o">++</span><span class="nx">progress</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">optionallyDeferred</span><span class="p">(</span><span class="nx">something</span><span class="p">)().</span><span class="nx">then</span><span class="p">(</span><span class="nx">success</span><span class="p">,</span> <span class="nx">failure</span><span class="p">,</span> <span class="nx">progress</span><span class="p">);</span>
+</code></pre></div>
+<p>The above is an illustration of how you can use currying to customize a function and remove
+boiler plate. Without the curry, each async method would have 2 to 3 extra identical lines.</p>
+
+<p>Once you can stomach curry, only your imagination is the limit.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#currying" class="badge badge-inverse">currying</a>&nbsp;
+    
+    <a href="/tags.html#lambdas" class="badge badge-inverse">lambdas</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">16 Sep 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

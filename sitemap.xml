@@ -4,11 +4,18 @@
 
     <url>
         <loc>http://netlumination.com</loc>
-        <lastmod>2013-08-22</lastmod>
+        <lastmod>2013-09-16</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
+    
+    <url>
+        <loc>http://netlumination.com/pass-the-curry//</loc>
+        <lastmod>2013-09-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
     
     <url>
         <loc>http://netlumination.com/our-javascript-toolchain//</loc>
@@ -293,22 +300,15 @@
 
     
     <url>
-        <loc>http://netlumination.com/bites/testing-test/</loc>
-        <lastmod>2013-08-22</lastmod>
-        
-        
-    </url>
-    
-    <url>
         <loc>http://netlumination.com/index.html</loc>
-        <lastmod>2013-08-22</lastmod>
+        <lastmod>2013-09-16</lastmod>
         
         
     </url>
     
     <url>
         <loc>http://netlumination.com/tags.html</loc>
-        <lastmod>2013-08-22</lastmod>
+        <lastmod>2013-09-16</lastmod>
         
         
     </url>
