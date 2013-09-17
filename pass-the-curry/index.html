@@ -118,47 +118,8 @@ then pass in specific options to finally return a customized function:</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>The above is an example of how to customize a function use a combination of default and actual options objects. It is
-very flexible.</p>
-
-<p>Let&#39;s finish with a simple, slightly contrived, but nonetheless useful example. Let&#39;s say we want to write some sync and async functions using <code>$.Deferred</code>. For the
-async methods we don&#39;t want to have to create a <code>$.Deferred</code> and return a <code>promise</code> manually for each function. Instead
-we&#39;ll just use a convention like <code>mocha</code>, where if we have 0 arguments, the function is sync, and if there is one
-expected argument, the function is async, and that first argument will be the function&#39;s <code>$.Deferred</code>:</p>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">optionallyDeferred</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-
-        <span class="kd">var</span> <span class="nx">$deferred</span><span class="p">,</span>
-        <span class="nx">returned</span><span class="p">;</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="c1">// NOTE: we should probably unshift $deferred onto an Array converted arguments - just in case - leaving that out for readability</span>
-        <span class="nx">returned</span> <span class="o">=</span> <span class="nx">method</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">$deferred</span><span class="p">);</span>
-
-        <span class="k">return</span> <span class="nx">$deferred</span> <span class="o">?</span> <span class="nx">$deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">()</span> <span class="o">:</span> <span class="nx">returned</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Then, for example, we can do the following:</p>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">something</span><span class="p">(</span><span class="nx">deferred</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">progress</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
-    <span class="p">},</span> <span class="mi">10000</span><span class="p">);</span>
-    <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">deferred</span><span class="p">.</span><span class="nx">progress</span><span class="p">(</span><span class="o">++</span><span class="nx">progress</span><span class="p">);</span>
-    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">optionallyDeferred</span><span class="p">(</span><span class="nx">something</span><span class="p">)().</span><span class="nx">then</span><span class="p">(</span><span class="nx">success</span><span class="p">,</span> <span class="nx">failure</span><span class="p">,</span> <span class="nx">progress</span><span class="p">);</span>
-</code></pre></div>
-<p>The above is an illustration of how you can use currying to customize a function and remove
-boiler plate. Without the curry, each async method would have 2 to 3 extra identical lines.</p>
-
-<p>Once you can stomach curry, only your imagination is the limit.</p>
+very flexible, and the concept of extending default options with the actual options is used in libraris from Grunt to
+Backbone.</p>
 
             </section>
             <footer>
