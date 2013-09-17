@@ -37,7 +37,7 @@ function greet(name, greeting) {
 In certain situations, especially if this function is mixed into objects, you might end up always calling the function
 with the same `name` argument.
 
-```
+```javascript
 function Alarm(alarmOwner) {
     this.alarmOwner = alarmOwner;
 }
@@ -50,7 +50,7 @@ Alarm.prototype.greet = greet;
 
 Since the alarm will always be greeting its owner, the `greet` method will always be called as follows:
 
-```
+```javascript
 this.greet(this.alarmOwner, greeting);
 ```
 
@@ -96,7 +96,7 @@ of extremely flexible libraries.
 There's no need to limit yourself to a single curry. With currying you can do things like setup default options, and
 then pass in specific options to finally return a customized function:
 
-```
+```javascript
 // Start building your custom function by calling it with the default options object
 function customStuff(defaultOptions) {
 
