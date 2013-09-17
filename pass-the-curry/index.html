@@ -49,17 +49,17 @@ functions for later use and possible attachment to objects unrelated by an inher
 </code></pre></div>
 <p>In certain situations, especially if this function is mixed into objects, you might end up always calling the function
 with the same <code>name</code> argument.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">function Alarm(alarmOwner) {
-    this.alarmOwner = alarmOwner;
-}
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Alarm</span><span class="p">(</span><span class="nx">alarmOwner</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">alarmOwner</span> <span class="o">=</span> <span class="nx">alarmOwner</span><span class="p">;</span>
+<span class="p">}</span>
 
-// Mixin the greet function
-Alarm.prototype.greet = greet;
-// Other alarm clock functions
-// ...
+<span class="c1">// Mixin the greet function</span>
+<span class="nx">Alarm</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">greet</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">;</span>
+<span class="c1">// Other alarm clock functions</span>
+<span class="c1">// ...</span>
 </code></pre></div>
 <p>Since the alarm will always be greeting its owner, the <code>greet</code> method will always be called as follows:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">this.greet(this.alarmOwner, greeting);
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">alarmOwner</span><span class="p">,</span> <span class="nx">greeting</span><span class="p">);</span>
 </code></pre></div>
 <p>The above is a procedural solution. We&#39;re feeding all the data into the function with arguments, and we&#39;re not using context.
 The problem with it is that it can quickly become difficult to manage multiple such methods with many calls to each method.</p>
@@ -96,26 +96,26 @@ of extremely flexible libraries.</p>
 
 <p>There&#39;s no need to limit yourself to a single curry. With currying you can do things like setup default options, and
 then pass in specific options to finally return a customized function:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">// Start building your custom function by calling it with the default options object
-function customStuff(defaultOptions) {
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// Start building your custom function by calling it with the default options object</span>
+<span class="kd">function</span> <span class="nx">customStuff</span><span class="p">(</span><span class="nx">defaultOptions</span><span class="p">)</span> <span class="p">{</span>
 
-    // Continue building your custom function by calling it with your specific options for this case
-    return function(options) {
+    <span class="c1">// Continue building your custom function by calling it with your specific options for this case</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
 
-        var config = {};
+        <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{};</span>
 
-        _.extend(config, defaultOptions, options);
+        <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="nx">defaultOptions</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
 
-        // And now you have a customized function with access to the created options / config object, and it can
-        // also be called with any number of arguments
-        return function(arg1, arg2) {
-            // In here we have acces to the final config - a combination of the default and specific options
-            if (config.that &amp;&amp; config.other) {
-                // do stuff with arg1 / arg2
-            }
-        }
-    }
-}
+        <span class="c1">// And now you have a customized function with access to the created options / config object, and it can</span>
+        <span class="c1">// also be called with any number of arguments</span>
+        <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// In here we have acces to the final config - a combination of the default and specific options</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">that</span> <span class="o">&amp;&amp;</span> <span class="nx">config</span><span class="p">.</span><span class="nx">other</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// do stuff with arg1 / arg2</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>The above is an example of how to customize a function use a combination of default and actual options objects. It is
 very flexible.</p>
