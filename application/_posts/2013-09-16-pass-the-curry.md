@@ -139,7 +139,7 @@ function optionallyDeferred(method, context) {
             $deferred = new $.Deferred();
         }
 
-        // NOTE: we should probably unshift $deferred onto arguments - just in case - leaving that out for readability
+        // NOTE: we should probably unshift $deferred onto an Array converted arguments - just in case - leaving that out for readability
         returned = method.call(context, $deferred);
 
         return $deferred ? $deferred.promise() : returned;
