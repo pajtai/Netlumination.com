@@ -135,7 +135,7 @@ expected argument, the function is async, and that first argument will be the fu
             <span class="nx">$deferred</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
         <span class="p">}</span>
 
-        <span class="c1">// NOTE: we should probably unshift $deferred onto arguments - just in case - leaving that out for readability</span>
+        <span class="c1">// NOTE: we should probably unshift $deferred onto an Array converted arguments - just in case - leaving that out for readability</span>
         <span class="nx">returned</span> <span class="o">=</span> <span class="nx">method</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">$deferred</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nx">$deferred</span> <span class="o">?</span> <span class="nx">$deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">()</span> <span class="o">:</span> <span class="nx">returned</span><span class="p">;</span>
