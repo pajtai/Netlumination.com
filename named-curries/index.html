@@ -46,10 +46,10 @@ codes with many <code>bind(this)</code> calls is slow going.</p>
 function reference:</p>
 <div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">createGreetingFor</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">).</span><span class="nx">greet</span>
 </code></pre></div>
-<p>Using the above, you can still scan a file, and quickly pick out the function calls and function references without
+<p>Using the above, you can still scan a file and quickly pick out the function calls and function references without
 having to read the function names.</p>
 
-<p>The above would be implemented and used as follows:</p>
+<p>The above would be implemented as follows:</p>
 <div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">createGreetingFor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="nx">greet</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
@@ -58,7 +58,7 @@ having to read the function names.</p>
     <span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Usage examples:</p>
+<p>and it could be used like this:</p>
 <div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// variable assignment</span>
 <span class="kd">var</span> <span class="nx">greet</span> <span class="o">=</span> <span class="nx">createGreetingFor</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">).</span><span class="nx">greet</span><span class="p">;</span>
 <span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;good evening&#39;</span><span class="p">);</span>
