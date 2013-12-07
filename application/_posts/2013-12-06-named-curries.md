@@ -45,10 +45,10 @@ function reference:
 createGreetingFor('bob').greet
 ```
 
-Using the above, you can still scan a file, and quickly pick out the function calls and function references without
+Using the above, you can still scan a file and quickly pick out the function calls and function references without
 having to read the function names.
 
-The above would be implemented and used as follows:
+The above would be implemented as follows:
 
 ```javascript
 function createGreetingFor(name) {
@@ -60,7 +60,7 @@ function createGreetingFor(name) {
 }
 ```
 
-Usage examples:
+and it could be used like this:
 
 ```javascript
 // variable assignment
