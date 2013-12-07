@@ -84,7 +84,7 @@ Specifically:
 function greet(name) {
 
     return function(greeting) {
-        alert(name + ', ' greeting;
+        alert(greeting + ', ' + name);
     }
 }
 ```
