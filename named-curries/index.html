@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Named Curries</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Named Curries</h1>
+                
+                <a class="badge badge-success text-white" href="/try-the-same-thing-again/">« Try the same...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>One of the challenges of using curries is that the usual implementation of a curry looks like a function call and not a
+function reference.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Did the above greet Bob, or did it return a greeting function that is now customized for Bob?</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">greeting</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Of course we can improve our naming:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">getFunctionReferenceToGreet</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>The problem with the above is that JavaScript has trained us to expect parentheses to be mean function calls, and
+the absence of parentheses to mean function references. The above curry violates this. It is the same reason that reading
+codes with many <code>bind(this)</code> calls is slow going.</p>
+
+<p>A solution is to make curries conform to the convention. Creating the curry is a function call, and the curry returns a
+function reference:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">createGreetingFor</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">).</span><span class="nx">greet</span>
+</code></pre></div>
+<p>Using the above, you can still scan a file, and quickly pick out the function calls and function references without
+having to read the function names.</p>
+
+<p>The above would be implemented and used as follows:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">createGreetingFor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">greet</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">greeting</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">greeting</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Usage examples:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="c1">// variable assignment</span>
+<span class="kd">var</span> <span class="nx">greet</span> <span class="o">=</span> <span class="nx">createGreetingFor</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">).</span><span class="nx">greet</span><span class="p">;</span>
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;good evening&#39;</span><span class="p">);</span>
+
+<span class="c1">// callback that looks like a callback</span>
+<span class="nx">goodMorning</span><span class="p">(</span><span class="nx">createGreetingFor</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">).</span><span class="nx">greet</span><span class="p">)</span>
+
+<span class="kd">function</span> <span class="nx">goodMorning</span><span class="p">(</span><span class="nx">greet</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;good morning&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#currying" class="badge badge-inverse">currying</a>&nbsp;
+    
+    <a href="/tags.html#lambdas" class="badge badge-inverse">lambdas</a>&nbsp;
+    
+    <a href="/tags.html#function calls" class="badge badge-inverse">function calls</a>&nbsp;
+    
+    <a href="/tags.html#function references" class="badge badge-inverse">function references</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">06 Dec 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
