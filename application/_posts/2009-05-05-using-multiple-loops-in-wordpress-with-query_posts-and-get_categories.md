@@ -5,7 +5,6 @@ tags:
 - category
 - foreach
 - get_categories
-- oho
 - query_posts
 - template
 - the loop
