@@ -24,54 +24,59 @@
                 
             </header>
             <section>
-                These are the Javascript quizes I've <a href="https://twitter.com/Peter_Ajtai">Tweeted</a> and put up on
+                These are the Javascript quizzes I've <a href="https://twitter.com/Peter_Ajtai">Tweeted</a> and put up on
 <a href="http://jsfiddle.net/user/pajtai/fiddles/">jsFiddle</a>:
 
 
 <noscript>Important functionality on this page relies on Javascript. Please enable it if you want to see the content.</noscript>
 
-<ul id="quizes">
+<ul id="quizzes">
 </ul>
 
 <script type="text/javascript">
 (function() {
-    var quizes = [],
-        quizEl = document.getElementById("quizes"),
-        i, ii,
-        ellie, ellie2, ellie3, tags,
-        a,
-        message;
-    quizes[1] = {"url":"http://jsfiddle.net/pajtai/5TZsw/show/","tags":["closures","references"]};
-    quizes[2] = {"url":"http://jsfiddle.net/pajtai/6Shd9/show/","tags":["hoisting"]};
-    quizes[3] = {"url":"http://jsfiddle.net/pajtai/yGmAf/show/","tags":["Date","timeouts","references","scope"]};
-    quizes[4] = {"url":"http://jsfiddle.net/pajtai/Hm8YA/show/","tags":["length","arguments","Function"]};
-    quizes[5] = {"url":"http://jsfiddle.net/pajtai/Ds8dn/show/","tags":["parseInt","radix"]};
-    quizes[6] = {"url":"http://jsfiddle.net/pajtai/x6WkV/show/","tags":["inheritance","prototype"]};
-    quizes[7] = {"url":"http://jsfiddle.net/pajtai/PSTja/show/","tags":["typeof","instanceof","constructor"]};
-    quizes[8] = {"url":"http://jsfiddle.net/pajtai/k4PJm/show/","tags":["Booleans","Objects"]};
-    quizes[9] = {"url":"http://jsfiddle.net/pajtai/U5uaS/show/","tags":["logic"]};
-    quizes[10]= {"url":"http://jsfiddle.net/pajtai/YBXhD/show/","tags":["Arrays","length","addition","concatenation"]};
-    quizes[11]= {"url":"http://jsfiddle.net/pajtai/66yrD/show/","tags":["setInterval","setTimeout","chaining"]};
-    quizes[12]= {"url":"http://jsfiddle.net/pajtai/ejGX2/show/","tags":["variable assignment","arguments"]};
-    quizes[13]= {"url":"http://jsfiddle.net/pajtai/fnTpG/show/","tags":["type conversion"]};
-    quizes[14]= {"url":"http://jsfiddle.net/pajtai/eJ5ru/show/","tags":["scope", "this"]};
-    quizes[15]= {"url":"http://jsfiddle.net/pajtai/X2gXf/show/","tags":["globals"]};
-    quizes[16]= {"url":"http://jsfiddle.net/pajtai/Tqrx6/show/","tags":["constructors"]};
-    for (i = 1; i < quizes.length; ++i) {
+    var quizEl = document.getElementById("quizzes"),
+            i, ii,
+            ellie, ellie2, ellie3, tags,
+            a,
+            quizzes = [
+                {"url":"5TZsw","tags":["closures","references"]},
+                {"url":"6Shd9","tags":["hoisting"]},
+                {"url":"yGmAf","tags":["Date","timeouts","references","scope"]},
+                {"url":"Hm8YA","tags":["length","arguments","Function"]},
+                {"url":"Ds8dn","tags":["parseInt","radix"]},
+                {"url":"x6WkV","tags":["inheritance","prototype"]},
+                {"url":"PSTja","tags":["typeof","instanceof","constructor"]},
+                {"url":"k4PJm","tags":["Booleans","Objects"]},
+                {"url":"U5uaS","tags":["logic"]},
+                {"url":"YBXhD","tags":["Arrays","length","addition","concatenation"]},
+                {"url":"66yrD","tags":["setInterval","setTimeout","chaining"]},
+                {"url":"ejGX2","tags":["variable assignment","arguments"]},
+                {"url":"fnTpG","tags":["type conversion"]},
+                {"url":"eJ5ru","tags":["scope", "this"]},
+                {"url":"X2gXf","tags":["globals"]},
+                {"url":"Tqrx6","tags":["constructors"]},
+            ],
+            quizzesLength = quizzes.length,
+            quizTagsLength;
+
+    for (i = 0; i < quizzesLength; ++i) {
         ellie = document.createElement('li');
         a  = document.createElement('a');
-        a.href = quizes[i].url;
+        a.href = "http://jsfiddle.net/pajtai/" + quizzes[i].url + "/show/";
         quizEl.appendChild(ellie);
         ellie.appendChild(a);
-        a.appendChild(document.createTextNode("Quiz " + i));
+        a.appendChild(document.createTextNode("Quiz " + (i + 1)));
         ellie2 = document.createElement('ul');
         ellie3 = document.createElement('li');
-        ellie.appendChild(ellie2.appendChild(ellie3));
+        ellie2.appendChild(ellie3);
+        ellie.appendChild(ellie2);
         tags = [];
-        for (ii = 0; ii < quizes[i].tags.length; ++ii) {
-            tags.push(quizes[i].tags[ii]);
+        quizTagsLength = quizzes[i].tags.length;
+        for (ii = 0; ii < quizTagsLength; ++ii) {
+            tags.push(quizzes[i].tags[ii]);
         }
-        ellie3.appendChild(document.createTextNode("Tags: " + tags.join(", ")));
+        ellie3.appendChild(document.createTextNode(tags.join(", ")));
     }
 }());
 </script>
@@ -83,7 +88,7 @@
     
     <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
     
-    <a href="/tags.html#quizes" class="badge badge-inverse">quizes</a>&nbsp;
+    <a href="/tags.html#quizzes" class="badge badge-inverse">quizzes</a>&nbsp;
     
 </p>
                 

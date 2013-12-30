@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Deploying Android with Gradle</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Deploying Android with Gradle</h1>
+                
+                <a class="badge badge-success text-white" href="/named-curries/">« Named Curries</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>Below is a simple method of deploying with Gradle while leaving sensitive config files out of VCS.</p>
+
+<p>Deployment keys are sensitive, and it is a good practice to not commit them into your main git repo. This will allow
+easier sharing of and collaboration on the project, and it will make your keys more secure.</p>
+
+<p>Gradle supplies an multiple ways to use keys that are not checked into a project. I read about several of them, but some
+required user input, while others seemed too complicated.</p>
+
+<p>This is a simple and straight forward method for deploying with Gradle (optionally through Android Studio).</p>
+
+<p>First add your key configs file to <code>.gitignore</code>. Let&#39;s say we&#39;ll use <code>release.config</code>. This file should be in your main
+module.</p>
+
+<p>Now create <code>release.config</code> and read it in from your <code>build.gradle</code></p>
+
+<h3>release.config</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">android {
+    signingConfigs {
+        release {
+            storeFile file(&#39;my.keystore&#39;)
+            storePassword &#39;mySuperSecretPa$$w0rd&#39;
+            keyAlias &#39;release&#39;
+            keyPassword &#39;mySuperSecretKeyPa$$w0rd&#39;
+        }
+    }
+}
+</code></pre></div>
+<p>You can put the keystore in the same directory, and <code>.gitignore</code> it if you choose to.</p>
+
+<p>Reading this from your <code>build.gradle</code> will look like:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">android {
+
+    apply from: file(&#39;release.configs&#39;)
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+</code></pre></div>
+<p>You can put the above inside <code>android</code>.</p>
+
+<p>The downside of this method is that even if you do not plan to deploy, you will have to create an empty <code>release.config</code>
+file. The upside it that it is simple.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://www.gradle.org/docs/current/userguide/working_with_files.html"><code>file</code></a></li>
+<li><a href="http://www.gradle.org/docs/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:apply(java.util.Map)"><code>apply</code></a></li>
+</ul>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#gradle" class="badge badge-inverse">gradle</a>&nbsp;
+    
+    <a href="/tags.html#android" class="badge badge-inverse">android</a>&nbsp;
+    
+    <a href="/tags.html#android studio" class="badge badge-inverse">android studio</a>&nbsp;
+    
+    <a href="/tags.html#automation" class="badge badge-inverse">automation</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">30 Dec 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-4145174-2', 'netlumination.com');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
