@@ -59,6 +59,6 @@ file. The upside it that it is simple.
 
 ## References
 
-* `file`
-* `apply`
+* [`file`](http://www.gradle.org/docs/current/userguide/working_with_files.html)
+* [`apply`](http://www.gradle.org/docs/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:apply(java.util.Map\))
 
