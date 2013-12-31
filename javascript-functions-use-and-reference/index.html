@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Functions: use and reference</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">JavaScript Functions: use and reference</h1>
+                
+                <a class="badge badge-success text-white" href="/javascript-quickish-start/">« JavaScript Quickish Start...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/javascript-scope-introduction/">JavaScript Scope: an... »</a>
+                
+            </header>
+            <section>
+                <h2>Functions</h2>
+
+<p>Functions are important in JavaScript. They are first class objects. This means they can be treated as entities of
+their own... lambdas. They can be passed around and referred to as things in and of themselves.</p>
+
+<p><code>alert</code> is a function. To invoke a function use parentheses:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><button onclick="window.alert('Hello world!');">Try it out</button></p>
+
+<p>Since <code>alert</code> is a function (in the global scope - we&#39;ll get to scope in a minute), we called alert by passing it an argument.
+JavaScript doesn&#39;t care about method signatures or types, so you can call methods with as many arguments of as many types as
+you want... what&#39;ll happen is another matter.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</code></pre></div>
+<p><button onclick="window.alert(1, 'a', function() {});">Try it out</button></p>
+
+<p>The way to refer to a function is by name. Without parentheses it will not be invoked:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">alert</span>
+</code></pre></div><div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">alert</span><span class="p">(</span><span class="nx">alert</span><span class="p">);</span>
+</code></pre></div>
+<p><button onclick="window.alert(alert);">Try it out</button></p>
+
+<p>In the example above we alerted the function reference for alert. This is native code implemented by the browser.</p>
+
+<p>Before we get into creating new functions, let&#39;s see how JavaScript found the <code>alert</code> method eventhough we didn&#39;t define
+it.</p>
+
+<p>This depends on <a href="../javascript-scope-introduction">scope</a></p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#tutorial" class="badge badge-inverse">tutorial</a>&nbsp;
+    
+    <a href="/tags.html#function reference" class="badge badge-inverse">function reference</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">31 Dec 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-4145174-2', 'netlumination.com');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

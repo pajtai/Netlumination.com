@@ -4,11 +4,32 @@
 
     <url>
         <loc>http://netlumination.com</loc>
-        <lastmod>2013-12-30</lastmod>
+        <lastmod>2013-12-31</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
+    
+    <url>
+        <loc>http://netlumination.com/javascript-scope-introduction//</loc>
+        <lastmod>2013-12-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/javascript-functions-use-and-reference//</loc>
+        <lastmod>2013-12-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+    <url>
+        <loc>http://netlumination.com/javascript-quickish-start//</loc>
+        <lastmod>2013-12-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
     
     <url>
         <loc>http://netlumination.com/deploying-android-with-gradle//</loc>
@@ -322,14 +343,14 @@
     
     <url>
         <loc>http://netlumination.com/index.html</loc>
-        <lastmod>2013-12-30</lastmod>
+        <lastmod>2013-12-31</lastmod>
         
         
     </url>
     
     <url>
         <loc>http://netlumination.com/tags.html</loc>
-        <lastmod>2013-12-30</lastmod>
+        <lastmod>2013-12-31</lastmod>
         
         
     </url>

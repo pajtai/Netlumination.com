@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Scope: an introduction</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">JavaScript Scope: an introduction</h1>
+                
+                <a class="badge badge-success text-white" href="/javascript-functions-use-and-reference/">« JavaScript Functions: use...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <h2>Scope</h2>
+
+<p>JavaScript has function scope, and it is lexically scoped.</p>
+
+<p>Function scope means that local variables are good within the function they are defined in. Lexically scoped means that
+the variables a function scope has access to depend on where the function is physically written into the code. This
+creates the opportunity to make closures.</p>
+
+<p>When a variable is referenced, the variable is looked for first in the local scope. Then the next scope up, and so on
+until the global scope is hit after traversing all the way up the scope chain. The global scope is the <code>window</code> in the
+browser. So in our previous examples <code>alert</code> worked because <code>window.alert</code> is a function.</p>
+
+<p>The above explanation is dense and has many implications, so let&#39;s look at a few examples.</p>
+
+<p>Let&#39;s create some local variables:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">;</span>
+    <span class="nx">x</span><span class="p">(</span><span class="s1">&#39;Hello again!&#39;</span><span class="p">);</span>
+<span class="p">}());</span>
+</code></pre></div>
+<p><button onclick="(function(d) {var x = window.alert;x('Hello again!');}());">Try it out</button></p>
+
+<p>So, to create an anonymous function, we can write, <code>function() {}</code>. This is just a function reference, so it will not be
+invoked. JavaScript differentiates between function declarations and function expressions. Function declarations must
+be named, and function expressions are created inside blocks, so we can use the grouping operator (parentheses) to
+create an anonymous function expression:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">;</span>
+    <span class="nx">x</span><span class="p">(</span><span class="s1">&#39;Hello again!&#39;</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></div>
+<p><button onclick="(function() {var x = window.alert;x('Hello again!');})">Try it out (nothing will happen)</button></p>
+
+<p><em>Leaving out the parentheses around the function above would lead to a syntax error, since no parentheses around the
+anonymous function would create an anonymous function declaration, and function declarations must be named.</em></p>
+
+<p>Firing the anonymous function would mean that <code>x</code> is set equal to <code>alert</code>, and that <code>x</code> is called. To do this, we simply
+call the anonymous function, like any other function, with parentheses.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">;</span>
+    <span class="nx">x</span><span class="p">(</span><span class="s1">&#39;Hello again!&#39;</span><span class="p">);</span>
+<span class="p">}());</span>
+</code></pre></div>
+<p>If the anonymous function is like any other function we can also call it with arguments:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">;</span>
+    <span class="nx">x</span><span class="p">(</span><span class="s1">&#39;It is: &#39;</span> <span class="o">+</span> <span class="nx">date</span><span class="p">);</span>
+<span class="p">}(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()));</span>
+</code></pre></div>
+<p><button onclick="(function(date) {var x = window.alert;x('It is: ' + date);}(new Date()));">Try it out</button></p>
+
+<p>So, <code>x</code> is not available outside the scope of the anonymous function. Trying to access it is a <code>ReferenceError</code>.</p>
+
+<p><code>x</code> is available inside the function it is declared in, and all functions inside that one. Inside means written inside.
+This is where lexically scoping is important.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">scopeExample</span><span class="p">;</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+    <span class="nx">scopeExample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;x was created at: &#39;</span> <span class="o">+</span> <span class="nx">x</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}());</span>
+</code></pre></div>
+<script>
+var scopeExample;
+
+(function() {
+    var x = new Date();
+
+    scopeExample = function() {
+        alert('x was created at: ' + x);
+    }
+}());
+</script>
+
+<p><button onclick="scopeExample()">Try out running &#39;scopeExample()`</button></p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#tutorial" class="badge badge-inverse">tutorial</a>&nbsp;
+    
+    <a href="/tags.html#function reference" class="badge badge-inverse">function reference</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">31 Dec 2013</h4>
+                    
+                </div>
+            </footer>
+        </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-4145174-2', 'netlumination.com');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
