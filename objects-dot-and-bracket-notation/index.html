@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript Objects: Dot and Bracket Notation</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">JavaScript Objects: Dot and Bracket Notation</h1>
+                
+                <a class="badge badge-success text-white" href="/javascript-scope-introduction/">« JavaScript Scope: an...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>To access fields on objects, we can use dot notation.</p>
+
+<p>For example we can first create an object using an object literal, and then access its fields:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">apple</span> <span class="o">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
+    <span class="nx">banana</span> <span class="o">:</span> <span class="s1">&#39;yellow&#39;</span>
+<span class="p">};</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">fruits</span><span class="p">.</span><span class="nx">banana</span><span class="p">);</span>
+</code></pre></div>
+<script>
+var fruits = {
+    apple : 'green',
+    banana : 'yellow'
+};
+</script>
+
+<p><button onclick="alert(fruits.banana)">Try it out</button></p>
+
+<p>If we want to access a field dynamically, we can use bracket notation:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">theFruit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="o">?</span> <span class="s1">&#39;apple&#39;</span> <span class="o">:</span> <span class="s1">&#39;banana&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">fruits</span><span class="p">[</span><span class="nx">theFruit</span><span class="p">()]);</span>
+</code></pre></div>
+<script>
+function theFruit() {
+    return Math.random() < 0.5 ? 'apple' : 'banana';
+}
+</script>
+
+<p><button onclick="alert(fruits[theFruit()])">Try it out</button></p>
+
+<p>Another reason to use bracket notation to access a field, is if the field name is not a valid variable name. In this
+case the field name must be enclose in quotation marks.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;this field has : unusual characters ;*&#39;</span> <span class="o">:</span> <span class="mi">42</span>
+<span class="p">}</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">obj2</span><span class="p">[</span><span class="s1">&#39;this field has : unusual characters ;*&#39;</span><span class="p">]);</span>
+</code></pre></div>
+<script>
+var obj2 = {
+    'this field has : unusual characters;*' : 42
+};
+</script>
+
+<p><button onclick="alert(obj2['this field has : unusual characters;*']);">Try it out</button></p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#javascript" class="badge badge-inverse">javascript</a>&nbsp;
+    
+    <a href="/tags.html#tutorial" class="badge badge-inverse">tutorial</a>&nbsp;
+    
+    <a href="/tags.html#function reference" class="badge badge-inverse">function reference</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">01 Jan 2014</h4>
+                    
+                </div>
+            </footer>
+        </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-4145174-2', 'netlumination.com');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

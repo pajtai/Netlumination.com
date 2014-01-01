@@ -20,6 +20,8 @@
                 
                 <a class="badge badge-success text-white" href="/">Home</a>
                 
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/objects-dot-and-bracket-notation/">JavaScript Objects: Dot... »</a>
+                
             </header>
             <section>
                 <h2>Scope</h2>
@@ -76,30 +78,45 @@ call the anonymous function, like any other function, with parentheses.</p>
 <p>So, <code>x</code> is not available outside the scope of the anonymous function. Trying to access it is a <code>ReferenceError</code>.</p>
 
 <p><code>x</code> is available inside the function it is declared in, and all functions inside that one. Inside means written inside.
-This is where lexically scoping is important.</p>
-<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">scopeExample</span><span class="p">;</span>
-
-<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+This is where lexical scoping is important.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">scopeExample</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
 
-    <span class="nx">scopeExample</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;x was created at: &#39;</span> <span class="o">+</span> <span class="nx">x</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}());</span>
 </code></pre></div>
 <script>
-var scopeExample;
-
-(function() {
+var scopeExample =  (function() {
     var x = new Date();
 
-    scopeExample = function() {
+    return function() {
         alert('x was created at: ' + x);
     }
 }());
 </script>
 
-<p><button onclick="scopeExample()">Try out running &#39;scopeExample()`</button></p>
+<p><button onclick="scopeExample();">Try out running &#39;scopeExample()`</button></p>
+
+<p>In the example above the returned anonymous function has access to <code>x</code>, since the anonymous function was written inside
+the function x is declared in. The returned function is a closure. <code>x</code> is a private variable of the closure.</p>
+
+<p>Functions are often used as methods on objects. For example:</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">scopeExample</span> <span class="o">:</span> <span class="nx">scopeExample</span>
+<span class="p">};</span>
+</code></pre></div>
+<script>
+var obj = {
+    scopeExample : scopeExample
+};
+</script>
+
+<p><button onclick="obj.scopeExample();">Try out running &#39;obj.scopeExample()`</button></p>
+
+<p>Before we get into context, and how <code>this</code> would with functions in JavaScript, let&#39;s cover how to access fields on
+objects using <a href="../objects-dot-and-bracket-notation">dot and bracket notation</a>.</p>
 
             </section>
             <footer>
