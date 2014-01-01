@@ -22,6 +22,7 @@ As I write the guide, I'll post the individual parts. Below is a table of conten
 ### Table of Contents
 * [Functions: use and reference](../javascript-functions-use-and-reference)
 * [Scope: an introduction](../javascript-scope-introduction)
+* [Objects: dot and bracket notation](../objects-dot-and-bracket-notation)
 
 ---
 

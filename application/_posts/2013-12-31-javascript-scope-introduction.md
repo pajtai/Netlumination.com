@@ -71,28 +71,44 @@ If the anonymous function is like any other function we can also call it with ar
 So, `x` is not available outside the scope of the anonymous function. Trying to access it is a `ReferenceError`.
 
 `x` is available inside the function it is declared in, and all functions inside that one. Inside means written inside.
-This is where lexically scoping is important.
+This is where lexical scoping is important.
 
 ```javascript
-var scopeExample;
-
-(function() {
+var scopeExample = (function() {
     var x = new Date();
 
-    scopeExample = function() {
+    return function() {
         alert('x was created at: ' + x);
     }
 }());
 ```
 <script>
-var scopeExample;
-
-(function() {
+var scopeExample =  (function() {
     var x = new Date();
 
-    scopeExample = function() {
+    return function() {
         alert('x was created at: ' + x);
     }
 }());
 </script>
-<button onclick="scopeExample()">Try out running 'scopeExample()`</button>
+<button onclick="scopeExample();">Try out running 'scopeExample()`</button>
+
+In the example above the returned anonymous function has access to `x`, since the anonymous function was written inside
+the function x is declared in. The returned function is a closure. `x` is a private variable of the closure.
+
+Functions are often used as methods on objects. For example:
+
+```javascript
+var obj = {
+    scopeExample : scopeExample
+};
+```
+<script>
+var obj = {
+    scopeExample : scopeExample
+};
+</script>
+<button onclick="obj.scopeExample();">Try out running 'obj.scopeExample()`</button>
+
+Before we get into context, and how `this` would with functions in JavaScript, let's cover how to access fields on
+objects using [dot and bracket notation](../objects-dot-and-bracket-notation).
