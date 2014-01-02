@@ -35,6 +35,9 @@ The way to refer to a function is by name. Without parentheses it will not be in
 alert
 ```
 
+_One thing to be aware of is that [getters and setters](../javascript-getters-and-setters) can look like references, but
+they call functions._
+
 ```javascript
 alert(alert);
 ```

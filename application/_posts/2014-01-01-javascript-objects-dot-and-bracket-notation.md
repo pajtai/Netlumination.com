@@ -8,6 +8,9 @@ tags:
 type: post
 ---
 
+You cannot use JavaScript without running into objects.
+[`All primitive types except null and undefined are treated as objects`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects).
+
 To access fields on objects, we can use dot notation.
 
 For example we can first create an object using an object literal, and then access its fields:
@@ -57,3 +60,6 @@ var obj2 = {
 };
 </script>
 <button onclick="alert(obj2['this field has : unusual characters;*']);">Try it out</button>
+
+Sometimes using object notation simply accesses a value, but it can trigger a getter or setter method in modern
+browsers. [Read more about getters and setters](../javascript-getters-and-setters).

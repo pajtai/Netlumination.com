@@ -20,9 +20,10 @@ addition to details about the JavaScript language itself.
 As I write the guide, I'll post the individual parts. Below is a table of contents:
 
 ### Table of Contents
-* [Functions: use and reference](../javascript-functions-use-and-reference)
+* [Functions: use and reference](../javascript-functions-uFse-and-reference)
 * [Scope: an introduction](../javascript-scope-introduction)
-* [Objects: dot and bracket notation](../objects-dot-and-bracket-notation)
+* [Objects: dot and bracket notation](../javascript-objects-dot-and-bracket-notation)
+* [Functions: getters and setters](../javascript-getters-and-setters)
 
 ---
 

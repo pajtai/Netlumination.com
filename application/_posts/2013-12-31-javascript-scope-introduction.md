@@ -111,4 +111,4 @@ var obj = {
 <button onclick="obj.scopeExample();">Try out running 'obj.scopeExample()`</button>
 
 Before we get into context, and how `this` would with functions in JavaScript, let's cover how to access fields on
-objects using [dot and bracket notation](../objects-dot-and-bracket-notation).
+objects using [dot and bracket notation](../javascript-objects-dot-and-bracket-notation).

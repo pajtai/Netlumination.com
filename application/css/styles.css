@@ -160,12 +160,15 @@ h1 a:hover {
     text-decoration: underline;
 }
 a {
-    color: #147;
-    text-decoration: none;
-}
-a:hover {
     color: #06c;
     text-decoration: underline;
+}
+a:hover {
+    color: #147;
+    text-decoration: underline;
+}
+header a, .well a {
+    text-decoration: none;
 }
 .img-rounded {
     -webkit-border-radius: 6px;
