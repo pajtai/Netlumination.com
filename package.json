@@ -22,7 +22,7 @@
     "matchdep": "*",
     "grunt-contrib-watch": "*",
     "grunt-jekyll": "*",
-    "grunt-build-gh-pages": "git://github.com/pajtai/grunt-build-gh-pages.git#0.1.2",
+    "grunt-build-gh-pages": "*",
     "grunt-contrib-livereload": "*",
     "grunt-contrib-connect": "*"
   },
