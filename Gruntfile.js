@@ -28,7 +28,7 @@ module.exports = function(grunt) {
                 options: {
                     build_branch: "gh-pages",
                     dist: "build",
-                    cname: 'xnetlumination.com'
+                    cname: 'netlumination.com'
                 }
             }
         },
