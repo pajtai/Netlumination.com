@@ -1,7 +1,7 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-    'user strict';
+    'use strict';
 
     var port = 8000,
         path = require('path'),
@@ -23,11 +23,11 @@ module.exports = function(grunt) {
             temp: 'build'
         },
 
-        build_gh_pages: {
+        buildGhPages: {
             ghPages: {
                 options: {
-                    build_branch: "gh-pages",
-                    dist: "build",
+                    build_branch: 'gh-pages',
+                    dist: 'build',
                     cname: 'netlumination.com'
                 }
             }
@@ -40,19 +40,19 @@ module.exports = function(grunt) {
             },
             build: {
                 options: {
-                    //baseurl: "http://pajtai.github.io/Netlumination.com/"
+                    //baseurl: 'http://pajtai.github.io/Netlumination.com/'
                 }
             },
             server: {
                 options: {
                     config: 'application/_config_server.yml'
-                    //baseurl: "http://pajtai.github.io/Netlumination.com/"
+                    //baseurl: 'http://pajtai.github.io/Netlumination.com/'
                 }
             },
             drafts: {
                 options: {
                     config: 'application/_config_server.yml',
-                    //baseurl: "http://pajtai.github.io/Netlumination.com/"
+                    //baseurl: 'http://pajtai.github.io/Netlumination.com/'
                     drafts: true
                 }
             }
@@ -87,18 +87,20 @@ module.exports = function(grunt) {
                     hostname: 'localhost',
                     base       : './build/',
                     middleware : function (connect, options) {
-                        return [lrSnippet, folderMount(connect, options.base)]
+                        return [lrSnippet, folderMount(connect, options.base)];
                     }
                 }
             }
-        },
+        }
     });
 
-    grunt.registerTask("kickoff", function() {
-       grunt.util.spawn("grunt", ["jekyll:server"]);
+    grunt.registerTask('kickoff', function() {
+        grunt.util.spawn('grunt', ['jekyll:server']);
     });
-    grunt.registerTask('server', 'Deploy website on localhost', ['jekyll:server', 'connect:livereload', 'open:server','watch:server']);
-    grunt.registerTask('drafts', 'Deploy website on localhost', ['jekyll:drafts', 'connect:livereload', 'open:server','watch:drafts']);
-    grunt.registerTask("deploy", "Deploy to gh-pages", ['jekyll:build', 'build_gh_pages']);
+    grunt.registerTask('server', 'Deploy website on localhost',
+        ['jekyll:server', 'connect:livereload', 'open:server','watch:server']);
+    grunt.registerTask('drafts', 'Deploy website on localhost',
+        ['jekyll:drafts', 'connect:livereload', 'open:server','watch:drafts']);
+    grunt.registerTask('deploy', 'Deploy to gh-pages', ['jekyll:build', 'build_gh_pages']);
 
 };
