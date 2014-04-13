@@ -101,6 +101,6 @@ module.exports = function(grunt) {
         ['jekyll:server', 'connect:livereload', 'open:server','watch:server']);
     grunt.registerTask('drafts', 'Deploy website on localhost',
         ['jekyll:drafts', 'connect:livereload', 'open:server','watch:drafts']);
-    grunt.registerTask('deploy', 'Deploy to gh-pages', ['jekyll:build', 'build_gh_pages']);
+    grunt.registerTask('deploy', 'Deploy to gh-pages', ['jekyll:build', 'buildGhPages']);
 
 };
