@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Debugging is a funnel</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Debugging is a funnel</h1>
+                
+                <a class="badge badge-success text-white" href="/deploying-android-with-gradle/">« Deploying Android with...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+                &nbsp;&nbsp;<a class="badge badge-success text-white" href="/grid/">Creating a simple... »</a>
+                
+            </header>
+            <section>
+                <p>Most bugs are created by one line of code... many by one character. Debugging is
+the funnel that starts with your application - sometimes your server / os / or
+device - and leads you to that one root cause.</p>
+
+<p>Whenever I end up feeling that I spent too much time trying to isolate a bug,
+as I think back on things, it&#39;s always because I wasn&#39;t constantly narrowing
+down where the bug could be coming from.</p>
+
+<p>Thinking of debugging as a funnel can make some difficult bugs seem easy to
+solve. For example a colleague, Greg, was writing a VOD (video on demand) app
+for Smart TVs. The code worked - showed a browsing page - on the browser, but
+loaded on to the TV, the app would crash before showing the screen.</p>
+
+<p>Greg had narrowed the problem down to one of context. <code>this.private</code> was not
+available on the TV, but it was available on the browser.</p>
+
+<p>In this case, it seemed like the context should be available. The method was
+being called directly - <code>focusFinder.configure()</code>, and within the <code>configure</code>
+method, <code>this.private</code> was being referenced. It was there on the browser, but
+missing on the TV.</p>
+
+<p>Logging out (this TV has no debugger) <code>this.private</code> on the TV showed that it
+was <code>undefined</code>. Maybe <code>this</code> was not the right object? Logging out
+<code>Object.keys(focusFinder)</code> logged out all the correct keys except for the one
+we wanted. So the question became: what was different about our key? It was
+called <code>private</code> and it was the only key whose value was an object and not a
+function. Changing the name of the key to <code>internal</code> made the app start and is
+probably a better if equally broad name. Private is a future reserved keyword
+(not yet used for anything but reserved anyway) in JavaScript using strict mode.
+The browser and the TV had different implementations for how to handle the
+situation.</p>
+
+<p>I feel like the trick here was just getting a handle on the fact that the
+correct object was being dealt with but the desired key value pair was missing
+from it. It is often tempting to jump to conclusions, and having the incorrect
+context is often your first thought when working with JavaScript. The second
+trick was realizing that changing the name of the key might accomplish anything.
+That is Occam&#39;s razor at work.</p>
+
+<p>It can be tempting to jump to conclusions, but since debugging is very similar
+to binomial search, and false conclusions can lead you into thousands of lines
+of code that have nothing to do with your bug.</p>
+
+<p>In fact binomial search can be an efficient way to find the cause of a probelm
+if for code that worked in the past but no longer does. <code>git bisect</code> is a great
+tool for these type of problems.</p>
+
+<p>Sometimes you have to &quot;bisect&quot; the code you are working on. For example Cooper
+was working on figuring out why an LG TV app was running so slow. He had
+eliminated many potential causes relating to the running of the code. Finally
+he decided to just delete the majority of the elements on the page. The app sped
+up. At this point it&#39;s a binomial search in the dom, and the culprit turned out
+to be an audio tag. Including it in the page slowed down the app.</p>
+
+<p>Often bugs create errors, and the ability to inspect these errors either speeds
+up or makes fixing the bug possible. This is why it&#39;s so important to know the
+location of log files and config files for parts of you system... or to have
+some mechanism in place to monitor logging output. For node apps that have good
+logging, <code>pm2 log</code> is often enough.</p>
+
+<p>Of course if your error is not being logged, things become much more difficult.
+This is one of the reasons we switched from using Q to Bluebird promises.
+Without a <code>.catch</code> - which </p>
+
+<p>Notes:
+* repaint bug
+* <code>mff.private.config</code> bug
+* samsung whitespace scrolling bug
+* android model specific render order height bug</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#debugging" class="badge badge-inverse">debugging</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">14 Aug 2015</h4>
+                    
+                </div>
+            </footer>
+        </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-4145174-2', 'netlumination.com');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

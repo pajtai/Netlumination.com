@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Creating a simple responsive grid</title>
+        <!-- build:css /css/styles.<%= grunt.file.readJSON('package.json').version %>.css -->
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/syntax.css" rel="stylesheet">
+        <link href="/css/responsive.min.css" rel="stylesheet">
+        <link href="/css/buttons.css" rel="stylesheet">
+        <!-- endbuild -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    </head>
+    <body>
+        <div class="container">
+            <header class="well">
+                <h1 class="page-header">Creating a simple responsive grid</h1>
+                
+                <a class="badge badge-success text-white" href="/debugging/">« Debugging is a...</a>&nbsp;&nbsp;
+                
+                <a class="badge badge-success text-white" href="/">Home</a>
+                
+            </header>
+            <section>
+                <p>Let&#39;s build a responsive grid. A responsive grid should allow us to position elements within a grid, and to indicate
+how many elements should be in each row of the grid for different media queries.</p>
+
+<h2>The non repsonsive grid</h2>
+
+<p>This is suprisingly easy to accomplish with sass. Let&#39;s start by first implementing a non responsive grid, and then 
+adding the responsive elements later. We&#39;ll begin by deciding on the class names that will control the grid. We&#39;ll use
+the format <code>span-total</code>. For example this will be for an element that spans one column in a grid 6 columns wide: <code>.col-1-6</code>,
+and this is an element tha that spans 7 columns in a grid that&#39;s 12 columns wide: <code>.col-7-12</code>. Also. we&#39;ll support at most
+12 columns. This means the max span is 12, and since sass allows looping we can nest the loops to produce our classes:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="k">@for</span> <span class="nv">$span</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">through</span> <span class="mi">12</span> <span class="err">{</span>
+    <span class="k">@for</span> <span class="nv">$total</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">through</span> <span class="mi">12</span> <span class="err">{</span>
+        <span class="nc">.col-</span><span class="si">#{</span><span class="nv">$span</span><span class="si">}</span><span class="nc">-</span><span class="si">#{</span><span class="nv">$total</span><span class="si">}</span> <span class="err">{</span>
+            <span class="na">width</span><span class="o">:</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$span</span> <span class="o">/</span> <span class="nv">$total</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>If you want to console log in sass just use <code>@debug</code>: <code>@debug &#39;Now creating class: .col-#{$span}-#{$total}.&#39;</code>.</p>
+
+<p>Of course the above could be cleaned up to have fewer classes, which is a good thing in terms of css file size. For example - 
+since we are using percent widths - there is no reason to have both a <code>.col-1-2</code> and a <code>.col-2-4</code> class, since they are
+both <code>50%</code> wide.</p>
+
+<p>To finish up we just have to float the divs next to each other, and to make things easier to read we can move the creation
+of classes into a mixin:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="k">@mixin</span><span class="nf"> columns</span> <span class="err">{</span>
+    <span class="k">@for</span> <span class="nv">$span</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">through</span> <span class="mi">12</span> <span class="err">{</span>
+        <span class="k">@for</span> <span class="nv">$total</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">through</span> <span class="mi">12</span> <span class="err">{</span>
+            <span class="nc">.col-</span><span class="si">#{</span><span class="nv">$span</span><span class="si">}</span><span class="nc">-</span><span class="si">#{</span><span class="nv">$total</span><span class="si">}</span> <span class="err">{</span>
+                <span class="na">width</span><span class="o">:</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$span</span> <span class="o">/</span> <span class="nv">$total</span><span class="p">)</span><span class="err">;</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>And now floating the elements is easy to read:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="nc">.grid</span> <span class="err">{</span>
+    <span class="o">&gt;</span> <span class="o">*</span> <span class="err">{</span>
+        <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="err">;</span>
+        <span class="k">@include</span><span class="nd"> columns</span><span class="err">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>Try it out here: jsfiddle...</p>
+
+<h2>The responsive grid</h2>
+
+<p>Now let&#39;s add the ability to target our classes to specific media queries.</p>
+
+<p>There&#39;s a <a href="http://www.sitepoint.com/managing-responsive-breakpoints-sass/">great Sitepoint article</a> about managing 
+responsive break points with SASS. Let&#39;s add the mixin:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="k">@mixin</span><span class="nf"> respond-to</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="err">{</span>
+    <span class="c1">// If the key exists in the map</span>
+    <span class="k">@if</span> <span class="nf">map-has-key</span><span class="p">(</span><span class="nv">$breakpoints</span><span class="o">,</span> <span class="nv">$name</span><span class="p">)</span> <span class="err">{</span>
+        <span class="c1">// Prints a media query based on the value</span>
+        <span class="k">@media</span> <span class="nn">#</span><span class="err">{</span><span class="nt">inspect</span><span class="o">(</span><span class="nt">map-get</span><span class="o">(</span><span class="err">$</span><span class="nt">breakpoints</span><span class="o">,</span> <span class="err">$</span><span class="nt">name</span><span class="o">))</span><span class="err">}</span> <span class="err">{</span>
+            <span class="k">@content</span><span class="o">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+    <span class="c1">// If the key doesn&#39;t exist in the map</span>
+    <span class="k">@else</span> <span class="err">{</span>
+        <span class="k">@warn</span> <span class="s2">&quot;Unfortunately, no value could be retrieved from `</span><span class="si">#{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">`. &quot;</span>
+            <span class="o">+</span> <span class="s2">&quot;Please make sure it is defined in `$breakpoints` map.&quot;</span><span class="o">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>And after we decide on our breakpoints:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="nv">$breakpoints</span><span class="o">:</span> <span class="p">(</span>
+    <span class="na">&#39;small&#39;</span><span class="o">  :</span> <span class="p">(</span> <span class="no">min-width</span><span class="o">:</span>  <span class="mi">568</span><span class="kt">px</span> <span class="p">)</span><span class="o">,</span>
+    <span class="na">&#39;medium&#39;</span><span class="o"> :</span> <span class="p">(</span> <span class="no">min-width</span><span class="o">:</span>  <span class="mi">768</span><span class="kt">px</span> <span class="p">)</span><span class="o">,</span>
+    <span class="na">&#39;large&#39;</span><span class="o">  :</span> <span class="p">(</span> <span class="no">min-width</span><span class="o">:</span> <span class="mi">1024</span><span class="kt">px</span> <span class="p">)</span><span class="o">,</span>
+    <span class="na">&#39;xlarge&#39;</span><span class="o"> :</span> <span class="p">(</span> <span class="no">min-width</span><span class="o">:</span> <span class="mi">1280</span><span class="kt">px</span> <span class="p">)</span>
+<span class="o">);</span>
+</code></pre></div>
+<p>We can now use the mixin as follows:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="nc">.example</span> <span class="err">{</span>
+
+    <span class="c1">// mobile first 100% width</span>
+    <span class="na">width</span><span class="o"> :</span> <span class="mi">100</span><span class="kt">%</span><span class="err">;</span>
+
+    <span class="k">@mixin</span><span class="nf"> respond-to</span><span class="p">(</span><span class="s1">&#39;</span><span class="s2">medium&#39;</span><span class="p">)</span> <span class="err">{</span>
+        <span class="c1">// if medium or bigger, 50% width</span>
+        <span class="na">width</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="err">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>To add this into our column mixin, we can just at the breakpoint name to the column class:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="c1">// $point is the name of the break point we want to use</span>
+<span class="c1">// by default there is no break point being applied</span>
+<span class="k">@mixin</span><span class="nf"> column</span><span class="p">(</span><span class="nv">$point</span><span class="o">:</span><span class="n-Pseudo">false</span><span class="p">)</span> <span class="err">{</span>
+
+  <span class="k">@for</span> <span class="nv">$span</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">through</span> <span class="mi">12</span> <span class="err">{</span>
+    <span class="k">@for</span> <span class="nv">$total</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">through</span> <span class="mi">12</span> <span class="err">{</span>
+      <span class="k">@if</span> <span class="p">(</span><span class="nv">$point</span><span class="p">)</span> <span class="err">{</span>
+        <span class="nc">.col-</span><span class="si">#{</span><span class="nv">$point</span><span class="si">}</span><span class="nc">-</span><span class="si">#{</span><span class="nv">$span</span><span class="si">}</span><span class="nc">-</span><span class="si">#{</span><span class="nv">$total</span><span class="si">}</span> <span class="err">{</span>
+          <span class="na">width</span><span class="o">:</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$span</span> <span class="o">/</span> <span class="nv">$total</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+      <span class="err">}</span> <span class="o">@</span><span class="nt">else</span> <span class="err">{</span>
+        <span class="nc">.col-</span><span class="si">#{</span><span class="nv">$span</span><span class="si">}</span><span class="nc">-</span><span class="si">#{</span><span class="nv">$total</span><span class="si">}</span> <span class="err">{</span>
+          <span class="na">width</span><span class="o">:</span> <span class="nf">percentage</span><span class="p">(</span><span class="nv">$span</span> <span class="o">/</span> <span class="nv">$total</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+      <span class="err">}</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>And now we can add one more loop outside the span and total loops that is the media queries loop:</p>
+<div class="highlight"><pre><code class="sass language-sass" data-lang="sass"><span class="k">@mixin</span><span class="nf"> columns</span><span class="p">()</span> <span class="err">{</span>
+
+    <span class="c1">// First we include the columns class with no media query    </span>
+    <span class="k">@include</span><span class="nd"> column</span><span class="p">()</span><span class="err">;</span>
+
+    <span class="c1">// Then we include column classes with all the individual media queries</span>
+    <span class="k">@each</span> <span class="err">$</span><span class="nt">point</span> <span class="nt">in</span> <span class="nt">map_keys</span><span class="o">(</span><span class="err">$</span><span class="nt">breakpoints</span><span class="o">)</span> <span class="err">{</span>
+        <span class="k">@include</span><span class="nd"> respond-to</span><span class="p">(</span><span class="nv">$point</span><span class="p">)</span> <span class="err">{</span>
+            <span class="k">@include</span><span class="nd"> column</span><span class="p">(</span><span class="nv">$point</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>These simple css classes allow the building of a well controlled photo album. Here is the jade:</p>
+<div class="highlight"><pre><code class="jade language-jade" data-lang="jade">    <span class="nc">.grid</span>
+        <span class="nc">.col-1-1.col-small-1-2.col-medium-1-3.col-large-1-4.col-xlarge-1-5</span>
+            <span class="nt">img</span>(<span class="na">href=</span><span class="s">&quot;...&quot;</span><span class="err">,</span> <span class="na">alt=</span><span class="s">&quot;photo 1&quot;</span>)
+        <span class="nc">.col-1-1.col-small-1-2.col-medium-1-3.col-large-1-4.col-xlarge-1-5</span> 
+            <span class="nt">img</span>(<span class="na">href=</span><span class="s">&quot;...&quot;</span><span class="err">,</span> <span class="na">alt=</span><span class="s">&quot;photo 2&quot;</span>)
+        <span class="nc">.col-1-1.col-small-1-2.col-medium-1-3.col-large-1-4.col-xlarge-1-5</span> 
+            <span class="nt">img</span>(<span class="na">href=</span><span class="s">&quot;...&quot;</span><span class="err">,</span> <span class="na">alt=</span><span class="s">&quot;photo 3&quot;</span>)
+        <span class="nc">.col-1-1.col-small-1-2.col-medium-1-3.col-large-1-4.col-xlarge-1-5</span> 
+            <span class="nt">img</span>(<span class="na">href=</span><span class="s">&quot;...&quot;</span><span class="err">,</span> <span class="na">alt=</span><span class="s">&quot;photo 4&quot;</span>)
+        <span class="nc">.col-1-1.col-small-1-2.col-medium-1-3.col-large-1-4.col-xlarge-1-5</span> 
+            <span class="nt">img</span>(<span class="na">href=</span><span class="s">&quot;...&quot;</span><span class="err">,</span> <span class="na">alt=</span><span class="s">&quot;photo 5&quot;</span>)
+</code></pre></div>
+<p>Take a look at it here: jsfiddle...</p>
+
+<p>Hopefully this gives you some ideas around how existing css frameworks make use of sass to build there css, and it also
+should give you some ideas on how to create your own custom layout css with sass.</p>
+
+            </section>
+            <footer>
+                
+                <p class="tags">
+    
+    <a href="/tags.html#debugging" class="badge badge-inverse">debugging</a>&nbsp;
+    
+</p>
+                
+                <p class="well">To comment <a href="http://twitter.com/home?status=@Peter_Ajtai">tweet @Peter_Ajtai</a> or <a href="https://github.com/pajtai/Netlumination.com/issues">submit an issue on GitHub.</p>
+                
+                <div class="pull-right">
+                    <h3 class="logo"><a href="/">Netlumination</a></h3>
+                    
+                    <h4 class="pull-right">15 Aug 2015</h4>
+                    
+                </div>
+            </footer>
+        </div>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-4145174-2', 'netlumination.com');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
