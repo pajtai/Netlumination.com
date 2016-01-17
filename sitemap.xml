@@ -4,11 +4,18 @@
 
     <url>
         <loc>http://netlumination.com</loc>
-        <lastmod>2015-08-14</lastmod>
+        <lastmod>2016-01-16</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
+    
+    <url>
+        <loc>http://netlumination.com/effort//</loc>
+        <lastmod>2016-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
     
     <url>
         <loc>http://netlumination.com/grid//</loc>
@@ -336,14 +343,14 @@
     
     <url>
         <loc>http://netlumination.com/index.html</loc>
-        <lastmod>2015-08-14</lastmod>
+        <lastmod>2016-01-16</lastmod>
         
         
     </url>
     
     <url>
         <loc>http://netlumination.com/tags.html</loc>
-        <lastmod>2015-08-14</lastmod>
+        <lastmod>2016-01-16</lastmod>
         
         
     </url>
